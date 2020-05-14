@@ -28,10 +28,27 @@ namespace Molk_Zipper
 
         private void click_on_molk(object sender, RoutedEventArgs e)
         {
-            Molk_Btn.Visibility = Visibility.Collapsed;
-            Unmolk_Btn.Visibility = Visibility.Collapsed;
+            //Molk_Btn.Visibility = Visibility.Collapsed;
+            //Unmolk_Btn.Visibility = Visibility.Collapsed;
+        }
+
+        private void Molk_Btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Molk_Img.Visibility = Visibility.Collapsed;
+            UnMolk_Img.Visibility = Visibility.Collapsed;
             Lable_Molk.Visibility = Visibility.Collapsed;
             Lable_UnMolk.Visibility = Visibility.Collapsed;
+            Frame_Page.NavigationService.Navigate(new Molk_page1());
+
+        }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
 
         }
     }

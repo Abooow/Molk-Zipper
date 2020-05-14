@@ -5,26 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Molk_Zipper"
         mc:Ignorable="d"
-        Title="Molk-Adventure" Height="350" Width="400">
+        Title="Molk-Adventure" Height="300" Width="400">
     <Grid Background="#FFD6D6D6">
-        <!--<Image Source="Assets/zip.png"
-        </Image>-->
         
-        <Border Background="White" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="111" VerticalAlignment="Top" Width="104" Margin="71,41,0,0"/>
-        <Button BorderThickness="0" x:Name="Molk_Btn" Content="" HorizontalAlignment="Left" Margin="71,41,0,0" VerticalAlignment="Top" Width="104" Height="111" Click="click_on_molk" BorderBrush="#FFB8B8B8">
-            <Button.Background>
-                <ImageBrush ImageSource="Assets/zip.png" Stretch="Uniform"/>
-            </Button.Background>
-            <Button.Foreground>
-                <ImageBrush ImageSource="Assets/zip.png"/>
-            </Button.Foreground>
-        </Button>
-        <Button BorderThickness="0" x:Name="Unmolk_Btn" Content="" HorizontalAlignment="Left" Margin="219,41,0,0" VerticalAlignment="Top" Width="96" Height="111" Click="click_on_molk">
-            <Button.Background>
-                <ImageBrush ImageSource="Assets/unzip.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Label x:Name="Lable_Molk" Content="Molk" HorizontalAlignment="Left" Margin="99,181,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Lable_UnMolk" Content="UnMolk" HorizontalAlignment="Left" Margin="249,181,0,0" VerticalAlignment="Top"/>
+            
+        <StackPanel Width="400" Height="150" Orientation="Horizontal">
+            <Image x:Name="Molk_Img"  VerticalAlignment="Top" Source="Assets/zip2.png" Height="110" Margin="70,0,0,0" MouseUp="Image_MouseUp" MouseEnter="Image_MouseEnter"/>
+            <Image x:Name="UnMolk_Img" VerticalAlignment="Top" Source="Assets/unzip2.png" Height="110" Margin="70,0,0,0"/>
+            
+            <!--<Button BorderThickness="0" x:Name="Molk_Btn" Content="" Margin="70,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Height="111" Click="click_on_molk" BorderBrush="#FFB8B8B8" MouseEnter="Molk_Btn_MouseEnter">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/zip2.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>-->
+            <!--<Button BorderThickness="0" x:Name="Unmolk_Btn" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0,0,0" Width="104" Height="111" Click="click_on_molk">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/unzip2.png" Stretch="Uniform"/>
+                </Button.Background>-->
+            <!--</Button>-->
+            <Label x:Name="Lable_Molk" Content="Molk" Margin="-220,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <Label x:Name="Lable_UnMolk" Content="UnMolk" Margin="-70,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
+
+        
+        </StackPanel>
+
+        <Frame x:Name="Frame_Page" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="392"/>
     </Grid>
 </Window>

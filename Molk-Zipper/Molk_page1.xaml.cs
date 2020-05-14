@@ -10,30 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Molk_Zipper
 {
     /// <summary>
-    /// Interaction logic for Molk.xaml
+    /// Interaction logic for Molk_page1.xaml
     /// </summary>
-    public partial class Molk : Window
+    public partial class Molk_page1 : Page
     {
-        public Molk()
+        public Molk_page1()
         {
             InitializeComponent();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = Application.Current.MainWindow as MainWindow;
+            if (main != null)
+            {
+                main.Close();
+            }
         }
 
         private void Written_text_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
 
         }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-
     }
 }
