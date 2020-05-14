@@ -1,0 +1,30 @@
+﻿<Window x:Class="Molk_Zipper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Molk_Zipper"
+        mc:Ignorable="d"
+        Title="Molk-Adventure" Height="350" Width="400">
+    <Grid Background="#FFD6D6D6">
+        <!--<Image Source="Assets/zip.png"
+        </Image>-->
+        
+        <Border Background="White" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="111" VerticalAlignment="Top" Width="104" Margin="71,41,0,0"/>
+        <Button BorderThickness="0" x:Name="Molk_Btn" Content="" HorizontalAlignment="Left" Margin="71,41,0,0" VerticalAlignment="Top" Width="104" Height="111" Click="click_on_molk" BorderBrush="#FFB8B8B8">
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/zip.png" Stretch="Uniform"/>
+            </Button.Background>
+            <Button.Foreground>
+                <ImageBrush ImageSource="Assets/zip.png"/>
+            </Button.Foreground>
+        </Button>
+        <Button BorderThickness="0" x:Name="Unmolk_Btn" Content="" HorizontalAlignment="Left" Margin="219,41,0,0" VerticalAlignment="Top" Width="96" Height="111" Click="click_on_molk">
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/unzip.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="Lable_Molk" Content="Molk" HorizontalAlignment="Left" Margin="99,181,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Lable_UnMolk" Content="UnMolk" HorizontalAlignment="Left" Margin="249,181,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
