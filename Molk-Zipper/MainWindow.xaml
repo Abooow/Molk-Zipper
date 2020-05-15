@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Molk_Zipper"
         mc:Ignorable="d"
-        Title="Molk-Adventure" Height="300" Width="400">
+        Title="Molk-Adventure" Height="295" Width="388">
+
     <Grid Background="#FFD6D6D6">
-        
-            
-        <StackPanel Width="400" Height="150" Orientation="Horizontal">
+
+
+        <StackPanel x:Name="MainStackPnl"  Width="400" Height="150" Orientation="Horizontal">
             <Image x:Name="Molk_Img"  VerticalAlignment="Top" Source="Assets/zip2.png" Height="110" Margin="70,0,0,0" MouseUp="Image_MouseUp" MouseEnter="Image_MouseEnter"/>
             <Image x:Name="UnMolk_Img" VerticalAlignment="Top" Source="Assets/unzip2.png" Height="110" Margin="70,0,0,0"/>
-            
+
             <!--<Button BorderThickness="0" x:Name="Molk_Btn" Content="" Margin="70,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Height="111" Click="click_on_molk" BorderBrush="#FFB8B8B8" MouseEnter="Molk_Btn_MouseEnter">
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/zip2.png" Stretch="Uniform"/>
@@ -26,9 +27,9 @@
             <Label x:Name="Lable_Molk" Content="Molk" Margin="-220,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <Label x:Name="Lable_UnMolk" Content="UnMolk" Margin="-70,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
 
-        
-        </StackPanel>
 
-        <Frame x:Name="Frame_Page" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="392"/>
+        </StackPanel>
+        <Frame x:Name="frame_page" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="269"/>
+
     </Grid>
 </Window>

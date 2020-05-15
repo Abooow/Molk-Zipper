@@ -43,7 +43,9 @@ namespace Molk_Zipper
             UnMolk_Img.Visibility = Visibility.Collapsed;
             Lable_Molk.Visibility = Visibility.Collapsed;
             Lable_UnMolk.Visibility = Visibility.Collapsed;
-            Frame_Page.NavigationService.Navigate(new Molk_page1());
+            //MainStackPnl.Visibility = Visibility.Collapsed;
+            //frame_page.Content= new UserControl2();
+            frame_page.Content = new Molker();
 
         }
 
