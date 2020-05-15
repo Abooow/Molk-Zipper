@@ -18,6 +18,8 @@ namespace Molk_Zipper
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
         //private Molk popupPuzzlePiecesWindow = null;
@@ -39,13 +41,13 @@ namespace Molk_Zipper
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Molk_Img.Visibility = Visibility.Collapsed;
-            UnMolk_Img.Visibility = Visibility.Collapsed;
-            Lable_Molk.Visibility = Visibility.Collapsed;
-            Lable_UnMolk.Visibility = Visibility.Collapsed;
+            //Molk_Img.Visibility = Visibility.Collapsed;
+            //UnMolk_Img.Visibility = Visibility.Collapsed;
+            //Lable_Molk.Visibility = Visibility.Collapsed;
+            //Lable_UnMolk.Visibility = Visibility.Collapsed;
             //MainStackPnl.Visibility = Visibility.Collapsed;
             //frame_page.Content= new UserControl2();
-            frame_page.Content = new Molker();
+            Frame_Page_Home.Content = new Molker();
 
         }
 

@@ -113,5 +113,8 @@
     <Resource Include="Assets\unzip2.png" />
     <Resource Include="Assets\zip2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\molk.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

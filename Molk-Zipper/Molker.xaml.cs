@@ -183,5 +183,13 @@ namespace Molk_Zipper
             }
                 ((TreeViewItem)o.Parent).Items.Remove(o);
         }
+
+  
+        private void Img_Molk_Home(object sender, MouseButtonEventArgs e)
+        {
+            Menu_Molk.Visibility = Visibility.Collapsed;
+            Menu_Molk2.Visibility = Visibility.Collapsed;
+            FolderView.Visibility = Visibility.Collapsed;
+        }
     }
 }

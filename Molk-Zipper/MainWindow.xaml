@@ -7,29 +7,27 @@
         mc:Ignorable="d"
         Title="Molk-Adventure" Height="295" Width="388">
 
-    <Grid Background="#FFD6D6D6">
+    <Grid x:Name="Molk_Homepage">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF2E0635" Offset="1"/>
+                <GradientStop Color="#FFBC1CD8"/>
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FF3F0849" Offset="0.972"/>
+                <GradientStop Color="#FF600D6F" Offset="0.935"/>
+                <GradientStop Color="#FFA618BF" Offset="0.651"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid >
+            <Frame x:Name="Frame_Molk_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="164"  VerticalAlignment="Center" Width="269" Opacity="0.6" Margin="60,50,51,50"/>
 
-
-        <StackPanel x:Name="MainStackPnl"  Width="400" Height="150" Orientation="Horizontal">
+        </Grid>
+        <StackPanel x:Name="MainStackPnl" Height="150" Orientation="Horizontal" >
             <Image x:Name="Molk_Img"  VerticalAlignment="Top" Source="Assets/zip2.png" Height="110" Margin="70,0,0,0" MouseUp="Image_MouseUp" MouseEnter="Image_MouseEnter"/>
             <Image x:Name="UnMolk_Img" VerticalAlignment="Top" Source="Assets/unzip2.png" Height="110" Margin="70,0,0,0"/>
-
-            <!--<Button BorderThickness="0" x:Name="Molk_Btn" Content="" Margin="70,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Height="111" Click="click_on_molk" BorderBrush="#FFB8B8B8" MouseEnter="Molk_Btn_MouseEnter">
-                <Button.Background>
-                    <ImageBrush ImageSource="Assets/zip2.png" Stretch="Uniform"/>
-                </Button.Background>
-            </Button>-->
-            <!--<Button BorderThickness="0" x:Name="Unmolk_Btn" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0,0,0" Width="104" Height="111" Click="click_on_molk">
-                <Button.Background>
-                    <ImageBrush ImageSource="Assets/unzip2.png" Stretch="Uniform"/>
-                </Button.Background>-->
-            <!--</Button>-->
             <Label x:Name="Lable_Molk" Content="Molk" Margin="-220,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
             <Label x:Name="Lable_UnMolk" Content="UnMolk" Margin="-70,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
-
-
         </StackPanel>
-        <Frame x:Name="frame_page" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="269"/>
-
+        <Frame x:Name="Frame_Page_Home" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>
