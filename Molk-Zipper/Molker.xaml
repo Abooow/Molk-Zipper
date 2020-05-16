@@ -38,13 +38,17 @@
                 </MenuItem>
 
             </Menu>
-            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" BorderBrush="Black" DockPanel.Dock="Top" Height="45">
+            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" BorderBrush="Black" DockPanel.Dock="Top" Height="40">
                 <!--<Button x:Name="btn_Molk_Home" Width="77" Height="35">-->
                 <Image Source="Assets/molk.png" Width="40" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Img_Molk_Home"/>
                 <!--</Button>-->
                 <Button x:Name="btn_Add" Content="Add" Width="77" Height="35" Click="Btn_Add_Click"/>
             </Menu>
-            <TreeView x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" >
+            <Menu VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DockPanel.Dock="Right">
+                <Button x:Name="btn_Molk" VerticalAlignment="Center" Content="Molk" Margin="0,170,0,0" Width="76" Height="35" />
+                
+            </Menu>
+            <TreeView Background="WhiteSmoke" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" >
                 <TreeView.Resources>
                     <Style TargetType="{x:Type TreeViewItem}">
                         <Setter Property="HeaderTemplate" >
@@ -64,7 +68,9 @@
             <TextBlock x:Name="txtBox_Main" Margin="0" DockPanel.Dock="Top" ScrollViewer.HorizontalScrollBarVisibility="Visible" 
                      TextWrapping="NoWrap" Text="" ContextMenuOpening="Written_text_ContextMenuOpening" Height="209"/>-->
         </DockPanel>
-        <Button x:Name="btn_Molk" Content="Molk" Width="77" Height="35" Margin="241,217,82,48"/>
+        <!--<StackPanel x:Name="stackpnl_btn_molk" Orientation="Vertical" Margin="0,200,0,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Height="38">
+
+        </StackPanel>-->
         <Frame x:Name="Frame_Page1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="300"/>
     </Grid>
 </Page>

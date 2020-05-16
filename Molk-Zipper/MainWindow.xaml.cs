@@ -34,23 +34,16 @@ namespace Molk_Zipper
         }
 
 
-        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            //Molk_Img.Visibility = Visibility.Collapsed;
-            //UnMolk_Img.Visibility = Visibility.Collapsed;
-            //Lable_Molk.Visibility = Visibility.Collapsed;
-            //Lable_UnMolk.Visibility = Visibility.Collapsed;
-            //MainStackPnl.Visibility = Visibility.Collapsed;
-            //frame_page.Content= new UserControl2();
-            Frame_Page_Home.Content = new Molker();
-
-        }
-
+  
         private void Image_MouseEnter(object sender, MouseEventArgs e)
         {
 
         }
 
-     
+        private void Molk_img_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Frame_Page_Home.Content = new Molker();
+
+        }
     }
 }
