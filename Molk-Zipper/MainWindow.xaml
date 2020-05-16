@@ -5,24 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Molk_Zipper"
         mc:Ignorable="d"
-        Title="Molk-Adventure" Height="400" Width="500">
+        Title="Molk-Adventure" Height="460" Width="700">
 
-    <Grid x:Name="Molk_Homepage" Background="#4E4E4E">
-        <!--<Grid.Background>
-            --><!--<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FFCF4EE6"/>
-                <GradientStop Color="#FF631870" Offset="0.947"/>
-            </LinearGradientBrush>--><!--
-        </Grid.Background>-->
+    <Grid x:Name="Molk_Homepage" Background="#171717">
         <Grid >
-            <Label Content="The Molk Adventure" FontFamily="Times" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" ></Label>
-
+            <!--<Label Content="©2020 Daniel n Kitt Co." FontFamily="Times" Foreground="White" FontStyle="Italic" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" ></Label>-->
+            <Image Source="Assets/2020_Daniel__Kitt_Co.2x.png" Height="20" Margin="0,400,0,0" ></Image>
         </Grid>
-            <StackPanel x:Name="Border_StackPnl" Height="160" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-                <Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6"/>
+            <!--<StackPanel x:Name="Border_StackPnl" Height="160" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                <Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6" CornerRadius="10"/>
                 <Border x:Name="Border_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="154"  VerticalAlignment="Center" Width="130" Opacity="0.6" Margin="30,0,0,0"/>
-            </StackPanel>
-            <StackPanel x:Name="Image_StackPnl" Height="150" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Stretch" >
+            </StackPanel>-->
+        <StackPanel x:Name="Border_StackPnl" Background="#ECECEC" Height="183" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,197,0,49">
+            <!--<Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6" CornerRadius="10"/>-->
+            <!--<Border x:Name="Border_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="154"  VerticalAlignment="Center" Width="130" Opacity="0.6" Margin="30,0,0,0"/>-->
+        </StackPanel>
+        <StackPanel x:Name="Image_StackPnl"  Margin ="0,140,0,0" Height="150" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Stretch" >
                 <Image x:Name="Molk_Img" Margin="0,20,0,0"  VerticalAlignment="Center" Source="Assets/zip2.png" Height="110" MouseUp="Molk_img_MouseUp" MouseEnter="Image_MouseEnter"/>
                 <Image x:Name="UnMolk_Img" VerticalAlignment="Center" Source="Assets/unzip2.png" Height="110" Margin="70,20,0,0"/>
                 <Label x:Name="Lable_Molk" Content="Molk" FontWeight="DemiBold" FontSize="20" Margin="-230,-5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>

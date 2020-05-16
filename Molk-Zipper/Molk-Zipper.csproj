@@ -116,5 +116,8 @@
   <ItemGroup>
     <Resource Include="Assets\molk.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\2020_Daniel__Kitt_Co.2x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
