@@ -22,7 +22,6 @@ namespace Molk_Zipper
 
     public partial class MainWindow : Window
     {
-        //private Molk popupPuzzlePiecesWindow = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,10 +33,6 @@ namespace Molk_Zipper
             //Unmolk_Btn.Visibility = Visibility.Collapsed;
         }
 
-        private void Molk_Btn_MouseEnter(object sender, MouseEventArgs e)
-        {
-            
-        }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -55,5 +50,7 @@ namespace Molk_Zipper
         {
 
         }
+
+     
     }
 }

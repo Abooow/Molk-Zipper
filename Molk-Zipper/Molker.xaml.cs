@@ -189,6 +189,7 @@ namespace Molk_Zipper
         {
             Menu_Molk.Visibility = Visibility.Collapsed;
             Menu_Molk2.Visibility = Visibility.Collapsed;
+            btn_Molk.Visibility = Visibility.Collapsed;
             FolderView.Visibility = Visibility.Collapsed;
         }
     }

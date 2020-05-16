@@ -9,25 +9,25 @@
 
     <Grid x:Name="Molk_Homepage">
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF2E0635" Offset="1"/>
-                <GradientStop Color="#FFBC1CD8"/>
-                <GradientStop Color="Black" Offset="1"/>
-                <GradientStop Color="#FF3F0849" Offset="0.972"/>
-                <GradientStop Color="#FF600D6F" Offset="0.935"/>
-                <GradientStop Color="#FFA618BF" Offset="0.651"/>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFDEB0E6"/>
+                <GradientStop Color="#FFCD3BE6" Offset="0.943"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid >
-            <Frame x:Name="Frame_Molk_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="164"  VerticalAlignment="Center" Width="269" Opacity="0.6" Margin="60,50,51,50"/>
+            <Label Content="The Molk Adventure" FontFamily="Times" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" ></Label>
 
         </Grid>
-        <StackPanel x:Name="MainStackPnl" Height="150" Orientation="Horizontal" >
-            <Image x:Name="Molk_Img"  VerticalAlignment="Top" Source="Assets/zip2.png" Height="110" Margin="70,0,0,0" MouseUp="Image_MouseUp" MouseEnter="Image_MouseEnter"/>
-            <Image x:Name="UnMolk_Img" VerticalAlignment="Top" Source="Assets/unzip2.png" Height="110" Margin="70,0,0,0"/>
-            <Label x:Name="Lable_Molk" Content="Molk" Margin="-220,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-            <Label x:Name="Lable_UnMolk" Content="UnMolk" Margin="-70,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
-        </StackPanel>
+            <StackPanel x:Name="Border_StackPnl" Height="160" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                <Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6"/>
+                <Border x:Name="Border_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="154"  VerticalAlignment="Center" Width="130" Opacity="0.6" Margin="30,0,0,0"/>
+            </StackPanel>
+            <StackPanel x:Name="Image_StackPnl" Height="150" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Stretch" >
+                <Image x:Name="Molk_Img"  VerticalAlignment="Center" Source="Assets/zip2.png" Height="110" MouseUp="Image_MouseUp" MouseEnter="Image_MouseEnter"/>
+                <Image x:Name="UnMolk_Img" VerticalAlignment="Center" Source="Assets/unzip2.png" Height="110" Margin="70,0,0,0"/>
+                <Label x:Name="Lable_Molk" Content="Molk" Margin="-220,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <Label x:Name="Lable_UnMolk" Content="UnMolk" Margin="-70,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Bottom"/>
+            </StackPanel>
         <Frame x:Name="Frame_Page_Home" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>
