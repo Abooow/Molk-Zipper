@@ -45,7 +45,7 @@
                 <Button x:Name="btn_Add" Content="Add" Width="77" Height="35" Click="Btn_Add_Click"/>
             </Menu>
             <StackPanel VerticalAlignment="Stretch" Orientation="Vertical" Background="#171717" HorizontalAlignment="Stretch" DockPanel.Dock="Right">
-                <Button x:Name="btn_Del" Margin="0,50,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Center" Content="Remove" Width="76" Height="35" />
+                <Button x:Name="btn_Remove" Margin="0,50,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Center" Content="Remove" Width="76" Height="35" Click="btn_Remove_Click" />
                 <Button x:Name="btn_Molk" Margin="0,50,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Center" Content="Molk" Width="76" Height="35" />
                 
             </StackPanel>

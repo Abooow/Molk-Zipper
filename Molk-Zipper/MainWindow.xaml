@@ -37,7 +37,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="60" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -66,9 +66,9 @@
 
     <Grid x:Name="Molk_Homepage" Background="#171717">
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2.378*"/>
+            <RowDefinition Height="2.232*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
         <!--<Rectangle Fill="#171717" Grid.Row="0"> </Rectangle>-->
@@ -81,14 +81,14 @@
                 <Border x:Name="Border_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="154"  VerticalAlignment="Center" Width="130" Opacity="0.6" Margin="30,0,0,0"/>
             </StackPanel>-->
         <StackPanel Grid.Row="1" x:Name="Border_StackPnl" Orientation="Horizontal" Background="#ECECEC" HorizontalAlignment="Center" VerticalAlignment="center" >
-            <Button Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" BorderBrush="Black" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" >
+            <Button Padding="10" Height="119" Width="242" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="2" BorderBrush="#602482" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" >
                 <StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Center" >
-                        <Image  Source="Assets/Zip.png" VerticalAlignment="Center" />
+                        <Image  Source="Assets/Zip_purple_2x.png" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
-            <Button Padding="10" Margin="150,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" BorderBrush="Black" Style="{DynamicResource BtnCornerRad}" >
+            <Button Padding="10" Height="119" Width="242" Margin="100,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="3" BorderBrush="#602482" Style="{DynamicResource BtnCornerRad}" >
                 <StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Center" >
-                        <Image  Source="Assets/UnZip.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Image  Source="Assets/UnZip_purple_2x.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
             <!--<Button HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Black" >
