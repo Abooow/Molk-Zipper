@@ -70,8 +70,9 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <!--<Rectangle Fill="#171717" Grid.Row="0"> </Rectangle>-->
-        <!--<Rectangle Fill="Blue" Grid.Row="1"> </Rectangle>-->
+        <Rectangle Fill="#ECECEC" Grid.Row="1"> </Rectangle>
         <!--<Rectangle Fill="SaddleBrown" Grid.Row="2"> </Rectangle>-->
         <Image Grid.Row="0" Source="Assets/Group_12x.png" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top"></Image>
         <Image Grid.Row="4" Source="Assets/2020_Daniel__Kitt_Co.2x.png" Height="20" VerticalAlignment="Bottom" ></Image>
@@ -79,15 +80,15 @@
                 <Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6" CornerRadius="10"/>
                 <Border x:Name="Border_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="154"  VerticalAlignment="Center" Width="130" Opacity="0.6" Margin="30,0,0,0"/>
             </StackPanel>-->
-        <StackPanel Grid.Row="1" x:Name="Border_StackPnl" Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Stretch" >
-            <Button Padding="10" Margin="130,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" BorderBrush="Black" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" >
-                <StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Stretch" >
-                        <Image  Source="Assets/Zip.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <StackPanel Grid.Row="1" x:Name="Border_StackPnl" Orientation="Horizontal" Background="#ECECEC" HorizontalAlignment="Center" VerticalAlignment="center" >
+            <Button Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" BorderBrush="Black" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" >
+                <StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Center" >
+                        <Image  Source="Assets/Zip.png" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
-            <Button Padding="10" Margin="150,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" BorderBrush="Black" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" >
-                <StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Stretch" >
-                        <Image  Source="Assets/UnZip.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <Button Padding="10" Margin="150,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" BorderBrush="Black" Style="{DynamicResource BtnCornerRad}" >
+                <StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Center" >
+                        <Image  Source="Assets/UnZip.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
             <!--<Button HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Black" >

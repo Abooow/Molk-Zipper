@@ -11,7 +11,7 @@
 
     <Grid>
         <DockPanel >
-            <Menu x:Name="Menu_Molk" DockPanel.Dock="Top">
+            <Menu Background="#171717" Foreground="White" x:Name="Menu_Molk" DockPanel.Dock="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New"/>
                     <MenuItem Header="_Open"/>
@@ -38,17 +38,18 @@
                 </MenuItem>
 
             </Menu>
-            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" BorderBrush="Black" DockPanel.Dock="Top" Height="40">
+            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" Background="#171717" BorderBrush="Black" DockPanel.Dock="Top" Height="40">
                 <!--<Button x:Name="btn_Molk_Home" Width="77" Height="35">-->
                 <Image Source="Assets/molk.png" Width="40" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Img_Molk_Home"/>
                 <!--</Button>-->
                 <Button x:Name="btn_Add" Content="Add" Width="77" Height="35" Click="Btn_Add_Click"/>
             </Menu>
-            <Menu VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DockPanel.Dock="Right">
-                <Button x:Name="btn_Molk" VerticalAlignment="Center" Content="Molk" Margin="0,170,0,0" Width="76" Height="35" />
+            <StackPanel VerticalAlignment="Stretch" Orientation="Vertical" Background="#171717" HorizontalAlignment="Stretch" DockPanel.Dock="Right">
+                <Button x:Name="btn_Del" Margin="0,50,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Center" Content="Remove" Width="76" Height="35" />
+                <Button x:Name="btn_Molk" Margin="0,50,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Center" Content="Molk" Width="76" Height="35" />
                 
-            </Menu>
-            <TreeView Background="WhiteSmoke" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" >
+            </StackPanel>
+            <TreeView Background="#171717" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" >
                 <TreeView.Resources>
                     <Style TargetType="{x:Type TreeViewItem}">
                         <Setter Property="HeaderTemplate" >
@@ -56,7 +57,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <Image Width="20" Margin="3" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag, Converter={x:Static local:HeaderToImageConverter.Instance}}"></Image>
-                                        <TextBlock VerticalAlignment="Center" Text="{Binding}"></TextBlock>
+                                        <TextBlock Foreground="white" VerticalAlignment="Center" Text="{Binding}"></TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
                             </Setter.Value>
