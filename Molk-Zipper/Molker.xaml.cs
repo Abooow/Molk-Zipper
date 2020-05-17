@@ -41,7 +41,7 @@ namespace Molk_Zipper
             }
         }
 
-          private void Btn_Add_Click(object sender, RoutedEventArgs e)
+          private void Btn_Add_Files_Click(object sender, RoutedEventArgs e)
         {
             OpenFiles();
         }
@@ -182,17 +182,20 @@ namespace Molk_Zipper
   
         private void Img_Molk_Home(object sender, MouseButtonEventArgs e)
         {
-            Menu_Molk.Visibility = Visibility.Collapsed;
-            Menu_Molk2.Visibility = Visibility.Collapsed;
-            btn_Remove.Visibility = Visibility.Collapsed;
-            btn_Molk.Visibility = Visibility.Collapsed;
-            stackpnl_bottom.Visibility = Visibility.Collapsed;
-            FolderView.Visibility = Visibility.Collapsed;
+         
+            Grid_1.Visibility = Visibility.Collapsed;
+            Grid_2.Visibility = Visibility.Collapsed;
+            grid_3.Visibility = Visibility.Collapsed;
+            grid_4.Visibility = Visibility.Collapsed;
+            grid_5.Visibility = Visibility.Collapsed;
+            //stackpnl_bottom.Visibility = Visibility.Collapsed;
+            //FolderView.Visibility = Visibility.Collapsed;
         }
 
         private void btn_Remove_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedTreeItem();
         }
+
     }
 }

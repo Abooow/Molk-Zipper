@@ -74,7 +74,7 @@
         <!--<Rectangle Fill="#171717" Grid.Row="0"> </Rectangle>-->
         <Rectangle Fill="#ECECEC" Grid.Row="1"> </Rectangle>
         <!--<Rectangle Fill="SaddleBrown" Grid.Row="2"> </Rectangle>-->
-        <Image Grid.Row="0" Source="Assets/Logo/Group_1@2x.png" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"></Image>
+        <Image Grid.Row="0" Source="Assets/Logo/Group_1@2x.png" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
         <Image Grid.Row="4" Source="Assets/Text/2020_The_Daniel__Kitt_Team@2x.png" Height="20" VerticalAlignment="Bottom" ></Image>
         <!--<StackPanel  x:Name="Border_StackPnl" Height="160" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
                 <Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6" CornerRadius="10"/>
@@ -137,6 +137,6 @@
                 <Label x:Name="Lable_Molk" Content="Molk" FontWeight="DemiBold" FontSize="20" Margin="-230,-5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Label x:Name="Lable_UnMolk" Content="UnMolk" FontWeight="DemiBold" FontSize="20" Margin="-85,-5,0,0" HorizontalAlignment="Left"  VerticalAlignment="top"/>
         </StackPanel>-->
-        <Frame x:Name="Frame_Page_Home" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.Row="1"/>
+        <Frame x:Name="Frame_Page_Home" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3"/>
     </Grid>
 </Window>
