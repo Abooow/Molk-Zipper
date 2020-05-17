@@ -38,9 +38,9 @@
                 </MenuItem>
 
             </Menu>
-            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" Background="#171717" BorderBrush="Black" DockPanel.Dock="Top" Height="40">
+            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" Background="#171717" BorderBrush="White" DockPanel.Dock="Top" Height="40">
                 <!--<Button x:Name="btn_Molk_Home" Width="77" Height="35">-->
-                <Image Source="Assets/molk.png" Width="40" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Img_Molk_Home"/>
+                <Image Source="Assets/Group_12x.png" Width="50" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Img_Molk_Home"/>
                 <!--</Button>-->
                 <Button x:Name="btn_Add" Content="Add" Width="77" Height="35" Click="Btn_Add_Click"/>
             </Menu>
