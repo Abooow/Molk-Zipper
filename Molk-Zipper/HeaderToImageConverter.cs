@@ -21,12 +21,12 @@ namespace Molk_Zipper
 
             string name = Molker.GetFileFolderName(path);
 
-            string image = "Assets/zip.png";
+            string image = "Assets/Zip/zip_purple_2x.png";
 
             if (string.IsNullOrEmpty(name))
-                image = "Assets/zip2.png";
+                image = "Assets/Zip/zip_purple_2x.png";
             else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
-                image = "Assets/unzip.png";
+                image = "Assets/Zip/zip_purple_2x.png";
 
             return new BitmapImage(new Uri($"pack://application:,,,/{image}"));
         }

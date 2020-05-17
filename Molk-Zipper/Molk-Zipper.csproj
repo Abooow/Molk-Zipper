@@ -104,27 +104,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\zip.png" />
+    <Resource Include="Assets\Text\MOLK2x.png" />
+    <Resource Include="Assets\Text\UNMOLK2x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\unzip.png" />
+    <Resource Include="Assets\Logo\Group_1%402x.png" />
+    <Resource Include="Assets\Logo\molk%402x.png" />
+    <Resource Include="Assets\Logo\molk_white%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\unzip2.png" />
-    <Resource Include="Assets\zip2.png" />
+    <Resource Include="Assets\Text\2020_Daniel__Kitt_Co.%402x.png" />
+    <Resource Include="Assets\Text\2020_The_Daniel__Kitt_Team%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\molk.png" />
+    <Resource Include="Assets\UnZip\unzip_purple_2x.png" />
+    <Resource Include="Assets\UnZip\unzip_white%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\2020_Daniel__Kitt_Co.2x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Group_12x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\unzip_purple_2x.png" />
-    <Resource Include="Assets\zip_purple_2x.png" />
+    <Resource Include="Assets\Zip\zip_purple_2x.png" />
+    <Resource Include="Assets\Zip\zip_white%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
