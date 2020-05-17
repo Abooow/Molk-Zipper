@@ -188,6 +188,7 @@ namespace Molk_Zipper
             grid_3.Visibility = Visibility.Collapsed;
             grid_4.Visibility = Visibility.Collapsed;
             grid_5.Visibility = Visibility.Collapsed;
+            grid_6.Visibility = Visibility.Collapsed;
             //stackpnl_bottom.Visibility = Visibility.Collapsed;
             //FolderView.Visibility = Visibility.Collapsed;
         }
