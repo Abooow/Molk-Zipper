@@ -19,31 +19,59 @@ namespace Molk_Zipper
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-
     public partial class MainWindow : Window
     {
+        private BitmapImage zipPurple;
+        private BitmapImage zipWhite;
+        private BitmapImage unzipPurple;
+        private BitmapImage unzipWhite;
+        
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void click_on_molk(object sender, RoutedEventArgs e)
-        {
-            //Molk_Btn.Visibility = Visibility.Collapsed;
-            //Unmolk_Btn.Visibility = Visibility.Collapsed;
-        }
-
-
-  
-        private void Image_MouseEnter(object sender, MouseEventArgs e)
-        {
-
+            zipPurple = CreateBitmap(@"Assets\Zip\zip_purple@2x.png");
+            zipWhite  = CreateBitmap(@"Assets\Zip\zip_white@2x.png");
+            unzipPurple = CreateBitmap(@"Assets\UnZip\unzip_purple@2x.png");
+            unzipWhite  = CreateBitmap(@"Assets\UnZip\unzip_white@2x.png");
         }
 
         private void Molk_Img_MouseUp(object sender, RoutedEventArgs e)
         {
-
             Frame_Page_Home.Content = new Molker();
         }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            if (button.Tag.Equals("Molk")) ChangeButtonImage(button, zipWhite);
+            else if (button.Tag.Equals("UnMolk")) ChangeButtonImage(button, unzipWhite);
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            if (button.Tag.Equals("Molk")) ChangeButtonImage(button, zipPurple);
+            else if (button.Tag.Equals("UnMolk")) ChangeButtonImage(button, unzipPurple);
+        }
+
+        #region Helpers
+        private void ChangeButtonImage(Button button, BitmapImage image)
+        {
+            ((Image)button.Content).Source = image;
+        }
+
+        private BitmapImage CreateBitmap(string source)
+        {
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(source, UriKind.Relative);
+            image.EndInit();
+
+            return image;
+        }
+        #endregion
     }
 }

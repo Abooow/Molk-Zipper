@@ -117,12 +117,26 @@
     <Resource Include="Assets\Text\2020_The_Daniel__Kitt_Team%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\UnZip\unzip_purple_2x.png" />
+    <Resource Include="Assets\UnZip\unzip_purple%402x.png" />
     <Resource Include="Assets\UnZip\unzip_white%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Zip\zip_purple_2x.png" />
+    <Resource Include="Assets\Zip\zip_purple%402x.png" />
     <Resource Include="Assets\Zip\zip_white%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Logo\Group_1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icons\add_file.png" />
+    <Resource Include="Assets\Icons\add_folder.png" />
+    <Resource Include="Assets\Icons\file.png" />
+    <Resource Include="Assets\Icons\folder.png" />
+    <Resource Include="Assets\Icons\redo.png" />
+    <Resource Include="Assets\Icons\redo_grey.png" />
+    <Resource Include="Assets\Icons\textfile.png" />
+    <Resource Include="Assets\Icons\undo.png" />
+    <Resource Include="Assets\Icons\undo_grey.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

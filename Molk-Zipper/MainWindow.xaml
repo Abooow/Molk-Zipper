@@ -37,7 +37,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="60" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="65" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -70,17 +70,10 @@
             <RowDefinition Height="2.232*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
-        <!--<Rectangle Fill="#171717" Grid.Row="0"> </Rectangle>-->
-        <Rectangle Fill="#ECECEC" Grid.Row="1"> </Rectangle>
-        <!--<Rectangle Fill="SaddleBrown" Grid.Row="2"> </Rectangle>-->
-        <Image Grid.Row="0" Source="Assets/Logo/Group_1@2x.png" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"></Image>
+
+        <Rectangle Fill="#ECECEC" Grid.Row="1"></Rectangle>
+        <Image Grid.Row="0" Source="Assets/Logo/Group_1@3x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"></Image>
         <Image Grid.Row="4" Source="Assets/Text/2020_The_Daniel__Kitt_Team@2x.png" Height="20" VerticalAlignment="Bottom" ></Image>
-        <!--<StackPanel  x:Name="Border_StackPnl" Height="160" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-                <Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6" CornerRadius="10"/>
-                <Border x:Name="Border_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="154"  VerticalAlignment="Center" Width="130" Opacity="0.6" Margin="30,0,0,0"/>
-            </StackPanel>-->
-        <!--<StackPanel Grid.Row="1" x:Name="Border_StackPnl" Orientation="Horizontal" Background="#ECECEC" HorizontalAlignment="Center" VerticalAlignment="center" >-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -94,10 +87,13 @@
                 <RowDefinition Height="5.409*"/>
                 <RowDefinition Height="1.909*"/>
             </Grid.RowDefinitions>
-            
-            <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" >
-                <Button.Background>
-                    <ImageBrush ImageSource="Assets/Zip/zip_purple_2x.png" Stretch="Uniform">
+
+            <Button Tag="Molk" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="Assets/Zip/zip_purple@2x.png" Margin="10"/>
+                </Button.Content>
+                <!--<Button.Background>
+                    <ImageBrush Stretch="Uniform">
                         <ImageBrush.RelativeTransform>
                             <TransformGroup>
                                 <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="0.83" ScaleY="0.83"/>
@@ -105,12 +101,15 @@
                             </TransformGroup>
                         </ImageBrush.RelativeTransform>
                     </ImageBrush>
-                </Button.Background>
+                </Button.Background>-->
             </Button>
-            <Label Grid.Column="1" Grid.Row="2" Content="asdasdasd" Padding="0" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Segoe UI"></Label>
-            
-            <Button Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Style="{DynamicResource BtnCornerRad}" >
-                <Button.Background>
+            <Image Grid.Column="1" Grid.Row="2" Source="Assets/Text/MOLK2x.png" Margin="0,0,0,10"/>
+
+            <Button Tag="UnMolk" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.Content>
+                    <Image Source="Assets/UnZip/unzip_purple@2x.png" Margin="10"/>
+                </Button.Content>
+                <!--<Button.Background>
                     <ImageBrush ImageSource="Assets/UnZip/UnZip_purple_2x.png" Stretch="Uniform">
                         <ImageBrush.RelativeTransform>
                             <TransformGroup>
@@ -119,24 +118,10 @@
                             </TransformGroup>
                         </ImageBrush.RelativeTransform>
                     </ImageBrush>
-                </Button.Background>
-                <!--<StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Center" >
-                    <Image  Source="Assets/UnZip/unzip_purple_2x.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </StackPanel>-->
+                </Button.Background>-->
             </Button>
+            <Image Grid.Column="3" Grid.Row="2" Source="Assets/Text/UNMOLK2x.png" Margin="0,0,0,10"/>
         </Grid>
-        <!--<Button HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Black" >
-                <StackPanel Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Stretch" >
-                    <Image Source="Assets/Zip.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                </StackPanel>
-            </Button>-->
-        <!--</StackPanel>-->
-        <!--<StackPanel x:Name="Image_StackPnl"  Margin ="0,140,0,0" Height="150" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Stretch" >
-                <Image x:Name="Molk_Img" Margin="0,20,0,0"  VerticalAlignment="Center" Source="Assets/zip2.png" Height="110" MouseUp="Molk_img_MouseUp" MouseEnter="Image_MouseEnter"/>
-                <Image x:Name="UnMolk_Img" VerticalAlignment="Center" Source="Assets/unzip2.png" Height="110" Margin="70,20,0,0"/>
-                <Label x:Name="Lable_Molk" Content="Molk" FontWeight="DemiBold" FontSize="20" Margin="-230,-5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Label x:Name="Lable_UnMolk" Content="UnMolk" FontWeight="DemiBold" FontSize="20" Margin="-85,-5,0,0" HorizontalAlignment="Left"  VerticalAlignment="top"/>
-        </StackPanel>-->
-        <Frame x:Name="Frame_Page_Home" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.Row="1"/>
+        <Frame x:Name="Frame_Page_Home" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.Row="0"/>
     </Grid>
 </Window>
