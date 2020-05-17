@@ -40,10 +40,10 @@ namespace Molk_Zipper
 
         }
 
-        private void Molk_img_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Molk_Img_MouseUp(object sender, RoutedEventArgs e)
         {
-            Frame_Page_Home.Content = new Molker();
 
+            Frame_Page_Home.Content = new Molker();
         }
     }
 }

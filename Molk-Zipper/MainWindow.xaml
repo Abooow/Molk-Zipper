@@ -6,26 +6,102 @@
         xmlns:local="clr-namespace:Molk_Zipper"
         mc:Ignorable="d"
         Title="Molk-Adventure" Height="460" Width="700">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="BtnCornerRad" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
-    <Grid x:Name="Molk_Homepage" Background="#171717">
-        <Grid >
-            <!--<Label Content="©2020 Daniel n Kitt Co." FontFamily="Times" Foreground="White" FontStyle="Italic" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" ></Label>-->
-            <Image Source="Assets/2020_Daniel__Kitt_Co.2x.png" Height="20" Margin="0,400,0,0" ></Image>
-        </Grid>
-            <!--<StackPanel x:Name="Border_StackPnl" Height="160" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+    <Grid x:Name="Molk_Homepage" Background="Blue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--<Rectangle Fill="#171717" Grid.Row="0"> </Rectangle>-->
+        <!--<Rectangle Fill="Blue" Grid.Row="1"> </Rectangle>-->
+        <!--<Rectangle Fill="SaddleBrown" Grid.Row="2"> </Rectangle>-->
+        <Image Grid.Row="0" Source="Assets/Group_12x.png" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top"></Image>
+        <Image Grid.Row="4" Source="Assets/2020_Daniel__Kitt_Co.2x.png" Height="20" VerticalAlignment="Bottom" ></Image>
+        <!--<StackPanel  x:Name="Border_StackPnl" Height="160" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
                 <Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6" CornerRadius="10"/>
                 <Border x:Name="Border_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="154"  VerticalAlignment="Center" Width="130" Opacity="0.6" Margin="30,0,0,0"/>
             </StackPanel>-->
-        <StackPanel x:Name="Border_StackPnl" Background="#ECECEC" Height="183" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,197,0,49">
-            <!--<Border x:Name="Border_Molk" Background="#A112B7" VerticalAlignment="Center" BorderBrush="#FF9307" Margin="0,0,0,0" BorderThickness="3" HorizontalAlignment="Center" Height="154" Width="130" Opacity="0.6" CornerRadius="10"/>-->
-            <!--<Border x:Name="Border_Unmolk" Background="#A112B7"  BorderBrush="#FF9307" BorderThickness="3" HorizontalAlignment="Center" Height="154"  VerticalAlignment="Center" Width="130" Opacity="0.6" Margin="30,0,0,0"/>-->
+        <StackPanel Grid.Row="1" x:Name="Border_StackPnl" Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Stretch" >
+            <Button Padding="10" Margin="130,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" BorderBrush="Black" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" >
+                <StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Stretch" >
+                        <Image  Source="Assets/Zip.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </Button>
+            <Button Padding="10" Margin="150,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="5" BorderBrush="Black" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" >
+                <StackPanel  Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Stretch" >
+                        <Image  Source="Assets/UnZip.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </Button>
+            <!--<Button HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Black" >
+                <StackPanel Orientation="Horizontal" Background="#ECECEC" VerticalAlignment="Stretch" >
+                    <Image Source="Assets/Zip.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </Button>-->
         </StackPanel>
-        <StackPanel x:Name="Image_StackPnl"  Margin ="0,140,0,0" Height="150" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Stretch" >
+        <!--<StackPanel x:Name="Image_StackPnl"  Margin ="0,140,0,0" Height="150" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Stretch" >
                 <Image x:Name="Molk_Img" Margin="0,20,0,0"  VerticalAlignment="Center" Source="Assets/zip2.png" Height="110" MouseUp="Molk_img_MouseUp" MouseEnter="Image_MouseEnter"/>
                 <Image x:Name="UnMolk_Img" VerticalAlignment="Center" Source="Assets/unzip2.png" Height="110" Margin="70,20,0,0"/>
                 <Label x:Name="Lable_Molk" Content="Molk" FontWeight="DemiBold" FontSize="20" Margin="-230,-5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Label x:Name="Lable_UnMolk" Content="UnMolk" FontWeight="DemiBold" FontSize="20" Margin="-85,-5,0,0" HorizontalAlignment="Left"  VerticalAlignment="top"/>
-        </StackPanel>
-        <Frame x:Name="Frame_Page_Home" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </StackPanel>-->
+        <Frame x:Name="Frame_Page_Home" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3"/>
     </Grid>
 </Window>
