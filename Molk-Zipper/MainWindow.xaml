@@ -64,7 +64,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid x:Name="Molk_Homepage" Background="Blue">
+    <Grid x:Name="Molk_Homepage" Background="#171717">
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="4*"/>
