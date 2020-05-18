@@ -138,5 +138,12 @@
     <Resource Include="Assets\Icons\undo.png" />
     <Resource Include="Assets\Icons\undo_grey.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Logo\molk_orange%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icons\remove.png" />
+    <Resource Include="Assets\Icons\remove_grey.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

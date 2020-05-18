@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Molk_Zipper"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="400"
+      d:DesignHeight="460" d:DesignWidth="700"
       Title="Molk_page1"
       Loaded="OnWindowLoaded">
     <Page.Resources>
@@ -39,7 +39,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="30" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -66,73 +66,91 @@
         </Style>
     </Page.Resources>
 
-    <Grid>
-        <DockPanel >
-            <Menu Background="#171717" Foreground="White" x:Name="Menu_Molk" DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_New"/>
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Save"/>
-                    <MenuItem Header="_Save As"/>
-                    <Separator />
-                    <MenuItem Header="_Exit" Click="Exit_Click"/>
-                </MenuItem>
-                <MenuItem Header="Edit">
-                    <MenuItem Command="Cut" />
-                    <MenuItem Command="Copy" />
-                    <MenuItem Command="Paste" />
-                </MenuItem>
-                <MenuItem Header="Format">
-                    <MenuItem Header="Word Wrap" IsCheckable="True"/>
-                    <MenuItem Header="Font"/>
-                </MenuItem>
-                <MenuItem Header="View">
-                    <MenuItem Header="Zoom"/>
-                </MenuItem>
+    <Grid x:Name="grid_MolkerPage">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
 
-                <MenuItem Header="Help">
-                    <MenuItem Header="About"/>
-                </MenuItem>
+        <Menu Grid.Row="0" Background="#171717" Foreground="White" BorderBrush="White" BorderThickness="1" x:Name="Menu_Molk">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New"/>
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+                <MenuItem Header="_Save As"/>
+                <Separator />
+                <MenuItem Header="_Exit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Command="Cut" />
+                <MenuItem Command="Copy" />
+                <MenuItem Command="Paste" />
+            </MenuItem>
+            <MenuItem Header="Format">
+                <MenuItem Header="Word Wrap" IsCheckable="True"/>
+                <MenuItem Header="Font"/>
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Zoom"/>
+            </MenuItem>
+
+            <MenuItem Header="Help">
+                <MenuItem Header="About"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid x:Name="grid_Buttons" Grid.Row="1" VerticalAlignment="Top">
+            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#171717" BorderBrush="White">
+                <Button x:Name="btn_AddFolder" Width="28" Height="38" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.Content>
+                        <Image Source="Assets/Icons/add_folder.png"/>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btn_AddFile" Width="30" Height="32" Click="Btn_AddFiles_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.Content>
+                        <Image Source="Assets/Icons/add_file.png"/>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btn_Remove" Width="25" Height="25" Click="Btn_Remove_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.Content>
+                        <Image Source="Assets/Icons/remove_grey.png"/>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btn_Redo" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.Content>
+                        <Image Source="Assets/Icons/undo_grey.png" Margin="3"/>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btn_Undo" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.Content>
+                        <Image Source="Assets/Icons/redo_grey.png" Margin="3"/>
+                    </Button.Content>
+                </Button>
             </Menu>
-            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" Background="#171717" BorderBrush="White" DockPanel.Dock="Top" Height="40" Margin="0,0,76,0">
-                <Button x:Name="btn_Redo" Content="Redo" Width="77" Height="35" Click="Btn_Add_Click"/>
-                <Button x:Name="btn_Undo" Content="Undo" Width="77" Height="35" Click="Btn_Add_Click"/>
-                <Button x:Name="btn_Add_File" Content="Add Files" Width="77" Height="35" Click="Btn_Add_Click"/>
-                <Button x:Name="btn_Add_Folder" Content="Add Folders" Width="77" Height="35" Click="Btn_Add_Click"/>
-            </Menu>
-            <StackPanel x:Name="stackpnl_bottom" DockPanel.Dock="Bottom" Background="#ececec" HorizontalAlignment="Stretch" Height="50" >
-                
-            </StackPanel >
-            <StackPanel VerticalAlignment="Stretch" Orientation="Vertical" Background="#171717" HorizontalAlignment="Stretch" DockPanel.Dock="Right" Margin="0,-40,0,0">
-                
-                <Image Source="Assets/Logo/molk_white@2x.png" Width="50" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Img_Molk_Home"/>
-                <Button x:Name="btn_Remove" BorderThickness="2" Margin="0,50,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Center" Content="Remove" Width="76" Height="35" Click="btn_Remove_Click" Style="{DynamicResource Btn_Style}" />
-                <Button x:Name="btn_Molk" Margin="0,50,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Center" Content="Molk" Width="76" Height="35" />
+            <Image x:Name="Img_MolkBackToHomepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Right" MouseUp="Img_MolkHome" Margin="0,3,15,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
+        </Grid>
+        <TreeView Grid.Row="2" Grid.RowSpan="2" Background="#171717" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True">
+            <TreeView.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="HeaderTemplate" >
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="20" Margin="3" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag, Converter={x:Static local:HeaderToImageConverter.Instance}}"></Image>
+                                    <TextBlock Foreground="white" VerticalAlignment="Center" Text="{Binding}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TreeView.Resources>
+        </TreeView>
 
-            </StackPanel>
-            <TreeView Background="#171717" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" >
-                <TreeView.Resources>
-                    <Style TargetType="{x:Type TreeViewItem}">
-                        <Setter Property="HeaderTemplate" >
-                            <Setter.Value>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image Width="20" Margin="3" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag, Converter={x:Static local:HeaderToImageConverter.Instance}}"></Image>
-                                        <TextBlock Foreground="white" VerticalAlignment="Center" Text="{Binding}"></TextBlock>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </TreeView.Resources>
-            </TreeView>
-            <!--<TextBlock DockPanel.Dock="Bottom" x:Name="textblockBottom" HorizontalAlignment="Left" Width="398" TextWrapping="Wrap" Text="" Height="20"/>
-            <TextBlock x:Name="txtBox_Main" Margin="0" DockPanel.Dock="Top" ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-                     TextWrapping="NoWrap" Text="" ContextMenuOpening="Written_text_ContextMenuOpening" Height="209"/>-->
-        </DockPanel>
-        <!--<StackPanel x:Name="stackpnl_btn_molk" Orientation="Vertical" Margin="0,200,0,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Height="38">
-
-        </StackPanel>-->
-        <!--<Frame x:Name="Frame_Page1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="300"/>-->
+        <Button Grid.Row="3" x:Name="btn_Molk" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" />
+        <!--<StackPanel x:Name="stackpnl_Bottom" Grid.Row="3" Background="#ececec">
+                <Button x:Name="btn_Molk" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk" Width="76" Height="35" />
+            </StackPanel >-->
     </Grid>
 </Page>

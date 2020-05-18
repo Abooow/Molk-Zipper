@@ -63,7 +63,7 @@ namespace Molk_Zipper
             ((Image)button.Content).Source = image;
         }
 
-        private BitmapImage CreateBitmap(string source)
+        public static BitmapImage CreateBitmap(string source)
         {
             BitmapImage image = new BitmapImage();
             image.BeginInit();

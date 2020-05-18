@@ -23,11 +23,15 @@ namespace Molk_Zipper
     /// </summary>
     public partial class Molker : Page
     {
+        private BitmapImage backToHomeWhite;
+        private BitmapImage backToHomeOrange;
+
         public Molker(params string[] args)
         {
             InitializeComponent();
 
-            TreeViewItem t = new TreeViewItem();
+            backToHomeWhite  = MainWindow.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
+            backToHomeOrange = MainWindow.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
 
             //OpenFiles();
         }
@@ -41,7 +45,7 @@ namespace Molk_Zipper
             }
         }
 
-          private void Btn_Add_Click(object sender, RoutedEventArgs e)
+          private void Btn_AddFiles_Click(object sender, RoutedEventArgs e)
         {
             OpenFiles();
         }
@@ -53,7 +57,7 @@ namespace Molk_Zipper
                 TreeViewItem item = new TreeViewItem()
                 {
                     Header = "test.test",
-                    Tag = @"C:\Users\Dator 6\OneDrive\ZombieShooter3000\test.test"
+                    Tag = @"..\.."
                 };
 
                 item.Items.Add(null);
@@ -170,29 +174,35 @@ namespace Molk_Zipper
         private void DeleteSelectedTreeItem()
         {
             TreeViewItem o = (TreeViewItem)FolderView.SelectedItem;
+            if (o == null) return;
 
             if (o.Parent == FolderView)
             {
                 FolderView.Items.Remove(o);
                 return;
             }
-                ((TreeViewItem)o.Parent).Items.Remove(o);
+            ((TreeViewItem)o.Parent).Items.Remove(o);
         }
 
   
-        private void Img_Molk_Home(object sender, MouseButtonEventArgs e)
+        private void Img_MolkHome(object sender, MouseButtonEventArgs e)
         {
-            Menu_Molk.Visibility = Visibility.Collapsed;
-            Menu_Molk2.Visibility = Visibility.Collapsed;
-            btn_Remove.Visibility = Visibility.Collapsed;
-            btn_Molk.Visibility = Visibility.Collapsed;
-            stackpnl_bottom.Visibility = Visibility.Collapsed;
-            FolderView.Visibility = Visibility.Collapsed;
+            grid_MolkerPage.Visibility = Visibility.Collapsed;
         }
 
-        private void btn_Remove_Click(object sender, RoutedEventArgs e)
+        private void Btn_Remove_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedTreeItem();
+        }
+
+        private void Img_MolkBackToHomepage_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Source = backToHomeOrange;
+        }
+
+        private void Img_MolkBackToHomepage_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Source = backToHomeWhite;
         }
     }
 }

@@ -70,9 +70,8 @@
             <RowDefinition Height="2.232*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-
         <Rectangle Fill="#ECECEC" Grid.Row="1"></Rectangle>
-        <Image Grid.Row="0" Source="Assets/Logo/Group_1@3x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"></Image>
+        <Image Grid.Row="0" Source="Assets/Logo/Group_1@3x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="12,0,0,24"></Image>
         <Image Grid.Row="4" Source="Assets/Text/2020_The_Daniel__Kitt_Team@2x.png" Height="20" VerticalAlignment="Bottom" ></Image>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -88,37 +87,17 @@
                 <RowDefinition Height="1.909*"/>
             </Grid.RowDefinitions>
 
-            <Button Tag="Molk" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+            <Button Tag="Molk" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Cursor="Hand">
                 <Button.Content>
                     <Image Source="Assets/Zip/zip_purple@2x.png" Margin="10"/>
                 </Button.Content>
-                <!--<Button.Background>
-                    <ImageBrush Stretch="Uniform">
-                        <ImageBrush.RelativeTransform>
-                            <TransformGroup>
-                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="0.83" ScaleY="0.83"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </ImageBrush.RelativeTransform>
-                    </ImageBrush>
-                </Button.Background>-->
             </Button>
             <Image Grid.Column="1" Grid.Row="2" Source="Assets/Text/MOLK2x.png" Margin="0,0,0,10"/>
 
-            <Button Tag="UnMolk" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+            <Button Tag="UnMolk" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Cursor="Hand">
                 <Button.Content>
                     <Image Source="Assets/UnZip/unzip_purple@2x.png" Margin="10"/>
                 </Button.Content>
-                <!--<Button.Background>
-                    <ImageBrush ImageSource="Assets/UnZip/UnZip_purple_2x.png" Stretch="Uniform">
-                        <ImageBrush.RelativeTransform>
-                            <TransformGroup>
-                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="0.83" ScaleY="0.83"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </ImageBrush.RelativeTransform>
-                    </ImageBrush>
-                </Button.Background>-->
             </Button>
             <Image Grid.Column="3" Grid.Row="2" Source="Assets/Text/UNMOLK2x.png" Margin="0,0,0,10"/>
         </Grid>
