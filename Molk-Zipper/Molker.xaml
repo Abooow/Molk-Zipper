@@ -74,30 +74,30 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Background="#171717" Foreground="White" BorderBrush="White" BorderThickness="1" x:Name="Menu_Molk">
+        <Menu Grid.Row="0" Background="#171717" Foreground="white" BorderBrush="White" BorderThickness="1" x:Name="Menu_Molk">
             <MenuItem Header="_File">
-                <MenuItem Header="_New"/>
-                <MenuItem Header="_Open"/>
-                <MenuItem Header="_Save"/>
-                <MenuItem Header="_Save As"/>
+                <MenuItem Header="_New" Foreground="Black"/>
+                <MenuItem Header="_Open" Foreground="Black"/>
+                <MenuItem Header="_Save" Foreground="Black"/>
+                <MenuItem Header="_Save As" Foreground="Black"/>
                 <Separator />
-                <MenuItem Header="_Exit" Click="Exit_Click"/>
+                <MenuItem Header="_Exit"  Foreground="Black" Click="Exit_Click"/>
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Command="Cut" />
-                <MenuItem Command="Copy" />
-                <MenuItem Command="Paste" />
+                <MenuItem Command="Cut"  Foreground="Black"/>
+                <MenuItem Command="Copy"  Foreground="Black"/>
+                <MenuItem Command="Paste"  Foreground="Black"/>
             </MenuItem>
-            <MenuItem Header="Format">
-                <MenuItem Header="Word Wrap" IsCheckable="True"/>
-                <MenuItem Header="Font"/>
+            <MenuItem Header="_Format">
+                <MenuItem Header="Word Wrap"  Foreground="Black" IsCheckable="True"/>
+                <MenuItem Header="Font" Foreground="Black"/>
             </MenuItem>
-            <MenuItem Header="View">
-                <MenuItem Header="Zoom"/>
+            <MenuItem Header="_View">
+                <MenuItem Header="Zoom"  Foreground="Black"/>
             </MenuItem>
 
             <MenuItem Header="Help">
-                <MenuItem Header="About"/>
+                <MenuItem Header="About" Foreground="Black"/>
             </MenuItem>
         </Menu>
 
