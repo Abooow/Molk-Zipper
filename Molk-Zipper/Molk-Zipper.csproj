@@ -65,6 +65,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HeaderToImageConverter.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -73,10 +74,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UnMolker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Molker.xaml.cs">
       <DependentUpon>Molker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UnMolker.xaml.cs">
+      <DependentUpon>UnMolker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -117,12 +125,12 @@
     <Resource Include="Assets\Text\2020_The_Daniel__Kitt_Team%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\UnZip\unzip_purple%402x.png" />
-    <Resource Include="Assets\UnZip\unzip_white%402x.png" />
+    <Resource Include="Assets\UnMolk\unmolk_purple%402x.png" />
+    <Resource Include="Assets\UnMolk\unmolk_white%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Zip\zip_purple%402x.png" />
-    <Resource Include="Assets\Zip\zip_white%402x.png" />
+    <Resource Include="Assets\Molk\molk_purple%402x.png" />
+    <Resource Include="Assets\Molk\molk_white%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Logo\Group_1%403x.png" />

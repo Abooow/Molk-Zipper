@@ -30,48 +30,36 @@ namespace Molk_Zipper
         {
             InitializeComponent();
 
-            zipPurple = CreateBitmap(@"Assets\Zip\zip_purple@2x.png");
-            zipWhite  = CreateBitmap(@"Assets\Zip\zip_white@2x.png");
-            unzipPurple = CreateBitmap(@"Assets\UnZip\unzip_purple@2x.png");
-            unzipWhite  = CreateBitmap(@"Assets\UnZip\unzip_white@2x.png");
+            zipPurple = Helpers.CreateBitmap(@"Assets\Molk\molk_purple@2x.png");
+            zipWhite  = Helpers.CreateBitmap(@"Assets\Molk\molk_white@2x.png");
+            unzipPurple = Helpers.CreateBitmap(@"Assets\UnMolk\unmolk_purple@2x.png");
+            unzipWhite  = Helpers.CreateBitmap(@"Assets\UnMolk\unmolk_white@2x.png");
         }
 
-        private void Molk_Img_MouseUp(object sender, RoutedEventArgs e)
+        private void Btn_Molk_Click(object sender, RoutedEventArgs e)
         {
             Frame_Page_Home.Content = new Molker();
+        }
+
+        private void Btn_Unmolk_Click(object sender, RoutedEventArgs e)
+        {
+            Frame_Page_Home.Content = new UnMolker();
         }
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
 
-            if (button.Tag.Equals("Molk")) ChangeButtonImage(button, zipWhite);
-            else if (button.Tag.Equals("UnMolk")) ChangeButtonImage(button, unzipWhite);
+            if (button.Tag.Equals("Molk")) Helpers.ChangeButtonImage(button, zipWhite);
+            else if (button.Tag.Equals("UnMolk")) Helpers.ChangeButtonImage(button, unzipWhite);
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
 
-            if (button.Tag.Equals("Molk")) ChangeButtonImage(button, zipPurple);
-            else if (button.Tag.Equals("UnMolk")) ChangeButtonImage(button, unzipPurple);
+            if (button.Tag.Equals("Molk")) Helpers.ChangeButtonImage(button, zipPurple);
+            else if (button.Tag.Equals("UnMolk")) Helpers.ChangeButtonImage(button, unzipPurple);
         }
-
-        #region Helpers
-        private void ChangeButtonImage(Button button, BitmapImage image)
-        {
-            ((Image)button.Content).Source = image;
-        }
-
-        public static BitmapImage CreateBitmap(string source)
-        {
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(source, UriKind.Relative);
-            image.EndInit();
-
-            return image;
-        }
-        #endregion
     }
 }

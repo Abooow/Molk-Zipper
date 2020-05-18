@@ -30,22 +30,23 @@ namespace Molk_Zipper
         {
             InitializeComponent();
 
-            backToHomeWhite  = MainWindow.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
-            backToHomeOrange = MainWindow.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
+            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
+            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
 
             //OpenFiles();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = System.Windows.Application.Current.MainWindow as MainWindow;
-            if (main != null)
-            {
-                main.Close();
-            }
+            Helpers.Exit();
         }
 
-          private void Btn_AddFiles_Click(object sender, RoutedEventArgs e)
+        private void Img_MolkHome(object sender, MouseButtonEventArgs e)
+        {
+            Helpers.ChangeVisibility(grid_MolkerPage);
+        }
+
+        private void Btn_AddFiles_Click(object sender, RoutedEventArgs e)
         {
             OpenFiles();
         }
@@ -78,10 +79,10 @@ namespace Molk_Zipper
 
             item.Items.Clear();
 
-            var fullPath = (string)item.Tag;
+            string fullPath = (string)item.Tag;
 
 
-            var directories = new List<string>();
+            List<string> directories = new List<string>();
 
             try
             {
@@ -94,9 +95,9 @@ namespace Molk_Zipper
 
             directories.ForEach(directoryPath =>
             {
-                var subItem = new TreeViewItem()
+                TreeViewItem subItem = new TreeViewItem()
                 {
-                    Header = GetFileFolderName(directoryPath),
+                    Header = Helpers.GetFileFolderName(directoryPath),
                     Tag = directoryPath
                 };
 
@@ -111,7 +112,7 @@ namespace Molk_Zipper
 
             try
             {
-                var fs = Directory.GetFiles(fullPath);
+                string[] fs = Directory.GetFiles(fullPath);
 
                 if (fs.Length > 0)
                     files.AddRange(fs);
@@ -120,29 +121,14 @@ namespace Molk_Zipper
 
             files.ForEach(filePath =>
             {
-                var subItem = new TreeViewItem()
+                TreeViewItem subItem = new TreeViewItem()
                 {
-                    Header = GetFileFolderName(filePath),
+                    Header = Helpers.GetFileFolderName(filePath),
                     Tag = filePath
                 };
 
                 item.Items.Add(subItem);
             });
-        }
-
-        public static string GetFileFolderName(string path)
-        {
-            if (string.IsNullOrEmpty(path))
-                return string.Empty;
-
-            var normalizedPath = path.Replace('/', '\\');
-
-            var lastIndex = normalizedPath.LastIndexOf('\\');
-
-            if (lastIndex <= 0)
-                return path;
-
-            return path.Substring(lastIndex + 1);
         }
 
         private void OpenFiles()
@@ -168,31 +154,13 @@ namespace Molk_Zipper
 
         private void FolderView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Delete) DeleteSelectedTreeItem();
+            if (e.Key == Key.Delete) Helpers.DeleteSelectedTreeItem(FolderView);
         }
 
-        private void DeleteSelectedTreeItem()
-        {
-            TreeViewItem o = (TreeViewItem)FolderView.SelectedItem;
-            if (o == null) return;
-
-            if (o.Parent == FolderView)
-            {
-                FolderView.Items.Remove(o);
-                return;
-            }
-            ((TreeViewItem)o.Parent).Items.Remove(o);
-        }
-
-  
-        private void Img_MolkHome(object sender, MouseButtonEventArgs e)
-        {
-            grid_MolkerPage.Visibility = Visibility.Collapsed;
-        }
 
         private void Btn_Remove_Click(object sender, RoutedEventArgs e)
         {
-            DeleteSelectedTreeItem();
+            Helpers.DeleteSelectedTreeItem(FolderView);
         }
 
         private void Img_MolkBackToHomepage_MouseEnter(object sender, MouseEventArgs e)
@@ -203,6 +171,12 @@ namespace Molk_Zipper
         private void Img_MolkBackToHomepage_MouseLeave(object sender, MouseEventArgs e)
         {
             ((Image)sender).Source = backToHomeWhite;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            //TreeViewItem o = (TreeViewItem)((StackPanel)((CheckBox)sender).Parent).TemplatedParent;
+            //Console.WriteLine();
         }
     }
 }

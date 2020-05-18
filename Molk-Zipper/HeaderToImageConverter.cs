@@ -19,7 +19,7 @@ namespace Molk_Zipper
             if (path == null)
                 return null;
 
-            string name = Molker.GetFileFolderName(path);
+            string name = Helpers.GetFileFolderName(path);
 
             string image = "Assets/Icons/file.png";
 

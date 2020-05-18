@@ -87,16 +87,16 @@
                 <RowDefinition Height="1.909*"/>
             </Grid.RowDefinitions>
 
-            <Button Tag="Molk" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Click="Molk_Img_MouseUp" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Cursor="Hand">
+            <Button Tag="Molk" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Click="Btn_Molk_Click" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Cursor="Hand">
                 <Button.Content>
-                    <Image Source="Assets/Zip/zip_purple@2x.png" Margin="10"/>
+                    <Image Source="Assets/Molk/molk_purple@2x.png" Margin="10"/>
                 </Button.Content>
             </Button>
             <Image Grid.Column="1" Grid.Row="2" Source="Assets/Text/MOLK2x.png" Margin="0,0,0,10"/>
 
-            <Button Tag="UnMolk" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Cursor="Hand">
+            <Button Tag="UnMolk" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="#602482" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Cursor="Hand" Click="Btn_Unmolk_Click">
                 <Button.Content>
-                    <Image Source="Assets/UnZip/unzip_purple@2x.png" Margin="10"/>
+                    <Image Source="Assets/UnMolk/unmolk_purple@2x.png" Margin="10"/>
                 </Button.Content>
             </Button>
             <Image Grid.Column="3" Grid.Row="2" Source="Assets/Text/UNMOLK2x.png" Margin="0,0,0,10"/>
