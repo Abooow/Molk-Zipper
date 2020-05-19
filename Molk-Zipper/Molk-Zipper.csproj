@@ -169,7 +169,7 @@
     <Resource Include="Assets\Icons\remove_grey.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\molking.png" />
+    <Resource Include="Assets\Logo\molking.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
