@@ -21,19 +21,9 @@ namespace Molk_Zipper
     /// 
     public partial class MainWindow : Window
     {
-        private BitmapImage zipPurple;
-        private BitmapImage zipWhite;
-        private BitmapImage unzipPurple;
-        private BitmapImage unzipWhite;
-        
         public MainWindow()
         {
             InitializeComponent();
-
-            zipPurple = Helpers.CreateBitmap(@"Assets\Molk\molk_purple@2x.png");
-            zipWhite  = Helpers.CreateBitmap(@"Assets\Molk\molk_white@2x.png");
-            unzipPurple = Helpers.CreateBitmap(@"Assets\UnMolk\unmolk_purple@2x.png");
-            unzipWhite  = Helpers.CreateBitmap(@"Assets\UnMolk\unmolk_white@2x.png");
         }
 
         private void Btn_Molk_Click(object sender, RoutedEventArgs e)
@@ -49,17 +39,16 @@ namespace Molk_Zipper
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
-
-            if (button.Tag.Equals("Molk")) Helpers.ChangeButtonImage(button, zipWhite);
-            else if (button.Tag.Equals("UnMolk")) Helpers.ChangeButtonImage(button, unzipWhite);
+            //button.Margin = new Thickness(0);
+            //((Image)button.Content).Margin = new Thickness(6);
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
-
-            if (button.Tag.Equals("Molk")) Helpers.ChangeButtonImage(button, zipPurple);
-            else if (button.Tag.Equals("UnMolk")) Helpers.ChangeButtonImage(button, unzipPurple);
+            //button.Margin = new Thickness(3);
+            //((Image)button.Content).Margin = new Thickness(10);
         }
     }
 }
+;

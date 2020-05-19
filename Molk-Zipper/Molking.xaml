@@ -1,24 +1,25 @@
-﻿<Page x:Class="Molk_Zipper.Molking"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Molk_Zipper"
+      xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Molk_Zipper.Molking"
       mc:Ignorable="d" 
       d:DesignHeight="460" d:DesignWidth="700"
       Title="Molking">
-    <Grid>
-        
-        <Image Source="Assets/molking.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ></Image>
-        <!--<Grid.RowDefinitions>
+    <Grid Background="#171717">
+        <Grid.RowDefinitions>
             <RowDefinition Height="2.378*"/>
             <RowDefinition Height="2.232*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        --><!--<Rectangle Fill="#ECECEC" Grid.Row="1"></Rectangle>--><!--
         <Image Grid.Row="0" Source="Assets/Logo/Group_1@3x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="12,0,0,24"></Image>
-        <Image Grid.Row="4" Source="Assets/Text/2020_The_Daniel__Kitt_Team@2x.png" Height="20" VerticalAlignment="Bottom" ></Image>-->
-        <!--<local:molking_UserCtrl Grid.Row="1" IndicatorBrush="Beige" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="200"  BackgroundBrush="#FFDC1B1B" ProgressBorderBrush="#FFD6C7C7" Margin="250,0" Foreground="#FF1047DC"/>-->
+        <!--<Image Source="Assets/molking.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:IsHidden="True" />-->
+        <Ellipse x:Name="background" Grid.RowSpan="2" Fill="#FF424242" HorizontalAlignment="Left" Height="192" Stroke="Black" VerticalAlignment="Top" Width="192" Margin="252,165,0,0" StrokeThickness="0"/>
+        <ed:Arc x:Name="ProgressBar" Grid.RowSpan="2" ArcThickness="100000" ArcThicknessUnit="Pixel" EndAngle="90" Fill="#FFD2571B" HorizontalAlignment="Left" Height="192" Stretch="None" Stroke="Black" StrokeThickness="0" StartAngle="0" VerticalAlignment="Top" Width="192" Margin="252,165,0,0"/>
+        <ed:Arc ArcThickness="5" Grid.RowSpan="3" ArcThicknessUnit="Pixel" HorizontalAlignment="Center" Height="192" Stretch="None" Stroke="Black" StartAngle="0" VerticalAlignment="Center" Width="192" Margin="252,165,256,103" Fill="#FFCB08C2" StrokeThickness="0" EndAngle="360"/>
+        <Ellipse Fill="Black"  Grid.RowSpan="2" HorizontalAlignment="Left" Height="114" Stroke="Black" VerticalAlignment="Top" Width="120" Margin="290,204,0,0" StrokeThickness="0"/>
     </Grid>
 
 </Page>

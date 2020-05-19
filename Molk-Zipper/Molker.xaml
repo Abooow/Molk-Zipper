@@ -8,7 +8,7 @@
       d:DesignHeight="460" d:DesignWidth="700"
       Title="Molk"
       Loaded="OnWindowLoaded">
-    
+
     <Page.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -107,7 +107,7 @@
 
         <Grid x:Name="grid_Buttons" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#171717" BorderBrush="White">
-                <Button x:Name="btn_AddFolder" Width="28" Height="38" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Button x:Name="btn_AddFolder" Width="28" Height="38" Background="{x:Null}" BorderBrush="{x:Null}" Click="Btn_AddFolder_Click">
                     <Button.Content>
                         <Image Source="Assets/Icons/add_folder.png"/>
                     </Button.Content>
@@ -135,8 +135,8 @@
             </Menu>
             <Image x:Name="Img_MolkBackToHomepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Right" MouseUp="Img_MolkHome" Margin="0,3,15,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
         </Grid>
-        
-        <TreeView Grid.Row="2" Grid.RowSpan="2" Background="#171717" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True">
+
+        <TreeView  Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#FF171717" SelectedItemChanged="FolderView_SelectedItemChanged">
             <TreeView.Resources>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="HeaderTemplate">
@@ -161,8 +161,9 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="2" x:Name="btn_Molk" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" />
+                <Button Grid.Row="2" x:Name="btn_MolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" Click="Btn_MolkIt_Click" />
             </Grid>
         </Border>
+        <Frame x:Name="Frame_Molker" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"/>
     </Grid>
 </Page>

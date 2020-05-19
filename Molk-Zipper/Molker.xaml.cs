@@ -9,12 +9,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-//using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Forms = System.Windows.Forms;
 
 namespace Molk_Zipper
 {
@@ -25,6 +25,7 @@ namespace Molk_Zipper
     {
         private BitmapImage backToHomeWhite;
         private BitmapImage backToHomeOrange;
+        private string defaultSaveFileName;
 
         public Molker(params string[] args)
         {
@@ -55,18 +56,28 @@ namespace Molk_Zipper
         {
             //foreach (var drive in Directory.GetLogicalDrives())
             //{
-                TreeViewItem item = new TreeViewItem()
-                {
-                    Header = "test.test",
-                    Tag = @"..\.."
-                };
-
-                item.Items.Add(null);
-
-                item.Expanded += Folder_Expanded;
-
-                FolderView.Items.Add(item);
+            AddTreeViewItem(Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().LastIndexOf('\\')));
             //}
+        }
+
+        private void AddTreeViewItem(string path)
+        {
+            if (string.IsNullOrEmpty(defaultSaveFileName))
+                defaultSaveFileName = Helpers.GetFileOrFolderName(path);
+
+            TreeViewItem item = new TreeViewItem()
+            {
+                Header = Helpers.GetFileOrFolderName(path),
+                Tag = path
+            };
+
+            if (Directory.Exists(path))
+            {
+                item.Items.Add(null);
+                item.Expanded += Folder_Expanded;
+            }
+
+            FolderView.Items.Add(item);
         }
 
         private void Folder_Expanded(object sender, RoutedEventArgs e)
@@ -97,7 +108,7 @@ namespace Molk_Zipper
             {
                 TreeViewItem subItem = new TreeViewItem()
                 {
-                    Header = Helpers.GetFileFolderName(directoryPath),
+                    Header = Helpers.GetFileOrFolderName(directoryPath),
                     Tag = directoryPath
                 };
 
@@ -123,7 +134,7 @@ namespace Molk_Zipper
             {
                 TreeViewItem subItem = new TreeViewItem()
                 {
-                    Header = Helpers.GetFileFolderName(filePath),
+                    Header = Helpers.GetFileOrFolderName(filePath),
                     Tag = filePath
                 };
 
@@ -135,19 +146,27 @@ namespace Molk_Zipper
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
-                Filter = "All files (*.*)|*.*|Any|\n",
+            Filter = "All files (*.*)|*.*",
                 Multiselect = true,
-                ValidateNames = false,
-                CheckFileExists = false,
-                CheckPathExists = true,
-                FileName = "folderselection",
-
+                CheckFileExists = true,
             };
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string file in openFileDialog.FileNames)
                 {
-                    //txtBox_Main.Text += file + '\n';
+                    AddTreeViewItem(file);
+                }
+            }
+        }
+
+        private void OpenFolders()
+        {
+            using (Forms.FolderBrowserDialog dialog = new Forms.FolderBrowserDialog())
+            {
+                dialog.ShowNewFolderButton = true;
+                if (dialog.ShowDialog() == Forms.DialogResult.OK)
+                {
+                    AddTreeViewItem(dialog.SelectedPath);
                 }
             }
         }
@@ -156,7 +175,6 @@ namespace Molk_Zipper
         {
             if (e.Key == Key.Delete) Helpers.DeleteSelectedTreeItem(FolderView);
         }
-
 
         private void Btn_Remove_Click(object sender, RoutedEventArgs e)
         {
@@ -177,6 +195,30 @@ namespace Molk_Zipper
         {
             //TreeViewItem o = (TreeViewItem)((StackPanel)((CheckBox)sender).Parent).TemplatedParent;
             //Console.WriteLine();
+        }
+
+        private void Btn_MolkIt_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog()
+            {
+                Filter = "molk|.molk",
+                FileName = defaultSaveFileName + ".molk"
+            };
+            if (saveFile.ShowDialog() == true)
+            {
+                Console.WriteLine($"Saved file {defaultSaveFileName}.molk to {saveFile.FileName}");
+            }
+            Frame_Molker.Content = new Molking();
+        }
+
+        private void Btn_AddFolder_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFolders();
+        }
+
+        private void FolderView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            //((TreeViewItem)e.NewValue).ite;
         }
     }
 }

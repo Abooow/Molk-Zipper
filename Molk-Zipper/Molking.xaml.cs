@@ -23,7 +23,8 @@ namespace Molk_Zipper
         public Molking()
         {
             InitializeComponent();
-            currentContent.Content = new Cont
+            ProgressBar.EndAngle = 360;
         }
+
     }
 }

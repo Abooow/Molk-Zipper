@@ -47,17 +47,16 @@ namespace Molk_Zipper
             ((TreeViewItem)selected.Parent).Items.Remove(selected);
         }
 
-        public static string GetFileFolderName(string path)
+        public static string GetFileOrFolderName(string path)
         {
             if (string.IsNullOrEmpty(path))
                 return string.Empty;
 
-            var normalizedPath = path.Replace('/', '\\');
+            string normalizedPath = path.Replace('/', '\\');
 
-            var lastIndex = normalizedPath.LastIndexOf('\\');
+            int lastIndex = normalizedPath.LastIndexOf('\\');
 
-            if (lastIndex <= 0)
-                return path;
+            if (lastIndex <= 0) return path;
 
             return path.Substring(lastIndex + 1);
         }
@@ -66,6 +65,16 @@ namespace Molk_Zipper
         {
             if (uIElement.Visibility == Visibility.Visible) uIElement.Visibility = Visibility.Collapsed;
             else uIElement.Visibility = Visibility.Visible;
+        }
+
+        public float ConvertProToDeg(float pro)
+        {
+            return (pro / 100f) * 360f;
+        }
+
+        public object ConvertDegToPro(float deg)
+        {
+            return (deg / 360f) * 100f;
         }
     }
 }
