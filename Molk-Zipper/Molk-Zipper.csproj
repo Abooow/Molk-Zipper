@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -78,6 +79,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="molking_UserCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UnMolker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +94,9 @@
     </Compile>
     <Compile Include="Molking.xaml.cs">
       <DependentUpon>Molking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="molking_UserCtrl.xaml.cs">
+      <DependentUpon>molking_UserCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UnMolker.xaml.cs">
       <DependentUpon>UnMolker.xaml</DependentUpon>
@@ -159,6 +167,9 @@
   <ItemGroup>
     <Resource Include="Assets\Icons\remove.png" />
     <Resource Include="Assets\Icons\remove_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\molking.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

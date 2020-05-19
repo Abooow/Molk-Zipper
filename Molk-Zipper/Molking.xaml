@@ -5,10 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Molk_Zipper"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="460" d:DesignWidth="700"
       Title="Molking">
-
     <Grid>
         
+        <Image Source="Assets/molking.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ></Image>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="2.378*"/>
+            <RowDefinition Height="2.232*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        --><!--<Rectangle Fill="#ECECEC" Grid.Row="1"></Rectangle>--><!--
+        <Image Grid.Row="0" Source="Assets/Logo/Group_1@3x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="12,0,0,24"></Image>
+        <Image Grid.Row="4" Source="Assets/Text/2020_The_Daniel__Kitt_Team@2x.png" Height="20" VerticalAlignment="Bottom" ></Image>-->
+        <!--<local:molking_UserCtrl Grid.Row="1" IndicatorBrush="Beige" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="200"  BackgroundBrush="#FFDC1B1B" ProgressBorderBrush="#FFD6C7C7" Margin="250,0" Foreground="#FF1047DC"/>-->
     </Grid>
+
 </Page>
