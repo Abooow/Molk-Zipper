@@ -4,26 +4,27 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Molk_Zipper"
-      xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Molk_Zipper.Molking"
+      xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" 
+      x:Class="Molk_Zipper.Molking"
       mc:Ignorable="d" 
       d:DesignHeight="460" d:DesignWidth="700"
       Title="Molking">
     <Grid Background="#171717">
         <Grid.RowDefinitions>
             <RowDefinition Height="2.378*"/>
-            <RowDefinition Height="2.232*"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Image Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Source="Assets/Logo/molking.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:IsHidden="False" />
+        <Image Grid.Row="0" Source="Assets/Logo/Group_1@3x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="12,0,0,24" MaxHeight="200" MaxWidth="300"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Ellipse x:Name="background" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Stroke="#FF171717" VerticalAlignment="Stretch" />
-            <ed:Arc x:Name="ProgressBar" Grid.Row="1" Grid.Column="1" ArcThickness="1000000" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#FFD2571B" HorizontalAlignment="Stretch" Stroke="Black" StartAngle="0" VerticalAlignment="Stretch"/>
-            <Path  Grid.Column="1" Data="M92.5,43 C119.8381,43 142,65.161903 142,92.5 142,119.8381 119.8381,142 92.5,142 65.161903,142 43,119.8381 43,92.5 43,65.161903 65.161903,43 92.5,43 z M92.5,5.499999 C44.451225,5.5 5.5,44.451229 5.499999,92.5 5.5,140.54878 44.451225,179.5 92.5,179.5 140.54878,179.5 179.5,140.54877 179.5,92.5 179.5,44.451218 140.54878,5.5 92.5,5.499999 z M92.5,0.5 C143.3102,0.5 184.5,41.689804 184.5,92.500008 184.5,143.31021 143.3102,184.5 92.5,184.5 41.6898,184.5 0.5,143.3102 0.5,92.499992 0.5,41.689796 41.6898,0.5 92.5,0.5 z" Fill="#FF171717" HorizontalAlignment="Stretch" Grid.Row="1"  Stretch="Fill" VerticalAlignment="Stretch"/>
+            <ed:Arc x:Name="ProgressBar" Grid.Row="1" Grid.Column="1" Margin="0" ArcThickness="100" ArcThicknessUnit="Pixel" EndAngle="30" Fill="#FFD2571B" HorizontalAlignment="Stretch"  StartAngle="0" VerticalAlignment="Stretch"/>
+            <Path Grid.Column="1" Data="M92.5,43 C119.8381,43 142,65.161903 142,92.5 142,119.8381 119.8381,142 92.5,142 65.161903,142 43,119.8381 43,92.5 43,65.161903 65.161903,43 92.5,43 z M92.5,5.499999 C44.451225,5.5 5.5,44.451229 5.499999,92.5 5.5,140.54878 44.451225,179.5 92.5,179.5 140.54878,179.5 179.5,140.54877 179.5,92.5 179.5,44.451218 140.54878,5.5 92.5,5.499999 z M92.5,0.5 C143.3102,0.5 184.5,41.689804 184.5,92.500008 184.5,143.31021 143.3102,184.5 92.5,184.5 41.6898,184.5 0.5,143.3102 0.5,92.499992 0.5,41.689796 41.6898,0.5 92.5,0.5 z" Fill="#FF171717" HorizontalAlignment="Stretch" Grid.Row="1"  Stretch="Fill" VerticalAlignment="Stretch" StrokeThickness="0"/>
         </Grid>
 
     </Grid>
