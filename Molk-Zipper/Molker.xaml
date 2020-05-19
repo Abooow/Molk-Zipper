@@ -165,6 +165,5 @@
             </Grid>
         </Border>
         <Frame x:Name="Frame_Molker" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"/>
-        <TextBlock x:Name="AAAA"  Grid.Column="1" Margin="0,55,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="154" Width="145" Foreground="White"/>
     </Grid>
 </Page>
