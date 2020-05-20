@@ -67,12 +67,12 @@ namespace Molk_Zipper
             else uIElement.Visibility = Visibility.Visible;
         }
 
-        public float ConvertProToDeg(float pro)
+        public float PercentToDeg(float pro)
         {
             return (pro / 100f) * 360f;
         }
 
-        public object ConvertDegToPro(float deg)
+        public object DegToPercent(float deg)
         {
             return (deg / 360f) * 100f;
         }

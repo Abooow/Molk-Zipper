@@ -142,8 +142,8 @@
                     <Setter Property="HeaderTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
-                                    <CheckBox Width="14" Height="14" HorizontalAlignment="Right" Checked="CheckBox_Checked"></CheckBox>
+                                <StackPanel Margin="-1" Background="#171717" Orientation="Horizontal" VerticalAlignment="Stretch">
+                                    <CheckBox Width="14" Height="14" HorizontalAlignment="Right" IsChecked="True" Checked="CheckBox_Checked"></CheckBox>
                                     <Image Width="20" Margin="3" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag, Converter={x:Static local:HeaderToImageConverter.Instance}}"></Image>
                                     <TextBlock Foreground="white" VerticalAlignment="Center" Text="{Binding}"></TextBlock>
                                 </StackPanel>

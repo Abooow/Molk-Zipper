@@ -73,8 +73,11 @@ namespace Molk_Zipper
 
             if (Directory.Exists(path))
             {
-                item.Items.Add(null);
-                item.Expanded += Folder_Expanded;
+                if (Directory.GetFiles(path, "*", SearchOption.AllDirectories).Length > 0)
+                {
+                    item.Items.Add(null);
+                    item.Expanded += Folder_Expanded;
+                }
             }
 
             FolderView.Items.Add(item);
@@ -112,9 +115,11 @@ namespace Molk_Zipper
                     Tag = directoryPath
                 };
 
-                subItem.Items.Add(null);
-
-                subItem.Expanded += Folder_Expanded;
+                if (Directory.GetFiles(directoryPath, "*", SearchOption.AllDirectories).Length > 0)
+                {
+                    subItem.Items.Add(null);
+                    subItem.Expanded += Folder_Expanded;
+                }
 
                 item.Items.Add(subItem);
             });
@@ -201,25 +206,17 @@ namespace Molk_Zipper
         {
             SaveFileDialog saveFile = new SaveFileDialog()
             {
-                Filter = "molk|.molk",
-                FileName = defaultSaveFileName + ".molk"
+                Filter = "Molk|*.molk",
+                FileName = defaultSaveFileName + ".molk",
             };
             if (saveFile.ShowDialog() == true)
             {
                 Console.WriteLine($"Saved file {defaultSaveFileName}.molk to {saveFile.FileName}");
-                // Remove into Molking!
-                CallDos dos = new CallDos(@"..\..\Programs\molk.exe", DataGet, DataGet);
-                string saveTo = saveFile.FileName;
-                string toSave = (string)((TreeViewItem)FolderView.Items.GetItemAt(0)).Tag;
-                dos.Start($@"-r ""{saveTo}"" ""{toSave}""");
-            }
-            Frame_Molker.Content = new Molking();
-        }
 
-        private void DataGet(string data)
-        {
-            Console.WriteLine(data);
-            //this.Dispatcher.Invoke(() => AAAA.Text += data + '\n');
+                string saveToPath = saveFile.FileName;
+                string filePaths = (string)((TreeViewItem)FolderView.Items.GetItemAt(0)).Tag;
+                Frame_Molker.Content = new Molking(saveToPath, filePaths);
+            }
         }
 
         private void Btn_AddFolder_Click(object sender, RoutedEventArgs e)

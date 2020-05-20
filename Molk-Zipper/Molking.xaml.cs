@@ -20,11 +20,30 @@ namespace Molk_Zipper
     /// </summary>
     public partial class Molking : Page
     {
-        public Molking()
+        public Molking(string saveToPath, string filePaths, params string[] excludeFiles)
         {
             InitializeComponent();
             ProgressBar.EndAngle = 360;
+
+            /*
+             * excludeFiles = {"hej", "då", "world!"}
+             * excludesplit
+             * result = "hej då world!"
+             */
+            string .Join(","),e;
+            CallDos dos = new CallDos(@"..\..\Programs\molk.exe", ErrorDataReceived, OutputDataReceived);
+
+            dos.Start($@"-r ""{saveToPath}"" ""{filePaths}""");
         }
 
+        private void ErrorDataReceived(string data)
+        {
+
+        }
+
+        private void OutputDataReceived(string data)
+        {
+
+        }
     }
 }
