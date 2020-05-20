@@ -199,20 +199,20 @@ namespace Molk_Zipper
 
         private void Btn_MolkIt_Click(object sender, RoutedEventArgs e)
         {
-            //SaveFileDialog saveFile = new SaveFileDialog()
-            //{
-            //    Filter = "molk|.molk",
-            //    FileName = defaultSaveFileName + ".molk"
-            //};
-            //if (saveFile.ShowDialog() == true)
-            //{
-            //    Console.WriteLine($"Saved file {defaultSaveFileName}.molk to {saveFile.FileName}");
-            //    // Remove into Molking!
-            //    CallDos dos = new CallDos(@"..\..\Programs\molk.exe", DataGet, DataGet);
-            //    string saveTo = saveFile.FileName;
-            //    string toSave = (string)((TreeViewItem)FolderView.Items.GetItemAt(0)).Tag;
-            //    dos.Start($@"-r ""{saveTo}"" ""{toSave}""");
-            //}
+            SaveFileDialog saveFile = new SaveFileDialog()
+            {
+                Filter = "molk|.molk",
+                FileName = defaultSaveFileName + ".molk"
+            };
+            if (saveFile.ShowDialog() == true)
+            {
+                Console.WriteLine($"Saved file {defaultSaveFileName}.molk to {saveFile.FileName}");
+                // Remove into Molking!
+                CallDos dos = new CallDos(@"..\..\Programs\molk.exe", DataGet, DataGet);
+                string saveTo = saveFile.FileName;
+                string toSave = (string)((TreeViewItem)FolderView.Items.GetItemAt(0)).Tag;
+                dos.Start($@"-r ""{saveTo}"" ""{toSave}""");
+            }
             Frame_Molker.Content = new Molking();
         }
 
