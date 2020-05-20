@@ -20,20 +20,21 @@ namespace Molk_Zipper
     /// </summary>
     public partial class Molking : Page
     {
-        public Molking(string saveToPath, string filePaths, params string[] excludeFiles)
-        {
-            InitializeComponent();
-            ProgressBar.EndAngle = 360;
+        private Grid grid_MolkerPage;
+        private float totalFilesToZip;
+        private float currentZippedFiles;
 
-            /*
-             * excludeFiles = {"hej", "då", "world!"}
-             * excludesplit
-             * result = "hej då world!"
-             */
-            string .Join(","),e;
+        public Molking(Grid grid_MolkerPage, string saveToPath, string filePaths, params string[] excludeFiles)
+        {
+            this.grid_MolkerPage = grid_MolkerPage;
+            InitializeComponent();
+
             CallDos dos = new CallDos(@"..\..\Programs\molk.exe", ErrorDataReceived, OutputDataReceived);
 
-            dos.Start($@"-r ""{saveToPath}"" ""{filePaths}""");
+            totalFilesToZip = 6;
+
+            string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
+            dos.Start($@"-r ""{saveToPath}"" {filePaths} -x {exFileString}");
         }
 
         private void ErrorDataReceived(string data)
@@ -43,7 +44,20 @@ namespace Molk_Zipper
 
         private void OutputDataReceived(string data)
         {
+            currentZippedFiles++;
+            this.Dispatcher.Invoke(() =>
+            {
+                ProgressBar.EndAngle = Helpers.PercentToDeg((currentZippedFiles / totalFilesToZip) * 100f);
+                txtBlock_Progress.Text = $"{Helpers.DegToPercent((float)ProgressBar.EndAngle):.0}%";
+                if (ProgressBar.EndAngle == 360) OnDone();
+            });
+        }
 
+        private async void OnDone()
+        {
+            await Task.Delay(1300);
+            Helpers.ChangeVisibility(grid_MolkingPage);
+            Helpers.ChangeVisibility(grid_MolkerPage);
         }
     }
 }

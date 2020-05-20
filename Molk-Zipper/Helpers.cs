@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace Molk_Zipper
 {
-    public class Helpers
+    public static class Helpers
     {
         public static void Exit()
         {
@@ -63,16 +63,17 @@ namespace Molk_Zipper
 
         public static void ChangeVisibility(UIElement uIElement)
         {
-            if (uIElement.Visibility == Visibility.Visible) uIElement.Visibility = Visibility.Collapsed;
+            if (uIElement.Visibility == Visibility.Visible) uIElement.Visibility = Visibility.Hidden;
             else uIElement.Visibility = Visibility.Visible;
         }
 
-        public float PercentToDeg(float pro)
+        public static float PercentToDeg(float percent)
         {
-            return (pro / 100f) * 360f;
+            percent = percent > 100f ? 100f : percent < 0f ? 0f : percent;
+            return (percent / 100f) * 360f;
         }
 
-        public object DegToPercent(float deg)
+        public static float DegToPercent(float deg)
         {
             return (deg / 360f) * 100f;
         }

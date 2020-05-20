@@ -73,11 +73,8 @@ namespace Molk_Zipper
 
             if (Directory.Exists(path))
             {
-                if (Directory.GetFiles(path, "*", SearchOption.AllDirectories).Length > 0)
-                {
-                    item.Items.Add(null);
-                    item.Expanded += Folder_Expanded;
-                }
+                item.Items.Add(null);
+                item.Expanded += Folder_Expanded;
             }
 
             FolderView.Items.Add(item);
@@ -115,11 +112,9 @@ namespace Molk_Zipper
                     Tag = directoryPath
                 };
 
-                if (Directory.GetFiles(directoryPath, "*", SearchOption.AllDirectories).Length > 0)
-                {
-                    subItem.Items.Add(null);
-                    subItem.Expanded += Folder_Expanded;
-                }
+                subItem.Items.Add(null);
+
+                subItem.Expanded += Folder_Expanded;
 
                 item.Items.Add(subItem);
             });
@@ -211,12 +206,17 @@ namespace Molk_Zipper
             };
             if (saveFile.ShowDialog() == true)
             {
-                Console.WriteLine($"Saved file {defaultSaveFileName}.molk to {saveFile.FileName}");
+                string saveTo = saveFile.FileName;
+                string toSave = (string)((TreeViewItem)FolderView.Items.GetItemAt(0)).Tag;
 
-                string saveToPath = saveFile.FileName;
-                string filePaths = (string)((TreeViewItem)FolderView.Items.GetItemAt(0)).Tag;
-                Frame_Molker.Content = new Molking(saveToPath, filePaths);
+                Frame_Molker.Content = new Molking(grid_MolkerPage, saveTo, toSave);
             }
+        }
+
+        private void DataGet(string data)
+        {
+            Console.WriteLine(data);
+            //this.Dispatcher.Invoke(() => AAAA.Text += data + '\n');
         }
 
         private void Btn_AddFolder_Click(object sender, RoutedEventArgs e)
