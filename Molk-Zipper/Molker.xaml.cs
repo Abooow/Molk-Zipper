@@ -228,10 +228,5 @@ namespace Molk_Zipper
         {
             //((TreeViewItem)e.NewValue).ite;
         }
-
-        private void Btn_Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
     }
 }

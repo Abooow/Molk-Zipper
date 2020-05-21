@@ -158,12 +158,10 @@
         <Border  Grid.Row="2" Grid.Column="2" BorderBrush="White" BorderThickness="1">
             <Grid Grid.Row="2" Grid.Column="2" Background="#171717">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
                 <Button Grid.Row="2" x:Name="btn_MolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" Click="Btn_MolkIt_Click" />
-                <Button Grid.Row="0" x:Name="btn_Back" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Exit" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="Transparent" BorderBrush="#602482" BorderThickness="2" Foreground="White" Cursor="Hand" Click="Btn_Exit_Click" />
             </Grid>
         </Border>
         <Frame x:Name="Frame_Molker" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"/>
