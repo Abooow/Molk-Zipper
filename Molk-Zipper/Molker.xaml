@@ -78,7 +78,7 @@
             <ColumnDefinition Width="145" MinWidth="125" MaxWidth="300"/>
         </Grid.ColumnDefinitions>
 
-        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#171717" Foreground="white" BorderBrush="White" BorderThickness="1" x:Name="Menu_Molk">
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Foreground="Black"/>
                 <MenuItem Header="_Open" Foreground="Black"/>
@@ -106,7 +106,7 @@
         </Menu>
 
         <Grid x:Name="grid_Buttons" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">
-            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#171717" BorderBrush="White">
+            <Menu x:Name="Menu_Molk2" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#101010" BorderBrush="White">
                 <Button x:Name="btn_AddFolder" Width="28" Height="38" Background="{x:Null}" BorderBrush="{x:Null}" Click="Btn_AddFolder_Click">
                     <Button.Content>
                         <Image Source="Assets/Icons/add_folder.png"/>
@@ -135,15 +135,14 @@
             </Menu>
             <Image x:Name="Img_MolkBackToHomepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Right" MouseUp="Img_MolkHome" Margin="0,3,15,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
         </Grid>
-
-        <TreeView  Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#FF171717" SelectedItemChanged="FolderView_SelectedItemChanged">
+        <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged">
             <TreeView.Resources>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="HeaderTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <StackPanel Margin="-1" Background="#171717" Orientation="Horizontal" VerticalAlignment="Stretch">
-                                    <CheckBox Width="14" Height="14" HorizontalAlignment="Right" IsChecked="True" Checked="CheckBox_Checked"></CheckBox>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
+                                    <!--<CheckBox Width="14" Height="14" HorizontalAlignment="Right" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Tag="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag}"></CheckBox>-->
                                     <Image Width="20" Margin="3" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag, Converter={x:Static local:HeaderToImageConverter.Instance}}"></Image>
                                     <TextBlock Foreground="white" VerticalAlignment="Center" Text="{Binding}"></TextBlock>
                                 </StackPanel>
@@ -154,13 +153,27 @@
             </TreeView.Resources>
         </TreeView>
 
-        <GridSplitter Grid.Row="2" Width="1"/>
-        <Border  Grid.Row="2" Grid.Column="2" BorderBrush="White" BorderThickness="1">
-            <Grid Grid.Row="2" Grid.Column="2" Background="#171717">
+        <GridSplitter Grid.Row="2" Background="#171717" Width="2"/>
+        <Border  Grid.Row="2" Grid.Column="2" BorderBrush="White" BorderThickness="0">
+            <Grid Grid.Row="2" Grid.Column="2" Background="#101010">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0, 20, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <Border Background="#171717">
+                        <StackPanel>
+                            <CheckBox Margin="10,10" Content="Exi done" Foreground="White"></CheckBox>
+                            <CheckBox Margin="10,10" Content="done" Foreground="White"></CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#171717" Margin="0,20,0,0">
+                        <StackPanel>
+                            <CheckBox Margin="10,10" Content="Exit when done" Foreground="White"></CheckBox>
+                            <CheckBox Margin="10,10" Content="Exit when done" Foreground="White"></CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
                 <Button Grid.Row="2" x:Name="btn_MolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" Click="Btn_MolkIt_Click" />
             </Grid>
         </Border>

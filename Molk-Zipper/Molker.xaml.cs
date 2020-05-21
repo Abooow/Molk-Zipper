@@ -26,6 +26,7 @@ namespace Molk_Zipper
         private BitmapImage backToHomeWhite;
         private BitmapImage backToHomeOrange;
         private string defaultSaveFileName;
+        private readonly MultiSelectTreeView treeView;
 
         public Molker(params string[] args)
         {
@@ -56,7 +57,7 @@ namespace Molk_Zipper
         {
             //foreach (var drive in Directory.GetLogicalDrives())
             //{
-            AddTreeViewItem(Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().LastIndexOf('\\')));
+            //AddTreeViewItem(Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().LastIndexOf('\\')));
             //}
         }
 
@@ -113,9 +114,7 @@ namespace Molk_Zipper
                 };
 
                 subItem.Items.Add(null);
-
                 subItem.Expanded += Folder_Expanded;
-
                 item.Items.Add(subItem);
             });
 
@@ -200,12 +199,6 @@ namespace Molk_Zipper
         private void Img_MolkBackToHomepage_MouseLeave(object sender, MouseEventArgs e)
         {
             ((Image)sender).Source = backToHomeWhite;
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            //TreeViewItem o = (TreeViewItem)((StackPanel)((CheckBox)sender).Parent).TemplatedParent;
-            //Console.WriteLine();
         }
 
         private void Btn_MolkIt_Click(object sender, RoutedEventArgs e)
