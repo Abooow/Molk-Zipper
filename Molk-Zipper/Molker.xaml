@@ -158,7 +158,6 @@
         <Border  Grid.Row="2" Grid.Column="2" BorderBrush="White" BorderThickness="1">
             <Grid Grid.Row="2" Grid.Column="2" Background="#171717">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
