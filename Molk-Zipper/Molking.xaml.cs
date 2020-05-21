@@ -24,16 +24,16 @@ namespace Molk_Zipper
         private float totalFilesToZip;
         private float currentZippedFiles;
 
-        public Molking(Grid grid_MolkerPage, string saveToPath, string filePaths, params string[] excludeFiles)
+        public Molking(Grid grid_MolkerPage, string saveToPath, string[] filePaths, params string[] excludeFiles)
         {
             this.grid_MolkerPage = grid_MolkerPage;
             InitializeComponent();
+            totalFilesToZip = 6;
 
             CallDos dos = new CallDos(@"..\..\Programs\molk.exe", ErrorDataReceived, OutputDataReceived);
 
-            totalFilesToZip = 6;
-
             string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
+            string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
             dos.Start($@"-r ""{saveToPath}"" {filePaths} -x {exFileString}");
         }
 
