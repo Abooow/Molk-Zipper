@@ -217,10 +217,14 @@ namespace Molk_Zipper
             };
             if (saveFile.ShowDialog() == true)
             {
-                string saveTo = saveFile.FileName;
-                string toSave = (string)((TreeViewItem)FolderView.Items.GetItemAt(0)).Tag;
+                string saveToPath = saveFile.FileName;
+                string[] filePaths = new string[FolderView.Items.Count];
+                for (int i = 0; i < filePaths.Length; i++)
+                {
+                    filePaths[i] = (string)((TreeViewItem)FolderView.Items[i]).Tag;
+                }
 
-                Frame_Molker.Content = new Molking(grid_MolkerPage, saveTo, toSave);
+                Frame_Molker.Content = new Molking(grid_MolkerPage, saveToPath, filePaths);
             }
         }
 
