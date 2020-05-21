@@ -146,7 +146,7 @@ namespace Molk_Zipper
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
-            Filter = "All files (*.*)|*.*",
+                Filter = "All files (*.*)|*.*",
                 Multiselect = true,
                 CheckFileExists = true,
             };
@@ -154,7 +154,8 @@ namespace Molk_Zipper
             {
                 foreach (string file in openFileDialog.FileNames)
                 {
-                    AddTreeViewItem(file);
+                    if (!TreeViewContains(file))
+                        AddTreeViewItem(file);
                 }
             }
         }
@@ -166,9 +167,19 @@ namespace Molk_Zipper
                 dialog.ShowNewFolderButton = true;
                 if (dialog.ShowDialog() == Forms.DialogResult.OK)
                 {
-                    AddTreeViewItem(dialog.SelectedPath);
+                    if (!TreeViewContains(dialog.SelectedPath))
+                        AddTreeViewItem(dialog.SelectedPath);
                 }
             }
+        }
+
+        private bool TreeViewContains(string path)
+        {
+            foreach (TreeViewItem item in FolderView.Items)
+            {
+                if (item.Tag.Equals(path)) return true;
+            }
+            return false;
         }
 
         private void FolderView_KeyDown(object sender, KeyEventArgs e)
