@@ -34,12 +34,11 @@ namespace Molk_Zipper
 
             string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
             string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
-            dos.Start($@"-r ""{saveToPath}"" {filePaths} -x {exFileString}");
+            dos.Start($@"-r ""{saveToPath}"" {filePath} -x {exFileString}");
         }
 
         private void ErrorDataReceived(string data)
         {
-
         }
 
         private void OutputDataReceived(string data)
