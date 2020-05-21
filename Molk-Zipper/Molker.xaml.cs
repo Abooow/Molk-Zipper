@@ -171,7 +171,6 @@ namespace Molk_Zipper
                 }
             }
         }
-
         private bool TreeViewContains(string path)
         {
             foreach (TreeViewItem item in FolderView.Items)
@@ -236,5 +235,22 @@ namespace Molk_Zipper
         {
             //((TreeViewItem)e.NewValue).ite;
         }
+
+        private void FolderView_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
+        }
+
+        private void FolderView_Drop(object sender, DragEventArgs e)
+        {
+            string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            foreach (string path in fileList)
+            {
+                if (!TreeViewContains(path))
+                    AddTreeViewItem(path);
+            }
+        }
+
+        // what yo doing? vad betyder cref?  <see cref = DependencyObject> va, en variabel? no idea
     }
 }

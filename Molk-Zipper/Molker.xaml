@@ -135,7 +135,7 @@
             </Menu>
             <Image x:Name="Img_MolkBackToHomepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Right" MouseUp="Img_MolkHome" Margin="0,3,15,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
         </Grid>
-        <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged">
+        <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
             <TreeView.Resources>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="HeaderTemplate">
