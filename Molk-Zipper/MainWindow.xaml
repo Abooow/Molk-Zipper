@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Molk_Zipper"
         mc:Ignorable="d"
+        MinHeight="400" MinWidth="460"
         Title="Molk-Adventure" Height="460" Width="700">
     <Window.Resources>
         <Style x:Key="FocusVisual">
