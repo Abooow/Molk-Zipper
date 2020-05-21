@@ -49,6 +49,11 @@ namespace Molk_Zipper
             //button.Margin = new Thickness(3);
             //((Image)button.Content).Margin = new Thickness(10);
         }
+
+        private void Btn_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Helpers.Exit();
+        }
     }
 }
 ;
