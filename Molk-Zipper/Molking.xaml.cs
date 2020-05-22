@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +24,13 @@ namespace Molk_Zipper
         private Grid grid_MolkerPage;
         private float totalFilesToZip;
         private float currentZippedFiles;
+        private string saveToPath;
+        private StreamWriter errorFile;
+        private bool error;
 
         public Molking(Grid grid_MolkerPage, string saveToPath, string[] filePaths, params string[] excludeFiles)
         {
+            this.saveToPath = saveToPath;
             this.grid_MolkerPage = grid_MolkerPage;
             InitializeComponent();
 
@@ -43,6 +48,17 @@ namespace Molk_Zipper
 
         private void ErrorDataReceived(string data)
         {
+            if (!error)
+            {
+                errorFile = new StreamWriter(new FileStream(saveToPath + "_ErrorLog.txt", FileMode.CreateNew));
+                errorFile.WriteLine(DateTime.Now);
+            }
+
+            errorFile.WriteLine(data);
+            this.Dispatcher.Invoke(() =>
+            {
+                OnError();
+            });
         }
 
         private void OutputDataReceived(string data)
@@ -61,6 +77,21 @@ namespace Molk_Zipper
             await Task.Delay(1300);
             Helpers.ChangeVisibility(grid_MolkingPage);
             Helpers.ChangeVisibility(grid_MolkerPage);
+        }
+
+        private async void OnError()
+        {
+            if (!error)
+            {
+                error = true;
+                ProgressBar.Fill = Brushes.Red;
+                ProgressBar.EndAngle = 360;
+                txtBlock_Progress.Text = "0%";
+                await Task.Delay(2000);
+                Helpers.ChangeVisibility(grid_MolkingPage);
+                Helpers.ChangeVisibility(grid_MolkerPage);
+                errorFile.Close();
+            }
         }
     }
 }
