@@ -32,7 +32,7 @@ namespace Molk_Zipper
         {
             InitializeComponent();
             backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\Home.png");
-            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
+            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\Home_orange.png");
 
             FolderView.SelectedItemChanged +=
                 new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
