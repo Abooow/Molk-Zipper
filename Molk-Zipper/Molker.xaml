@@ -88,9 +88,9 @@
                 <MenuItem Header="_Exit"  Foreground="Black" Click="Exit_Click"/>
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Command="Cut"  Foreground="Black"/>
-                <MenuItem Command="Copy"  Foreground="Black"/>
-                <MenuItem Command="Paste"  Foreground="Black"/>
+                <MenuItem Header="Cut"  Foreground="Black"/>
+                <MenuItem Header="Copy"  Foreground="Black"/>
+                <MenuItem Header="Paste"  Foreground="Black"/>
             </MenuItem>
             <MenuItem Header="_Format">
                 <MenuItem Header="Word Wrap"  Foreground="Black" IsCheckable="True"/>
@@ -117,7 +117,7 @@
                 <Button x:Name="btn_AddFolder" Width="28" Height="38" Background="{x:Null}" BorderBrush="{x:Null}" Click="Btn_AddFolder_Click">
                     <Button.ToolTip>
                         <ToolTip>
-                            Select Folders
+                            Add Folders
                         </ToolTip>
                     </Button.ToolTip>
                     <Button.Content>
@@ -127,7 +127,7 @@
                 <Button x:Name="btn_AddFile" Width="30" Height="32" Click="Btn_AddFiles_Click" Background="{x:Null}" BorderBrush="{x:Null}">
                     <Button.ToolTip>
                         <ToolTip>
-                            Select Files
+                            Add Files
                         </ToolTip>
                     </Button.ToolTip>
                     <Button.Content>
@@ -147,7 +147,7 @@
                 <Button x:Name="btn_Redo" ToolTipService.ShowOnDisabled="True" Width="30" Height="30" IsEnabled="False" Background="{x:Null}" BorderBrush="{x:Null}">
                     <Button.ToolTip>
                         <ToolTip>
-                            Redo 
+                            Undo 
                         </ToolTip>
                     </Button.ToolTip>
                     <Button.Content>
@@ -157,7 +157,7 @@
                 <Button x:Name="btn_Undo" ToolTipService.ShowOnDisabled="True" Width="30" Height="30" IsEnabled="False" Background="{x:Null}" BorderBrush="{x:Null}">
                     <Button.ToolTip>
                         <ToolTip>
-                            Undo
+                            Redo
                         </ToolTip>
                     </Button.ToolTip>
                     <Button.Content>
