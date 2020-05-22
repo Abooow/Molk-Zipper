@@ -25,10 +25,10 @@ namespace Molk_Zipper
 
         public UnMolker()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
-            backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
-            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
+            backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\home.png");
+            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\home_orange.png");
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -38,17 +38,17 @@ namespace Molk_Zipper
 
         private void Img_MolkHome(object sender, MouseButtonEventArgs e)
         {
-            Helpers.ChangeVisibility(grid_MolkerPage);
+            //Helpers.ChangeVisibility(grid_MolkerPage);
         }
 
         private void FolderView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Delete) Helpers.DeleteSelectedTreeItem(FolderView);
+            //if (e.Key == Key.Delete) Helpers.DeleteSelectedTreeItem(FolderView);
         }
 
         private void Btn_Remove_Click(object sender, RoutedEventArgs e)
         {
-            Helpers.DeleteSelectedTreeItem(FolderView);
+            //Helpers.DeleteSelectedTreeItem(FolderView);
         }
 
         private void Img_MolkBackToHomepage_MouseEnter(object sender, MouseEventArgs e)

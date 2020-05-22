@@ -65,8 +65,61 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Page.Resources>
+        <Style TargetType="{x:Type MenuItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Grid SnapsToDevicePixels="true">
+                            <DockPanel>
+                                <ContentPresenter x:Name="Icon" ContentSource="Icon" Margin="4,0,6,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                                <Path x:Name="GlyphPanel" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Margin="7,0,0,0" Visibility="Collapsed" VerticalAlignment="Center"/>
+                                <ContentPresenter x:Name="content" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </DockPanel>
+                            <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="False" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Bottom" VerticalOffset="-1">
 
+                                <Border BorderThickness="2" BorderBrush="White" Background="{TemplateBinding Background}">
+                                    <ScrollViewer x:Name="MenuScrollViewer" CanContentScroll="true" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                        <Grid RenderOptions.ClearTypeHint="Enabled">
+                                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Grid.IsSharedSizeScope="true" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle"/>
+                                        </Grid>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="TextBlock.Foreground" Value="#D2571B" TargetName="content"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="MenuItems_MouseEnter">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" >
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="DeepSkyBlue"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuItems_MouseLeave">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" >
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Style x:Key="MenuItems_Style" TargetType="MenuItem">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard x:Name="MenuItems_MouseEnter_BeginStoryBoard" Storyboard="{StaticResource MenuItems_MouseEnter}" />
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard x:Name="mnuItems_MouseLeave_BeginStoryBoard" Storyboard="{StaticResource MenuItems_MouseLeave}" />
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
     <Grid x:Name="grid_MolkerPage">
         <Grid.RowDefinitions>
             <RowDefinition Height="22"/>
@@ -79,95 +132,43 @@
         </Grid.ColumnDefinitions>
 
         <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
-            <MenuItem Header="_File">
-                <MenuItem Header="_New" Foreground="Black"/>
-                <MenuItem Header="_Open" Foreground="Black"/>
-                <MenuItem Header="_Save" Foreground="Black"/>
-                <MenuItem Header="_Save As" Foreground="Black"/>
+            <MenuItem Background="#171717" Foreground="White" Header="_File">
+                <MenuItem Header="_New" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="_Open" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="_Save" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="_Save As" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
                 <Separator />
-                <MenuItem Header="_Exit"  Foreground="Black" Click="Exit_Click"/>
+                <MenuItem Header="_Exit"  Foreground="White" Click="Exit_Click" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="Cut"  Foreground="Black"/>
-                <MenuItem Header="Copy"  Foreground="Black"/>
-                <MenuItem Header="Paste"  Foreground="Black"/>
+            <MenuItem Background="#171717" Header="_Edit">
+                <MenuItem Header="Cut"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="Copy"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="Paste"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
-            <MenuItem Header="_Format">
-                <MenuItem Header="Word Wrap"  Foreground="Black" IsCheckable="True"/>
-                <MenuItem Header="Font" Foreground="Black"/>
+            <MenuItem Background="#171717" Header="_Format">
+                <MenuItem Header="Font" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
-            <MenuItem Header="_View">
-                <MenuItem Header="Zoom"  Foreground="Black"/>
+            <MenuItem Background="#171717" Header="_View">
+                <MenuItem Header="Zoom"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
 
-            <MenuItem Header="Help">
-                <MenuItem Header="About" Foreground="Black"/>
+            <MenuItem Background="#171717" Header="Help">
+                <MenuItem Header="About" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
         </Menu>
 
-        <Grid x:Name="grid_Buttons" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">
-            <Menu x:Name="Menu_Molk2" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#101010" BorderBrush="White">
-                <Image x:Name="Img_MolkBackToHomepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Left" MouseUp="Img_MolkHome" Margin="0,3,0,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave">
-                    <Image.ToolTip>
-                        <ToolTip>
-                            Back to Homepage
-                        </ToolTip>
-                    </Image.ToolTip>
-                </Image>
-                <Button x:Name="btn_AddFolder" Width="28" Height="38" Background="{x:Null}" BorderBrush="{x:Null}" Click="Btn_AddFolder_Click">
-                    <Button.ToolTip>
-                        <ToolTip>
-                            Add Folders
-                        </ToolTip>
-                    </Button.ToolTip>
-                    <Button.Content>
-                        <Image Source="Assets/Icons/add_folder.png"/>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="btn_AddFile" Width="30" Height="32" Click="Btn_AddFiles_Click" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Button.ToolTip>
-                        <ToolTip>
-                            Add Files
-                        </ToolTip>
-                    </Button.ToolTip>
-                    <Button.Content>
-                        <Image Source="Assets/Icons/add_file.png"/>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="btn_Remove" ToolTipService.ShowOnDisabled="True" Width="25" Height="25" IsEnabled="False" Click="Btn_Remove_Click" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Button.ToolTip>
-                        <ToolTip>
-                            Remove Items
-                        </ToolTip>
-                    </Button.ToolTip>
-                    <Button.Content>
-                        <Image Source="Assets/Icons/remove_grey.png"/>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="btn_Redo" ToolTipService.ShowOnDisabled="True" Width="30" Height="30" IsEnabled="False" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Button.ToolTip>
-                        <ToolTip>
-                            Undo 
-                        </ToolTip>
-                    </Button.ToolTip>
-                    <Button.Content>
-                        <Image Source="Assets/Icons/undo_grey.png" Margin="3"/>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="btn_Undo" ToolTipService.ShowOnDisabled="True" Width="30" Height="30" IsEnabled="False" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Button.ToolTip>
-                        <ToolTip>
-                            Redo
-                        </ToolTip>
-                    </Button.ToolTip>
-                    <Button.Content>
-                        <Image Source="Assets/Icons/redo.png" Margin="3"/>
-                    </Button.Content>
-                </Button>
-            </Menu>
-        </Grid>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="1" Orientation="Horizontal" Background="#171717" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Image x:Name="Img_MolkBackToHomepage" ToolTip="Back to Homepage" Width="50" Source="Assets/Logo/Home.png" VerticalAlignment="Center" HorizontalAlignment="Left" MouseUp="Img_MolkHome" Margin="10,3,20,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
+            <Image x:Name="img_AddFolder" ToolTip="Add Folder" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_folder.png" MouseUp="Img_AddFolder_Click" Cursor="Hand" MouseEnter="Img_AddFolder_MouseEnter"/>
+            <Image x:Name="img_AddFile" ToolTip="Add File" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_file.png" Cursor="Hand" MouseUp="img_AddFile_Click"/>
+            <Image x:Name="btn_Remove" ToolTip="Remove" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/remove_grey.png" Cursor="Hand"/>
+            <Image x:Name="btn_Undo" ToolTip="Undo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/undo_grey.png" Cursor="Hand"/>
+            <Image x:Name="btn_Redo" ToolTip="Redo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/redo_grey.png" Cursor="Hand"/>
+        </StackPanel>
         <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
             <TreeView.Resources>
+                <Color x:Key="DisabledControlDarkColor">Black</Color>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="HeaderTemplate">
                         <Setter.Value>
@@ -182,15 +183,17 @@
                 </Style>
             </TreeView.Resources>
         </TreeView>
-
         <GridSplitter Grid.Row="2" Background="#171717" Width="2"/>
-        <Border  Grid.Row="2" Grid.Column="2" BorderBrush="White" BorderThickness="0">
+        <Border  Grid.Row="1" Grid.Column="1" BorderBrush="White" BorderThickness="0" Grid.RowSpan="2">
             <Grid Grid.Row="2" Grid.Column="2" Background="#101010">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+
+                <!--<StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">-->
+                <!--Kolla vilken utav dessa som ska behållas-->
+                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0, 35, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <Border Background="#171717">
                         <StackPanel>
                             <CheckBox Margin="10,10" Content="Exi done" Foreground="White">
