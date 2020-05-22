@@ -31,7 +31,7 @@ namespace Molk_Zipper
         public Molker()
         {
             InitializeComponent();
-            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
+            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\Home.png");
             backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
 
             FolderView.SelectedItemChanged +=
