@@ -31,8 +31,8 @@ namespace Molk_Zipper
         public Molker()
         {
             InitializeComponent();
-            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\Home.png");
-            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\Home_orange.png");
+            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Icons\Home.png");
+            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Icons\Home_orange.png");
 
             FolderView.SelectedItemChanged +=
                 new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
@@ -328,7 +328,5 @@ namespace Molk_Zipper
         {
             
         }
-
-        // what yo doing? vad betyder cref?  <see cref = DependencyObject> va, en variabel? no idea
     }
 }

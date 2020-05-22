@@ -159,7 +159,7 @@
 
         <!--<Grid x:Name="grid_Buttons" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">-->
             <StackPanel Grid.Row="1" Grid.ColumnSpan="1" Orientation="Horizontal" Background="#171717" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <Image x:Name="Img_MolkBackToHomepage" ToolTip="Back to Homepage" Width="50" Source="Assets/Logo/Home.png" VerticalAlignment="Center" HorizontalAlignment="Left" MouseUp="Img_MolkHome" Margin="10,3,20,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
+                <Image x:Name="Img_MolkBackToHomepage" ToolTip="Back to Homepage" Width="50" Source="Assets/Icons/add_folder.png" VerticalAlignment="Center" HorizontalAlignment="Left" MouseUp="Img_MolkHome" Margin="10,3,20,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
                 <Image x:Name="img_AddFolder" ToolTip="Add Folder" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_folder.png" MouseUp="Img_AddFolder_Click" Cursor="Hand" MouseEnter="Img_AddFolder_MouseEnter"/>
                 <Image x:Name="img_AddFile" ToolTip="Add File" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_file.png" Cursor="Hand" MouseUp="img_AddFile_Click"/>
                 <Image x:Name="btn_Remove" ToolTip="Remove" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/remove_grey.png" Cursor="Hand"/>
