@@ -107,6 +107,11 @@
         <Image Grid.Row="0" Source="Assets/Logo/Group_1@3x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="12,0,0,24"/>
         <Image Grid.Row="4" Source="Assets/Text/2020_The_Daniel__Kitt_Team@2x.png" Height="20" VerticalAlignment="Bottom"/>
         <Button Grid.Row="4" x:Name="btn_Exit" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0" Style="{DynamicResource exit_btn}" Content="Exit" Width="60" Height="35" FontSize="15" Background="Transparent" BorderBrush="#602482" BorderThickness="2" Foreground="White" Mouse.MouseEnter="Button_MouseEnter" Mouse.MouseLeave="Button_MouseLeave" Cursor="Hand" Click="Btn_Exit_Click">
+            <Button.ToolTip>
+                <ToolTip>
+                    Exit Application
+                </ToolTip>
+            </Button.ToolTip>
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="20"/>
@@ -134,6 +139,11 @@
             </Grid.RowDefinitions>
 
             <Button Tag="Molk" Grid.Column="1" Grid.Row="1" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="4" BorderBrush="#602482" Click="Btn_Molk_Click" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Cursor="Hand">
+                <Button.ToolTip>
+                    <ToolTip>
+                        MOLK FILES
+                    </ToolTip>
+                </Button.ToolTip>
                 <Button.Content>
                     <Image Source="Assets/Molk/molk_white@2x.png" Margin="10"/>
                 </Button.Content>
@@ -141,6 +151,11 @@
             <Image Grid.Column="1" Grid.Row="2" Source="Assets/Text/MOLK2x.png" Margin="0,0,0,10"/>
 
             <Button Tag="UnMolk" Grid.Column="3" Grid.Row="1" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="4" BorderBrush="#602482" Style="{DynamicResource BtnCornerRad}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Cursor="Hand" Click="Btn_Unmolk_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        UNMOLK FILES
+                    </ToolTip>
+                </Button.ToolTip>
                 <Button.Content>
                     <Image Source="Assets/UnMolk/unmolk_white@2x.png" Margin="10"/>
                 </Button.Content>
