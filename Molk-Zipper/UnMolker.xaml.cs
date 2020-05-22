@@ -60,5 +60,20 @@ namespace Molk_Zipper
         {
             ((Image)sender).Source = backToHomeWhite;
         }
+
+        private void FolderView_Drop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void FolderView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+
+        }
+
+        private void FolderView_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
     }
 }
