@@ -77,7 +77,7 @@
             <ColumnDefinition Width="145" MinWidth="125" MaxWidth="300"/>
         </Grid.ColumnDefinitions>
 
-        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#171717" Foreground="white" BorderBrush="White" BorderThickness="1" x:Name="Menu_Molk">
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Foreground="Black"/>
                 <MenuItem Header="_Open" Foreground="Black"/>
@@ -105,44 +105,73 @@
         </Menu>
 
         <Grid x:Name="grid_Buttons" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">
-            <Menu x:Name="Menu_Molk2" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#171717" BorderBrush="White">
+            <Menu x:Name="Menu_Molk2" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#101010" BorderBrush="White">
+                <Image x:Name="Img_MolkBackToHomepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Left" MouseUp="Img_MolkHome" Margin="0,3,0,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave">
+                    <Image.ToolTip>
+                        <ToolTip>
+                            Back to Homepage
+                        </ToolTip>
+                    </Image.ToolTip>
+                </Image>
                 <Button x:Name="btn_AddFolder" Width="28" Height="38" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Select Folders
+                        </ToolTip>
+                    </Button.ToolTip>
                     <Button.Content>
                         <Image Source="Assets/Icons/add_folder.png"/>
                     </Button.Content>
                 </Button>
                 <Button x:Name="btn_AddFile" Width="30" Height="32" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Select Files
+                        </ToolTip>
+                    </Button.ToolTip>
                     <Button.Content>
                         <Image Source="Assets/Icons/add_file.png"/>
                     </Button.Content>
                 </Button>
-                <Button x:Name="btn_Remove" Width="25" Height="25" Click="Btn_Remove_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Button x:Name="btn_Remove" ToolTipService.ShowOnDisabled="True" Width="25" Height="25" IsEnabled="False" Click="Btn_Remove_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Remove Items
+                        </ToolTip>
+                    </Button.ToolTip>
                     <Button.Content>
                         <Image Source="Assets/Icons/remove_grey.png"/>
                     </Button.Content>
                 </Button>
-                <Button x:Name="btn_Redo" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Button x:Name="btn_Redo" ToolTipService.ShowOnDisabled="True" Width="30" Height="30" IsEnabled="False" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Redo
+                        </ToolTip>
+                    </Button.ToolTip>
                     <Button.Content>
                         <Image Source="Assets/Icons/undo_grey.png" Margin="3"/>
                     </Button.Content>
                 </Button>
-                <Button x:Name="btn_Undo" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
+                <Button x:Name="btn_Undo" ToolTipService.ShowOnDisabled="True" Width="30" Height="30" IsEnabled="False" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Undo
+                        </ToolTip>
+                    </Button.ToolTip>
                     <Button.Content>
                         <Image Source="Assets/Icons/redo.png" Margin="3"/>
                     </Button.Content>
                 </Button>
             </Menu>
-            <Image x:Name="Img_MolkBackToHomepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Right" MouseUp="Img_MolkHome" Margin="0,3,15,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
         </Grid>
-
-        <TreeView Grid.Row="2" Grid.RowSpan="2" Background="#171717" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True">
+        <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
             <TreeView.Resources>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="HeaderTemplate">
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
-                                    <CheckBox Width="14" Height="14" HorizontalAlignment="Right"></CheckBox>
                                     <Image Width="20" Margin="3" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag, Converter={x:Static local:HeaderToImageConverter.Instance}}"></Image>
                                     <TextBlock Foreground="white" VerticalAlignment="Center" Text="{Binding}"></TextBlock>
                                 </StackPanel>
@@ -153,15 +182,60 @@
             </TreeView.Resources>
         </TreeView>
 
-        <GridSplitter Grid.Row="2" Width="1"/>
-        <Border  Grid.Row="2" Grid.Column="2" BorderBrush="White" BorderThickness="1">
-            <Grid Grid.Row="2" Grid.Column="2" Background="#171717">
+        <GridSplitter Grid.Row="2" Background="#171717" Width="2"/>
+        <Border  Grid.Row="2" Grid.Column="2" BorderBrush="White" BorderThickness="0">
+            <Grid Grid.Row="2" Grid.Column="2" Background="#101010">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="2" x:Name="btn_Molk" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" />
+                <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <Border Background="#171717">
+                        <StackPanel>
+                            <CheckBox Margin="10,10" Content="Exi done" Foreground="White">
+                                <CheckBox.ToolTip>
+                                    <ToolTip>
+                                        Exit application when finished UnMolking
+                                    </ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="10,10" Content="done" Foreground="White">
+                                <CheckBox.ToolTip>
+                                    <ToolTip>
+                                        Exit application when finished UnMolking
+                                    </ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#171717" Margin="0,20,0,0">
+                        <StackPanel>
+                            <CheckBox Margin="10,10" Content="Exit when done" Foreground="White">
+                                <CheckBox.ToolTip>
+                                    <ToolTip>
+                                        Exit application when finished UnMolking
+                                    </ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="10,10" Content="Exit when done" Foreground="White">
+                                <CheckBox.ToolTip>
+                                    <ToolTip>
+                                        Exit application when finished UnMolking
+                                    </ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <Button Grid.Row="2" x:Name="btn_UnMolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="UnMolk it! ▶▶" Width="120" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" >
+                    <Button.ToolTip>
+                        <ToolTip>
+                            Start Molking
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
             </Grid>
         </Border>
+        <Frame x:Name="Frame_Molker" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"/>
     </Grid>
 </Page>
