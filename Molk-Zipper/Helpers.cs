@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,6 +68,26 @@ namespace Molk_Zipper
         {
             if (uIElement.Visibility == Visibility.Visible) uIElement.Visibility = Visibility.Hidden;
             else uIElement.Visibility = Visibility.Visible;
+        }
+
+        public static int GetAmountOfFiles(string path)
+        {
+            int total = 1;
+
+            if (Directory.Exists(path))
+            {
+                total += System.IO.Directory.GetFiles(path, "*.*", SearchOption.AllDirectories).Count();
+                total += System.IO.Directory.GetDirectories(path, "*", SearchOption.AllDirectories).Count();
+            //    foreach (string dirPath in Directory.GetDirectories(path, "*", SearchOption.AllDirectories))
+            //    {
+            //        total += GetAmountOfFiles(dirPath);
+            //    }
+
+            //    string[] a = Directory.GetFiles(path, "*.*", SearchOption.TopDirectoryOnly);
+            //    total += a.Length;
+            }
+
+            return total;
         }
 
         public static float PercentToDeg(float percent)

@@ -28,13 +28,17 @@ namespace Molk_Zipper
         {
             this.grid_MolkerPage = grid_MolkerPage;
             InitializeComponent();
-            totalFilesToZip = 6;
+
+            foreach (string path in filePaths)
+            {
+                totalFilesToZip += Helpers.GetAmountOfFiles(path);
+            }
 
             CallDos dos = new CallDos(@"..\..\Programs\molk.exe", ErrorDataReceived, OutputDataReceived);
 
             string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
             string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
-            dos.Start($@"-r ""{saveToPath}"" {filePath} -x {exFileString}");
+            dos.Start($@"-r -S ""{saveToPath}"" {filePath} -x {exFileString}");
         }
 
         private void ErrorDataReceived(string data)
