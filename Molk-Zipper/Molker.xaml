@@ -137,6 +137,7 @@
         </Grid>
         <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
             <TreeView.Resources>
+                <!--<Color x:Key="DisabledControlDarkColor">Black</Color>-->
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="HeaderTemplate">
                         <Setter.Value>

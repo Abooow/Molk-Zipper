@@ -25,8 +25,18 @@ namespace Molk_Zipper
     {
         private BitmapImage backToHomeWhite;
         private BitmapImage backToHomeOrange;
-        private string defaultSaveFileName;
-        private readonly MultiSelectTreeView treeView;
+
+        private Dictionary<TreeViewItem, string> selectedItems = new Dictionary<TreeViewItem, string>();
+
+        public Molker()
+        {
+            InitializeComponent();
+
+            FolderView.SelectedItemChanged +=
+                new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
+
+            FolderView.Focusable = true;
+        }
 
         public Molker(params string[] args)
         {
@@ -37,6 +47,62 @@ namespace Molk_Zipper
 
             //OpenFiles();
         }
+
+        bool CtrlPressed
+        {
+            get
+            {
+                return Keyboard.IsKeyDown(Key.LeftCtrl);
+            }
+        }
+        
+        // deselects the tree item
+        void Deselect(TreeViewItem treeViewItem)
+        {
+            treeViewItem.Background = new SolidColorBrush(Color.FromRgb(20, 20, 20));// change background and foreground colors
+            treeViewItem.Foreground = Brushes.Black;
+            selectedItems.Remove(treeViewItem); // remove the item from the selected items set
+        }
+
+        // changes the state of the tree item:
+        // selects it if it has not been selected and
+        // deselects it otherwise
+        void ChangeSelectedState(TreeViewItem treeViewItem)
+        {
+            if (!selectedItems.ContainsKey(treeViewItem))
+            { // select
+                treeViewItem.Background = Brushes.Purple; // change background and foreground colors
+                treeViewItem.Foreground = Brushes.White;
+                selectedItems.Add(treeViewItem, null); // add the item to selected items
+            }
+            else
+            { // deselect
+                Deselect(treeViewItem);
+            }
+        }
+
+        void MyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (!(FolderView.SelectedItem is TreeViewItem treeViewItem))
+                return;
+
+            // prevent the WPF tree item selection 
+            treeViewItem.IsSelected = false;
+
+            treeViewItem.Focus();
+
+            if (!CtrlPressed)
+            {
+                TreeViewItem[] treeViewItems = selectedItems.Keys.ToArray();
+                for (int i = 0; i < treeViewItems.Length; i++)
+                {
+                    Deselect(treeViewItems[i]);
+                }
+            }
+
+            ChangeSelectedState(treeViewItem);
+        }
+
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -63,9 +129,6 @@ namespace Molk_Zipper
 
         private void AddTreeViewItem(string path)
         {
-            if (string.IsNullOrEmpty(defaultSaveFileName))
-                defaultSaveFileName = Helpers.GetFileOrFolderName(path);
-
             TreeViewItem item = new TreeViewItem()
             {
                 Header = Helpers.GetFileOrFolderName(path),
@@ -74,8 +137,11 @@ namespace Molk_Zipper
 
             if (Directory.Exists(path))
             {
-                item.Items.Add(null);
-                item.Expanded += Folder_Expanded;
+                if (Directory.GetFiles(path, "*", SearchOption.AllDirectories).Length > 0)
+                {
+                    item.Items.Add(null);
+                    item.Expanded += Folder_Expanded;
+                }
             }
 
             FolderView.Items.Add(item);
@@ -113,9 +179,12 @@ namespace Molk_Zipper
                     Tag = directoryPath
                 };
 
-                subItem.Items.Add(null);
-                subItem.Expanded += Folder_Expanded;
-                item.Items.Add(subItem);
+                if (Directory.GetFiles(directoryPath, "*", SearchOption.AllDirectories).Length > 0)
+                {
+                    subItem.Items.Add(null);
+                    subItem.Expanded += Folder_Expanded;
+                    item.Items.Add(subItem);
+                }
             });
 
             List<string> files = new List<string>();
@@ -202,10 +271,12 @@ namespace Molk_Zipper
 
         private void Btn_MolkIt_Click(object sender, RoutedEventArgs e)
         {
+            if (FolderView.Items.Count == 0) return;
+
             SaveFileDialog saveFile = new SaveFileDialog()
             {
                 Filter = "Molk|*.molk",
-                FileName = defaultSaveFileName + ".molk",
+                FileName = System.IO.Path.GetFileNameWithoutExtension((string)((TreeViewItem)FolderView.Items[0]).Tag) + ".molk",
             };
             if (saveFile.ShowDialog() == true)
             {
