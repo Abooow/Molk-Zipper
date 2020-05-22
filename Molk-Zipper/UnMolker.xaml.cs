@@ -27,8 +27,8 @@ namespace Molk_Zipper
         {
             InitializeComponent();
 
-            backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
-            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
+            backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\home.png");
+            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\home_orange.png");
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
