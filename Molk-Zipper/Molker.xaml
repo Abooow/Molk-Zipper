@@ -65,24 +65,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="{x:Type MenuItem}" x:Key="MenuItemStyle">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type MenuItem}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter Content="{TemplateBinding Header}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsHighlighted" Value="True">
-                                <Setter Property="Background"  Value="Green"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+        <Style TargetType="{x:Type MenuItem}">
+            <Setter Property="Background" Value="Black"/>
         </Style>
     </Page.Resources>
-
     <Grid x:Name="grid_MolkerPage">
         <Grid.RowDefinitions>
             <RowDefinition Height="22"/>
@@ -94,41 +80,40 @@
             <ColumnDefinition Width="145" MinWidth="125" MaxWidth="300"/>
         </Grid.ColumnDefinitions>
 
-        <Menu  Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
-            <MenuItem Style="{StaticResource MenuItemStyle}" Header="_File">
-                <MenuItem Header="_New" Foreground="Black"/>
-                <MenuItem Header="_Open" Foreground="Black"/>
-                <MenuItem Header="_Save" Foreground="Black"/>
-                <MenuItem Header="_Save As" Foreground="Black"/>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
+            <MenuItem Background="#171717" Foreground="White" Header="_File">
+                <MenuItem Header="_New" Foreground="White"/>
+                <MenuItem Header="_Open" Foreground="White"/>
+                <MenuItem Header="_Save" Foreground="White"/>
+                <MenuItem Header="_Save As" Foreground="White"/>
                 <Separator />
-                <MenuItem Header="_Exit"  Foreground="Black" Click="Exit_Click"/>
+                <MenuItem Header="_Exit"  Foreground="White" Click="Exit_Click"/>
             </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Command="Cut"  Foreground="Black"/>
-                <MenuItem Command="Copy"  Foreground="Black"/>
-                <MenuItem Command="Paste"  Foreground="Black"/>
+            <MenuItem Background="#171717" Header="_Edit">
+                <MenuItem Command="Cut"  Foreground="White"/>
+                <MenuItem Command="Copy"  Foreground="White"/>
+                <MenuItem Command="Paste"  Foreground="White"/>
             </MenuItem>
-            <MenuItem Header="_Format">
-                <MenuItem Header="Word Wrap"  Foreground="Black" IsCheckable="True"/>
-                <MenuItem Header="Font" Foreground="Black"/>
+            <MenuItem Background="#171717" Header="_Format">
+                <MenuItem Header="Font" Foreground="White"/>
             </MenuItem>
-            <MenuItem Header="_View">
-                <MenuItem Header="Zoom"  Foreground="Black"/>
+            <MenuItem Background="#171717" Header="_View">
+                <MenuItem Header="Zoom"  Foreground="White"/>
             </MenuItem>
 
-            <MenuItem Header="Help">
-                <MenuItem Header="About" Foreground="Black"/>
+            <MenuItem Background="#171717" Header="Help">
+                <MenuItem Header="About" Foreground="White"/>
             </MenuItem>
         </Menu>
 
         <Grid x:Name="grid_Buttons" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">
-            <StackPanel Orientation="Horizontal" Background="#171717" VerticalAlignment="Stretch" Margin="0,0,146,0">
+            <StackPanel Orientation="Horizontal" Background="#171717" VerticalAlignment="Stretch" Margin="0,0,145,0">
                 <Image x:Name="Img_MolkBackToHomepage" ToolTip="Back to Homepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Right" MouseUp="Img_MolkHome" Margin="0,3,20,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
-                <Image x:Name="img_AddFolder" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_folder.png" MouseUp="Img_AddFolder_Click" Cursor="Hand" MouseEnter="Img_AddFolder_MouseEnter"/>
-                <Image x:Name="img_AddFile" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_file.png" Cursor="Hand" MouseUp="img_AddFile_Click"/>
-                <Image x:Name="btn_Remove" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/remove_grey.png" Cursor="Hand"/>
-                <Image x:Name="btn_Redo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/undo_grey.png" Cursor="Hand"/>
-                <Image x:Name="btn_Undo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/redo_grey.png" Cursor="Hand"/>
+                <Image x:Name="img_AddFolder" ToolTip="Add Folder" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_folder.png" MouseUp="Img_AddFolder_Click" Cursor="Hand" MouseEnter="Img_AddFolder_MouseEnter"/>
+                <Image x:Name="img_AddFile" ToolTip="Add File" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_file.png" Cursor="Hand" MouseUp="img_AddFile_Click"/>
+                <Image x:Name="btn_Remove" ToolTip="Remove" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/remove_grey.png" Cursor="Hand"/>
+                <Image x:Name="btn_Undo" ToolTip="Undo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/undo_grey.png" Cursor="Hand"/>
+                <Image x:Name="btn_Redo" ToolTip="Redo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/redo_grey.png" Cursor="Hand"/>
             </StackPanel>
         </Grid>
         <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
