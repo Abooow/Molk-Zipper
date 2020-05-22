@@ -65,6 +65,22 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="{x:Type MenuItem}" x:Key="MenuItemStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Header}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter Property="Background"  Value="Green"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid x:Name="grid_MolkerPage">
@@ -78,8 +94,8 @@
             <ColumnDefinition Width="145" MinWidth="125" MaxWidth="300"/>
         </Grid.ColumnDefinitions>
 
-        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
-            <MenuItem Header="_File">
+        <Menu  Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
+            <MenuItem Style="{StaticResource MenuItemStyle}" Header="_File">
                 <MenuItem Header="_New" Foreground="Black"/>
                 <MenuItem Header="_Open" Foreground="Black"/>
                 <MenuItem Header="_Save" Foreground="Black"/>
@@ -106,44 +122,23 @@
         </Menu>
 
         <Grid x:Name="grid_Buttons" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">
-            <Menu x:Name="Menu_Molk2" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#101010" BorderBrush="White">
-                <Button x:Name="btn_AddFolder" Width="28" Height="38" Background="{x:Null}" BorderBrush="{x:Null}" Click="Btn_AddFolder_Click">
-                    <Button.Content>
-                        <Image Source="Assets/Icons/add_folder.png"/>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="btn_AddFile" Width="30" Height="32" Click="Btn_AddFiles_Click" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Button.Content>
-                        <Image Source="Assets/Icons/add_file.png"/>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="btn_Remove" Width="25" Height="25" Click="Btn_Remove_Click" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Button.Content>
-                        <Image Source="Assets/Icons/remove_grey.png"/>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="btn_Redo" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Button.Content>
-                        <Image Source="Assets/Icons/undo_grey.png" Margin="3"/>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="btn_Undo" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <Button.Content>
-                        <Image Source="Assets/Icons/redo.png" Margin="3"/>
-                    </Button.Content>
-                </Button>
-            </Menu>
-            <Image x:Name="Img_MolkBackToHomepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Right" MouseUp="Img_MolkHome" Margin="0,3,15,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
+            <StackPanel Orientation="Horizontal" Background="#171717" VerticalAlignment="Stretch" Margin="0,0,146,0">
+                <Image x:Name="Img_MolkBackToHomepage" ToolTip="Back to Homepage" Source="Assets/Logo/molk_white@2x.png" VerticalAlignment="Center" HorizontalAlignment="Right" MouseUp="Img_MolkHome" Margin="0,3,20,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
+                <Image x:Name="img_AddFolder" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_folder.png" MouseUp="Img_AddFolder_Click" Cursor="Hand" MouseEnter="Img_AddFolder_MouseEnter"/>
+                <Image x:Name="img_AddFile" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_file.png" Cursor="Hand" MouseUp="img_AddFile_Click"/>
+                <Image x:Name="btn_Remove" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/remove_grey.png" Cursor="Hand"/>
+                <Image x:Name="btn_Redo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/undo_grey.png" Cursor="Hand"/>
+                <Image x:Name="btn_Undo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/redo_grey.png" Cursor="Hand"/>
+            </StackPanel>
         </Grid>
         <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
             <TreeView.Resources>
-                <!--<Color x:Key="DisabledControlDarkColor">Black</Color>-->
+                <Color x:Key="DisabledControlDarkColor">Black</Color>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="HeaderTemplate">
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
-                                    <!--<CheckBox Width="14" Height="14" HorizontalAlignment="Right" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Tag="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag}"></CheckBox>-->
                                     <Image Width="20" Margin="3" Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=Tag, Converter={x:Static local:HeaderToImageConverter.Instance}}"></Image>
                                     <TextBlock Foreground="white" VerticalAlignment="Center" Text="{Binding}"></TextBlock>
                                 </StackPanel>
@@ -155,13 +150,13 @@
         </TreeView>
 
         <GridSplitter Grid.Row="2" Background="#171717" Width="2"/>
-        <Border  Grid.Row="2" Grid.Column="2" BorderBrush="White" BorderThickness="0">
+        <Border  Grid.Row="1" Grid.Column="1" BorderBrush="White" BorderThickness="0" Grid.RowSpan="2">
             <Grid Grid.Row="2" Grid.Column="2" Background="#101010">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0, 20, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0, 35, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <Border Background="#171717">
                         <StackPanel>
                             <CheckBox Margin="10,10" Content="Exi done" Foreground="White"></CheckBox>
@@ -178,6 +173,7 @@
                 <Button Grid.Row="2" x:Name="btn_MolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" Click="Btn_MolkIt_Click" />
             </Grid>
         </Border>
+
         <Frame x:Name="Frame_Molker" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"/>
     </Grid>
 </Page>

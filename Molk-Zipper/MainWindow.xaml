@@ -106,7 +106,10 @@
         </Grid.RowDefinitions>
         <Image Grid.Row="0" Source="Assets/Logo/Group_1@3x.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="12,0,0,24"/>
         <Image Grid.Row="4" Source="Assets/Text/2020_The_Daniel__Kitt_Team@2x.png" Height="20" VerticalAlignment="Bottom"/>
-        <Button Grid.Row="4" x:Name="btn_Exit" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0" Style="{DynamicResource exit_btn}" Content="Exit" Width="60" Height="35" FontSize="15" Background="Transparent" BorderBrush="#602482" BorderThickness="2" Foreground="White" Mouse.MouseEnter="Button_MouseEnter" Mouse.MouseLeave="Button_MouseLeave" Cursor="Hand" Click="Btn_Exit_Click">
+        <Button Grid.Row="4" x:Name="btn_Exit" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0" 
+                Style="{DynamicResource exit_btn}" Content="Exit" Width="60" Height="35" FontSize="15" Background="Transparent" 
+                BorderBrush="#602482" BorderThickness="2" Foreground="White" Mouse.MouseEnter="Button_MouseEnter" 
+                Mouse.MouseLeave="Button_MouseLeave" Cursor="Hand" Click="Btn_Exit_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="20"/>

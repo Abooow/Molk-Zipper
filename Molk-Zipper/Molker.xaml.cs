@@ -31,21 +31,13 @@ namespace Molk_Zipper
         public Molker()
         {
             InitializeComponent();
+            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
+            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
 
             FolderView.SelectedItemChanged +=
                 new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
 
             FolderView.Focusable = true;
-        }
-
-        public Molker(params string[] args)
-        {
-            InitializeComponent();
-
-            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
-            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
-
-            //OpenFiles();
         }
 
         bool CtrlPressed
@@ -320,6 +312,21 @@ namespace Molk_Zipper
                 if (!TreeViewContains(path))
                     AddTreeViewItem(path);
             }
+        }
+
+        private void img_AddFile_Click(object sender, MouseButtonEventArgs e)
+        {
+            OpenFiles();
+        }
+
+        private void Img_AddFolder_Click(object sender, MouseButtonEventArgs e)
+        {
+            OpenFolders();
+        }
+
+        private void Img_AddFolder_MouseEnter(object sender, MouseEventArgs e)
+        {
+            
         }
 
         // what yo doing? vad betyder cref?  <see cref = DependencyObject> va, en variabel? no idea
