@@ -128,7 +128,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="145" MinWidth="125" MaxWidth="300"/>
+            <ColumnDefinition Width="145" MinWidth="300" MaxWidth="300"/>
         </Grid.ColumnDefinitions>
 
         <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
@@ -158,15 +158,15 @@
         </Menu>
 
 
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="1" Orientation="Horizontal" Background="#171717" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="1" Orientation="Horizontal" Background="#101010" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Image x:Name="Img_MolkBackToHomepage" ToolTip="Back to Homepage" Width="50" Source="Assets/Logo/Home.png" VerticalAlignment="Center" HorizontalAlignment="Left" MouseUp="Img_MolkHome" Margin="10,3,20,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
             <Image x:Name="img_AddFolder" ToolTip="Add Folder" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_folder.png" MouseUp="Img_AddFolder_Click" Cursor="Hand" MouseEnter="Img_AddFolder_MouseEnter"/>
-            <Image x:Name="img_AddFile" ToolTip="Add File" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_file.png" Cursor="Hand" MouseUp="img_AddFile_Click"/>
+            <Image x:Name="img_AddFile" ToolTip="Add File" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_file.png" Cursor="Hand" MouseUp="Img_AddFile_Click"/>
             <Image x:Name="btn_Remove" ToolTip="Remove" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/remove_grey.png" Cursor="Hand"/>
             <Image x:Name="btn_Undo" ToolTip="Undo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/undo_grey.png" Cursor="Hand"/>
             <Image x:Name="btn_Redo" ToolTip="Redo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/redo_grey.png" Cursor="Hand"/>
         </StackPanel>
-        <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" SelectedItemChanged="FolderView_SelectedItemChanged" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
+        <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
             <TreeView.Resources>
                 <Color x:Key="DisabledControlDarkColor">Black</Color>
                 <Style TargetType="{x:Type TreeViewItem}">
@@ -183,6 +183,7 @@
                 </Style>
             </TreeView.Resources>
         </TreeView>
+       
         <GridSplitter Grid.Row="2" Background="#171717" Width="2"/>
         <Border  Grid.Row="1" Grid.Column="1" BorderBrush="White" BorderThickness="0" Grid.RowSpan="2">
             <Grid Grid.Row="2" Grid.Column="2" Background="#101010">
@@ -231,7 +232,18 @@
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <Button Grid.Row="2" x:Name="btn_MolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="100" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" Click="Btn_MolkIt_Click" >
+                <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20">
+                    <Border Background="#171717">
+                        <StackPanel>
+                            <Label Content="Name" Foreground="White" Margin="10,0,0,0" FontSize="10"></Label>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Width="180" Height="20" Background="#171717" Foreground="White" Margin="10,0,0,10" HorizontalAlignment="Left"></TextBox>
+                                <Button Content="browse..." Width="50" Height="20" FontSize="10" Margin="10,0,10,10" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White"/>
+                            </StackPanel>
+                        </StackPanel>    
+                    </Border>
+                </StackPanel>
+                <Button Grid.Row="2" x:Name="btn_MolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="110" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" Click="Btn_MolkIt_Click" >
                     <Button.ToolTip>
                         <ToolTip>
                             Start Molking

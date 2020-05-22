@@ -17,33 +17,29 @@ using System.Windows.Shapes;
 namespace Molk_Zipper
 {
     /// <summary>
-    /// Interaction logic for Molking.xaml
+    /// Interaction logic for UnMolking.xaml
     /// </summary>
-    public partial class Molking : Page
+    public partial class UnMolking : Page
     {
-        private Grid grid_MolkerPage;
-        private float totalFilesToZip;
-        private float currentZippedFiles;
+        private Grid grid_UnMolkerPage;
+        private float totalFilesToUnZip;
+        private float currentUnZippedFiles;
         private string saveToPath;
         private StreamWriter errorFile;
         private bool error;
 
-        public Molking(Grid grid_MolkerPage, string saveToPath, string[] filePaths, params string[] excludeFiles)
+        public UnMolking(Grid grid_UnMolkerPage, string saveToPath, int totalFilesToUnZip, string filePath, params string[] excludeFiles)
         {
             this.saveToPath = saveToPath;
-            this.grid_MolkerPage = grid_MolkerPage;
+            this.grid_UnMolkerPage = grid_UnMolkerPage;
+            this.totalFilesToUnZip = totalFilesToUnZip;
             InitializeComponent();
 
-            foreach (string path in filePaths)
-            {
-                totalFilesToZip += Helpers.GetAmountOfFiles(path);
-            }
-
-            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\molk.exe", ErrorDataReceived, OutputDataReceived);
+            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", ErrorDataReceived, OutputDataReceived);
 
             string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
-            string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
-            dos.Start($@"-r -S ""{saveToPath}"" {filePath} -x {exFileString}");
+            //string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
+            dos.Start($@"""{filePath}"" -d ""{saveToPath}""");
         }
 
         private void ErrorDataReceived(string data)
@@ -63,10 +59,10 @@ namespace Molk_Zipper
 
         private void OutputDataReceived(string data)
         {
-            currentZippedFiles++;
+            currentUnZippedFiles++;
             this.Dispatcher.Invoke(() =>
             {
-                ProgressBar.EndAngle = Helpers.PercentToDeg((currentZippedFiles / totalFilesToZip) * 100f);
+                ProgressBar.EndAngle = Helpers.PercentToDeg((currentUnZippedFiles / totalFilesToUnZip) * 100f);
                 txtBlock_Progress.Text = $"{Helpers.DegToPercent((float)ProgressBar.EndAngle):.0}%";
                 if (ProgressBar.EndAngle == 360) OnDone();
             });
@@ -75,8 +71,8 @@ namespace Molk_Zipper
         private async void OnDone()
         {
             await Task.Delay(1300);
-            Helpers.ChangeVisibility(grid_MolkingPage);
-            Helpers.ChangeVisibility(grid_MolkerPage);
+            Helpers.ChangeVisibility(grid_UnMolkingPage);
+            Helpers.ChangeVisibility(grid_UnMolkerPage);
         }
 
         private async void OnError()
@@ -88,8 +84,8 @@ namespace Molk_Zipper
                 ProgressBar.EndAngle = 360;
                 txtBlock_Progress.Text = "0%";
                 await Task.Delay(2000);
-                Helpers.ChangeVisibility(grid_MolkingPage);
-                Helpers.ChangeVisibility(grid_MolkerPage);
+                Helpers.ChangeVisibility(grid_UnMolkingPage);
+                Helpers.ChangeVisibility(grid_UnMolkerPage);
                 errorFile.Close();
             }
         }

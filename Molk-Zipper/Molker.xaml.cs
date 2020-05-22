@@ -34,9 +34,6 @@ namespace Molk_Zipper
             backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\Home.png");
             backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\Home_orange.png");
 
-            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\molk_white@2x.png");
-            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\molk_orange@2x.png");
-
             FolderView.SelectedItemChanged +=
                 new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
 
@@ -271,7 +268,7 @@ namespace Molk_Zipper
 
             SaveFileDialog saveFile = new SaveFileDialog()
             {
-                Filter = "Molk|*.molk",
+                Filter = "Molk file|*.molk",
                 FileName = System.IO.Path.GetFileNameWithoutExtension((string)((TreeViewItem)FolderView.Items[0]).Tag) + ".molk",
             };
             if (saveFile.ShowDialog() == true)
@@ -287,20 +284,9 @@ namespace Molk_Zipper
             }
         }
 
-        private void DataGet(string data)
-        {
-            Console.WriteLine(data);
-            //this.Dispatcher.Invoke(() => AAAA.Text += data + '\n');
-        }
-
         private void Btn_AddFolder_Click(object sender, RoutedEventArgs e)
         {
             OpenFolders();
-        }
-
-        private void FolderView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            //((TreeViewItem)e.NewValue).ite;
         }
 
         private void FolderView_DragEnter(object sender, DragEventArgs e)
@@ -318,7 +304,7 @@ namespace Molk_Zipper
             }
         }
 
-        private void img_AddFile_Click(object sender, MouseButtonEventArgs e)
+        private void Img_AddFile_Click(object sender, MouseButtonEventArgs e)
         {
             OpenFiles();
         }

@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace Molk_Zipper
 {
-    public class CallDos
+    public class ProcessLauncher
     {
         private Process process;
         private bool running;
@@ -18,7 +18,7 @@ namespace Molk_Zipper
 
         public bool InteractiveMode { get; private set; }
 
-        public CallDos(string appName, Action<string> onErrorDataReceived, Action<string> onOutputDataReceived, string workingDirectory = @"C:\")
+        public ProcessLauncher(string appName, Action<string> onErrorDataReceived, Action<string> onOutputDataReceived, string workingDirectory = @"C:\")
         {
             this.onErrorDataReceived += onErrorDataReceived;
             this.onOutputDataReceived += onOutputDataReceived;
