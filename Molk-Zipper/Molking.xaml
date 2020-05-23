@@ -73,8 +73,8 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Row="1" x:Name="Btn_Show_Files" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
                 Style="{DynamicResource btn_molking_files}" Content="Show Files" Width="80" Height="35" FontSize="10" Background="Transparent" 
-                BorderBrush="#602482" BorderThickness="2" Foreground="White" Mouse.MouseEnter="Btn_Molking_MouseEnter" 
-                Mouse.MouseLeave="Btn_Molking_MouseLeave" Cursor="Hand">
+                BorderBrush="#602482" BorderThickness="2" Foreground="White" MouseEnter="Btn_Molking_MouseEnter" 
+                MouseLeave="Btn_Molking_MouseLeave" Cursor="Hand">
                 <Button.ToolTip>
                     <ToolTip>
                         Show molking files
