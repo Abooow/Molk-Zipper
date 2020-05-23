@@ -114,8 +114,6 @@ namespace Molk_Zipper
 
         private void OpenFiles()
         {
-            FolderView.Items.Clear();
-
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 Filter = "Molk file|*.molk",
@@ -124,6 +122,8 @@ namespace Molk_Zipper
             };
             if (openFileDialog.ShowDialog() == true)
             {
+                FolderView.Items.Clear();
+                
                 totalFilesToUnZip = -6;
                 AddMolkedFile(openFileDialog.FileName);
 
