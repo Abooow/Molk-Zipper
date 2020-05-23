@@ -93,5 +93,10 @@ namespace Molk_Zipper
         {
             Button button = (Button)sender;
         }
+
+        private void Btn_Show_Files_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Helpers.ChangeVisibility(txtBlock_Molking_Files);
+        }
     }
 }
