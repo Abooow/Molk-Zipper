@@ -83,5 +83,15 @@ namespace Molk_Zipper
                 errorFile.Close();
             }
         }
+
+        private void Btn_Molking_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+        }
+               
+        private void Btn_Molking_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+        }
     }
 }
