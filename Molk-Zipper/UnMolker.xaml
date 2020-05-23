@@ -47,8 +47,8 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#602482"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="#602482"/>
+                                <Setter Property="Background" TargetName="border" Value="#D2571B"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#D2571B"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
@@ -229,7 +229,7 @@
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <Button Grid.Row="2" x:Name="btn_UnMolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="UnMolk it! ▶▶" Width="110" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#FFD2571B" Foreground="White" Cursor="Hand" Click="Btn_UnMolkIt_Click" >
+                <Button Grid.Row="2" x:Name="btn_UnMolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="UnMolk it! ▶▶" Width="110" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#602482" Foreground="White" Cursor="Hand" Click="Btn_UnMolkIt_Click" >
                     <Button.ToolTip>
                         <ToolTip>
                             Start Molking
