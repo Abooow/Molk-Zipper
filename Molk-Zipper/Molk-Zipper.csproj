@@ -76,7 +76,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Multiselect.cs" />
     <Compile Include="ProcessLauncher.cs" />
     <Compile Include="HeaderToImageConverter.cs" />
     <Compile Include="Helpers.cs" />

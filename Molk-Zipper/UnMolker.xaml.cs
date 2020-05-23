@@ -1,25 +1,15 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Forms = System.Windows.Forms;
 
 namespace Molk_Zipper
 {
     /// <summary>
-    /// Interaction logic for Molker_2.xaml
+    /// Interaction logic for UnMolker.xaml
     /// </summary>
     public partial class UnMolker : Page
     {
@@ -43,11 +33,6 @@ namespace Molk_Zipper
         private void Img_MolkHome(object sender, MouseButtonEventArgs e)
         {
             Helpers.ChangeVisibility(grid_UnMolkerPage);
-        }
-
-        private void Btn_AddFiles_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFiles();
         }
 
         private void AddMolkedFile(string path)
@@ -139,7 +124,7 @@ namespace Molk_Zipper
             };
             if (openFileDialog.ShowDialog() == true)
             {
-                totalFilesToUnZip = -5;
+                totalFilesToUnZip = -6;
                 AddMolkedFile(openFileDialog.FileName);
 
                 ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", (data) => Console.WriteLine(data), (data) => 
@@ -195,7 +180,7 @@ namespace Molk_Zipper
                 string filePath = (string)((TreeViewItem)FolderView.Items[0]).Tag;
                 string fileNsme = System.IO.Path.GetFileNameWithoutExtension(filePath);
                 string saveToPath = $"{saveFile.SelectedPath}\\{fileNsme}";
-                Directory.CreateDirectory(saveToPath);
+                Helpers.CreateDirectory(saveToPath);
 
                 Console.WriteLine(totalFilesToUnZip);
                 Frame_Molker.Content = new UnMolking(grid_UnMolkerPage, saveToPath, totalFilesToUnZip, filePath);

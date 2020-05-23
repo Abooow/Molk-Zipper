@@ -1,19 +1,12 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Forms = System.Windows.Forms;
 
 namespace Molk_Zipper
@@ -49,7 +42,7 @@ namespace Molk_Zipper
         }
         
         // deselects the tree item
-        void Deselect(TreeViewItem treeViewItem)
+        private void Deselect(TreeViewItem treeViewItem)
         {
             treeViewItem.Background = new SolidColorBrush(Color.FromRgb(20, 20, 20));// change background and foreground colors
             treeViewItem.Foreground = Brushes.Black;
@@ -59,7 +52,7 @@ namespace Molk_Zipper
         // changes the state of the tree item:
         // selects it if it has not been selected and
         // deselects it otherwise
-        void ChangeSelectedState(TreeViewItem treeViewItem)
+        private void ChangeSelectedState(TreeViewItem treeViewItem)
         {
             if (!selectedItems.ContainsKey(treeViewItem))
             { // select
@@ -73,7 +66,7 @@ namespace Molk_Zipper
             }
         }
 
-        void MyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void MyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (!(FolderView.SelectedItem is TreeViewItem treeViewItem))
                 return;

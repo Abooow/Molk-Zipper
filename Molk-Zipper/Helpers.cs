@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -88,6 +85,29 @@ namespace Molk_Zipper
             }
 
             return total;
+        }
+
+        public static void CreateDirectory(string path)
+        {
+            string[] pathParts = path.Split('\\');
+            string currentPath = "";
+
+            foreach (string pathPart in pathParts)
+            {
+                currentPath += pathPart;
+                if (!Directory.Exists(currentPath))
+                {
+                    int newDirNum = 0;
+                    while (Directory.Exists($"{currentPath}({newDirNum})"))
+                    {
+                        newDirNum++;
+                    }
+                    string nameEnding = newDirNum == 0 ? "" : $"({newDirNum})";
+                    Directory.CreateDirectory(currentPath + nameEnding);
+                    currentPath += nameEnding;
+                }
+                currentPath += "\\";
+            }
         }
 
         public static float PercentToDeg(float percent)
