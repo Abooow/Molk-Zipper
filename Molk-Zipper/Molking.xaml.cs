@@ -44,6 +44,7 @@ namespace Molk_Zipper
                 errorFile.WriteLine(DateTime.Now);
             }
 
+            txtBlock_MolkingFiles.Text += $"ERROR:    {data}\n";
             errorFile.WriteLine(data);
             this.Dispatcher.Invoke(() =>
             {
@@ -56,6 +57,7 @@ namespace Molk_Zipper
             currentZippedFiles++;
             this.Dispatcher.Invoke(() =>
             {
+                txtBlock_MolkingFiles.Text += data + "\n";
                 ProgressBar.EndAngle = Helpers.PercentToDeg((currentZippedFiles / totalFilesToZip) * 100f);
                 txtBlock_Progress.Text = $"{Helpers.DegToPercent((float)ProgressBar.EndAngle):.0}%";
                 if (ProgressBar.EndAngle == 360) OnDone();
@@ -64,6 +66,7 @@ namespace Molk_Zipper
 
         private async void OnDone()
         {
+            txtBlock_MolkingFiles.Text += "Done!\n";
             await Task.Delay(1300);
             Helpers.ChangeVisibility(grid_MolkingPage);
             Helpers.ChangeVisibility(grid_MolkerPage);
@@ -96,7 +99,15 @@ namespace Molk_Zipper
 
         private void Btn_Show_Files_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Helpers.ChangeVisibility(txtBlock_Molking_Files);
+            if (Helpers.ChangeVisibility(txtBlock_MolkingFiles))
+                Btn_Show_Files.Content = "Hide Details";
+            else
+                Btn_Show_Files.Content = "Show Details";
+        }
+
+        private void TxtBlock_MolkingFiles_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtBlock_MolkingFiles.ScrollToEnd();
         }
     }
 }

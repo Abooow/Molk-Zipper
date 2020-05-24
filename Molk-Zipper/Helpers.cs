@@ -61,10 +61,18 @@ namespace Molk_Zipper
             return path.Substring(lastIndex + 1);
         }
 
-        public static void ChangeVisibility(UIElement uIElement)
+        public static bool ChangeVisibility(UIElement uIElement)
         {
-            if (uIElement.Visibility == Visibility.Visible) uIElement.Visibility = Visibility.Hidden;
-            else uIElement.Visibility = Visibility.Visible;
+            if (uIElement.Visibility == Visibility.Visible)
+            {
+                uIElement.Visibility = Visibility.Hidden;
+                return false;
+            }
+            else
+            {
+                uIElement.Visibility = Visibility.Visible;
+                return true;
+            }
         }
 
         public static int GetAmountOfFiles(string path)
