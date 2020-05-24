@@ -20,6 +20,9 @@ namespace Molk_Zipper
         private Dictionary<TreeViewItem, string> selectedItems = new Dictionary<TreeViewItem, string>();
         private BitmapImage backToHomeWhite;
         private BitmapImage backToHomeOrange;
+        private BitmapImage enableRemove;
+        private BitmapImage enableUndo;
+        private BitmapImage enableRedo;
         private int totalFilesToUnZip;
 
         public UnMolker(string startingFile = "")
@@ -30,6 +33,9 @@ namespace Molk_Zipper
 
                 backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\home.png");
                 backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\home_orange.png");
+                enableRemove = Helpers.CreateBitmap(@"Assets\Icons\Remove.png");
+                enableUndo = Helpers.CreateBitmap(@"Assets\Icons\Undo.png");
+                enableRedo = Helpers.CreateBitmap(@"Assets\Icons\Redo.png");
 
                 FolderView.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
 
@@ -40,6 +46,7 @@ namespace Molk_Zipper
                 }
             }
             catch { }
+
         }
 
         bool CtrlPressed
@@ -120,6 +127,13 @@ namespace Molk_Zipper
             
             FolderView.Items.Add(item);
             this.btn_Remove.IsEnabled = true;
+            this.btn_UnMolkIt.IsEnabled = true;
+
+            if (Img_Remove.IsEnabled == true)
+            {
+                Img_Remove.Source = enableRemove;
+                Img_Remove.Cursor = Cursors.Hand;
+            }
 
             ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", (data) => Console.WriteLine(data), (data) =>
             {
@@ -129,8 +143,6 @@ namespace Molk_Zipper
                 });
             });
             dos.Start($@"-l ""{path}""");
-        }
-
         
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
@@ -224,7 +236,7 @@ namespace Molk_Zipper
             if (e.Key == Key.Delete) Helpers.DeleteSelectedTreeItem(FolderView);
         }
 
-        private void Btn_Remove_Click(object sender, RoutedEventArgs e)
+        private void Img_Remove_Click(object sender, RoutedEventArgs e)
         {
             Helpers.DeleteSelectedTreeItem(FolderView);
         }
@@ -276,9 +288,14 @@ namespace Molk_Zipper
             }
         }
 
-        private void Img_AddFile_Click(object sender, MouseButtonEventArgs e)
+        private void Img_AddFolder_Click(object sender, MouseButtonEventArgs e)
         {
             OpenFiles();
+        }
+
+        private void Img_AddFolder_MouseEnter(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

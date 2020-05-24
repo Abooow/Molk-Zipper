@@ -18,6 +18,10 @@ namespace Molk_Zipper
     {
         private BitmapImage backToHomeWhite;
         private BitmapImage backToHomeOrange;
+        private BitmapImage enableRemove;
+        private BitmapImage enableUndo;
+        private BitmapImage enableRedo;
+        
 
         private Dictionary<TreeViewItem, string> selectedItems = new Dictionary<TreeViewItem, string>();
 
@@ -26,6 +30,9 @@ namespace Molk_Zipper
             InitializeComponent();
             backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\Home.png");
             backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\Home_orange.png");
+            enableRemove = Helpers.CreateBitmap(@"Assets\Icons\Remove.png");
+            enableUndo = Helpers.CreateBitmap(@"Assets\Icons\Undo.png");
+            enableRedo = Helpers.CreateBitmap(@"Assets\Icons\Redo.png");
 
             FolderView.SelectedItemChanged +=
                 new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
@@ -68,7 +75,18 @@ namespace Molk_Zipper
             else
             { // deselect
                 Deselect(treeViewItem);
+
+                //-------------------------------------------//
+                //-------------------------------------------//
+                //-------------------------------------------//
+                //-------------------------------------------//
+            
+                Img_Undo.Source = enableUndo;
+                Img_Undo.Cursor = Cursors.Hand;
+
+
             }
+
         }
 
         private void MyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -137,7 +155,15 @@ namespace Molk_Zipper
             }
 
             FolderView.Items.Add(item);
-            this.btn_Remove.IsEnabled = true;
+            this.Img_Remove.IsEnabled = true;
+            this.btn_MolkIt.IsEnabled = true;
+
+            if (Img_Remove.IsEnabled == true)
+            {
+                Img_Remove.Source = enableRemove;
+                Img_Remove.Cursor = Cursors.Hand;
+            }
+
         }
 
         private void Folder_Expanded(object sender, RoutedEventArgs e)
@@ -237,6 +263,7 @@ namespace Molk_Zipper
             {
                 if (item.Tag.Equals(path)) return true;
             }
+            //this.btn_Remove.Source = "Assets/Icon/Remove.png";
             return false;
         }
 
@@ -245,9 +272,10 @@ namespace Molk_Zipper
             if (e.Key == Key.Delete) Helpers.DeleteSelectedTreeItem(FolderView);
         }
 
-        private void Btn_Remove_Click(object sender, RoutedEventArgs e)
+        private void Img_Remove_Click(object sender, MouseButtonEventArgs e)
         {
-            Helpers.DeleteSelectedTreeItem(FolderView);
+            foreach (TreeViewItem item in selectedItems.Keys)
+                if (FolderView.Items.Contains(item)) Helpers.DeleteSelectedTreeItem(FolderView);
         }
 
         private void Img_MolkBackToHomepage_MouseEnter(object sender, MouseEventArgs e)
