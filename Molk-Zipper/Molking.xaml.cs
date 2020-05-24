@@ -52,13 +52,13 @@ namespace Molk_Zipper
             }
 
             errorFile.WriteLine(data);
-            txtBlock_MolkingFiles.Text += $"ERROR:    {data}\n";
-            scroll.ScrollToVerticalOffset(scroll.ActualHeight);
 
             if (!data.StartsWith("\t") && !data.Equals("zip warning: Permission denied") && data.Length > 0)
             {
-                this.Dispatcher.Invoke(() =>
+                    this.Dispatcher.Invoke(() =>
                 {
+                    txtBlock_MolkingFiles.Text += $"ERROR:    {data}\n";
+                    scroll.ScrollToVerticalOffset(scroll.ActualHeight);
                     OnError();
                 });
             }
