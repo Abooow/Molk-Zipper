@@ -159,10 +159,10 @@
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="1" Orientation="Horizontal" Background="#101010" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Image x:Name="Img_MolkBackToHomepage" ToolTip="Back to Homepage" Width="50" Source="Assets/Logo/Home.png" VerticalAlignment="Center" HorizontalAlignment="Left" MouseUp="Img_MolkHome" Margin="10,3,0,3" Cursor="Hand" MouseEnter="Img_MolkBackToHomepage_MouseEnter" MouseLeave="Img_MolkBackToHomepage_MouseLeave"/>
-            <Image x:Name="img_AddFile" ToolTip="Add File" Height="20" Width="30" Margin="0,0,2,0" Source="Assets/Icons/add_file.png" Cursor="Hand" MouseUp="Img_AddFile_Click"/>
-            <Image x:Name="btn_Remove" ToolTip="Remove" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/remove_grey.png" Cursor="Hand"/>
-            <Image x:Name="btn_Undo" ToolTip="Undo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/undo_grey.png" Cursor="Hand"/>
-            <Image x:Name="btn_Redo" ToolTip="Redo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/redo_grey.png" Cursor="Hand"/>
+            <Image x:Name="Img_AddFolder" ToolTip="Add Folder" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/add_folder.png" MouseUp="Img_AddFolder_Click" Cursor="Hand" MouseEnter="Img_AddFolder_MouseEnter"/>
+            <Image x:Name="Img_Remove" ToolTip="Remove" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/remove_grey.png" IsEnabled="False" Cursor="Arrow" MouseUp="Img_Remove_Click" />
+            <Image x:Name="Img_Undo" ToolTip="Undo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/undo_grey.png" />
+            <Image x:Name="Img_Redo" ToolTip="Redo" Height="20" Width="30" Margin="0,0,10,0" Source="Assets/Icons/redo_grey.png" />
         </StackPanel>
         <TreeView Grid.Row="2" Grid.RowSpan="2" x:Name="FolderView" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="FolderView_KeyDown" ScrollViewer.CanContentScroll="True" Background="#171717" BorderThickness="0" AllowDrop="True" DragEnter="FolderView_DragEnter" Drop="FolderView_Drop">
             <TreeView.Resources>
@@ -229,7 +229,7 @@
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <Button Grid.Row="2" x:Name="btn_UnMolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="UnMolk it! ▶▶" Width="110" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#602482" Foreground="White" Cursor="Hand" Click="Btn_UnMolkIt_Click" >
+                <Button Grid.Row="2" x:Name="btn_UnMolkIt" IsEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Center" Content="UnMolk it! ▶▶" Width="110" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#602482" Foreground="White" Cursor="Hand" Click="Btn_UnMolkIt_Click" >
                     <Button.ToolTip>
                         <ToolTip>
                             Start Molking

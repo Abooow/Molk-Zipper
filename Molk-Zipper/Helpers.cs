@@ -34,7 +34,7 @@ namespace Molk_Zipper
 
         public static void DeleteSelectedTreeItem(TreeView treeView)
         {
-            return;
+            //return;
 
             TreeViewItem selected = (TreeViewItem)treeView.SelectedItem;
             if (selected == null) return;

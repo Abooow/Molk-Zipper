@@ -149,6 +149,7 @@ namespace Molk_Zipper
 
             FolderView.Items.Add(item);
             this.Img_Remove.IsEnabled = true;
+            this.btn_MolkIt.IsEnabled = true;
 
             if (Img_Remove.IsEnabled == true)
             {
@@ -268,7 +269,8 @@ namespace Molk_Zipper
 
         private void Img_Remove_Click(object sender, MouseButtonEventArgs e)
         {
-            Helpers.DeleteSelectedTreeItem(FolderView);
+            foreach (TreeViewItem item in selectedItems.Keys)
+                if (FolderView.Items.Contains(item)) Helpers.DeleteSelectedTreeItem(FolderView);
         }
 
         private void Img_MolkBackToHomepage_MouseEnter(object sender, MouseEventArgs e)

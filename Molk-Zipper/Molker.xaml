@@ -273,7 +273,7 @@
                         </StackPanel>    
                     </Border>
                 </StackPanel>
-                <Button Grid.Row="2" x:Name="btn_MolkIt" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="110" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#602482" Foreground="White" Cursor="Hand" Click="Btn_MolkIt_Click" >
+                <Button Grid.Row="2" x:Name="btn_MolkIt" IsEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Molk it! ▶▶" Width="110" Height="40" FontSize="15" Style="{DynamicResource Btn_Style}" Background="#602482" Foreground="White" Cursor="Hand" Click="Btn_MolkIt_Click" >
                     <Button.ToolTip>
                         <ToolTip>
                             Start Molking
