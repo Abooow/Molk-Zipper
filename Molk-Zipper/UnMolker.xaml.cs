@@ -1,8 +1,12 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Forms = System.Windows.Forms;
 
@@ -13,6 +17,7 @@ namespace Molk_Zipper
     /// </summary>
     public partial class UnMolker : Page
     {
+        private Dictionary<TreeViewItem, string> selectedItems = new Dictionary<TreeViewItem, string>();
         private BitmapImage backToHomeWhite;
         private BitmapImage backToHomeOrange;
         private int totalFilesToUnZip;
@@ -23,8 +28,67 @@ namespace Molk_Zipper
 
             backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\home.png");
             backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\home_orange.png");
+
+            FolderView.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
+
+            FolderView.Focusable = true;
         }
-        
+
+        bool CtrlPressed
+        {
+            get
+            {
+                return Keyboard.IsKeyDown(Key.LeftCtrl);
+            }
+        }
+
+        // deselects the tree item
+        private void Deselect(TreeViewItem treeViewItem)
+        {
+            treeViewItem.Background = new SolidColorBrush(Color.FromRgb(20, 20, 20));// change background and foreground colors
+            treeViewItem.Foreground = Brushes.Black;
+            selectedItems.Remove(treeViewItem); // remove the item from the selected items set
+        }
+
+        // changes the state of the tree item:
+        // selects it if it has not been selected and
+        // deselects it otherwise
+        private void ChangeSelectedState(TreeViewItem treeViewItem)
+        {
+            if (!selectedItems.ContainsKey(treeViewItem))
+            { // select
+                treeViewItem.Background = Brushes.Purple; // change background and foreground colors
+                treeViewItem.Foreground = Brushes.White;
+                selectedItems.Add(treeViewItem, null); // add the item to selected items
+            }
+            else
+            { // deselect
+                Deselect(treeViewItem);
+            }
+        }
+
+        private void MyTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (!(FolderView.SelectedItem is TreeViewItem treeViewItem))
+                return;
+
+            // prevent the WPF tree item selection 
+            treeViewItem.IsSelected = false;
+
+            treeViewItem.Focus();
+
+            if (!CtrlPressed)
+            {
+                TreeViewItem[] treeViewItems = selectedItems.Keys.ToArray();
+                for (int i = 0; i < treeViewItems.Length; i++)
+                {
+                    Deselect(treeViewItems[i]);
+                }
+            }
+
+            ChangeSelectedState(treeViewItem);
+        }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Helpers.Exit();
@@ -47,7 +111,7 @@ namespace Molk_Zipper
             this.btn_Remove.IsEnabled = true;
         }
 
-        /*
+        
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
 
@@ -110,7 +174,7 @@ namespace Molk_Zipper
                 item.Items.Add(subItem);
             });
         }
-        */
+        
 
         private void OpenFiles()
         {

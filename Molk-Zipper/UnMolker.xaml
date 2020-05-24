@@ -18,8 +18,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
-        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#00D2571B"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#D2571B"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
         <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
         <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
@@ -75,7 +75,6 @@
                                 <ContentPresenter x:Name="content" ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </DockPanel>
                             <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="False" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Bottom" VerticalOffset="-1">
-
                                 <Border BorderThickness="2" BorderBrush="White" Background="{TemplateBinding Background}">
                                     <ScrollViewer x:Name="MenuScrollViewer" CanContentScroll="true" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
