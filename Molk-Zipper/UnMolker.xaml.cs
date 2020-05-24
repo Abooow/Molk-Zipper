@@ -22,16 +22,24 @@ namespace Molk_Zipper
         private BitmapImage backToHomeOrange;
         private int totalFilesToUnZip;
 
-        public UnMolker()
+        public UnMolker(string startingFile = "")
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\home.png");
-            backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\home_orange.png");
+                backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\home.png");
+                backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\home_orange.png");
 
-            FolderView.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
+                FolderView.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
 
-            FolderView.Focusable = true;
+                FolderView.Focusable = true;
+                if (startingFile != "")
+                {
+                    AddMolkedFile(startingFile);
+                }
+            }
+            catch { }
         }
 
         bool CtrlPressed
@@ -101,6 +109,9 @@ namespace Molk_Zipper
 
         private void AddMolkedFile(string path)
         {
+            FolderView.Items.Clear();
+            totalFilesToUnZip = -6;
+
             TreeViewItem item = new TreeViewItem()
             {
                 Header = Helpers.GetFileOrFolderName(path),
@@ -109,6 +120,15 @@ namespace Molk_Zipper
             
             FolderView.Items.Add(item);
             this.btn_Remove.IsEnabled = true;
+
+            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", (data) => Console.WriteLine(data), (data) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    totalFilesToUnZip++;
+                });
+            });
+            dos.Start($@"-l ""{path}""");
         }
 
         
@@ -186,19 +206,7 @@ namespace Molk_Zipper
             };
             if (openFileDialog.ShowDialog() == true)
             {
-                FolderView.Items.Clear();
-                
-                totalFilesToUnZip = -6;
                 AddMolkedFile(openFileDialog.FileName);
-
-                ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", (data) => Console.WriteLine(data), (data) => 
-                {
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        totalFilesToUnZip++;
-                    });
-                });
-                dos.Start($@"-l ""{openFileDialog.FileName}""");
             }
         }
 
@@ -261,8 +269,10 @@ namespace Molk_Zipper
             string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string path in fileList)
             {
-                //if (!TreeViewContains(path))
-                //    AddTreeViewItem(path);
+                if (File.Exists(path) && path.ToLower().EndsWith(".molk"))
+                {
+                    AddMolkedFile(path);
+                }
             }
         }
 

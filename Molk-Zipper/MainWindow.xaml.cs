@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -13,6 +15,33 @@ namespace Molk_Zipper
         public MainWindow()
         {
             InitializeComponent();
+
+            // Unmolk the file.
+            if (App.Args.Length == 1 && App.Args[0].ToLower().EndsWith(".molk") && File.Exists(App.Args[0]))
+            {
+                Frame_Page_Home.Content = new UnMolker(App.Args[0]);
+            }
+            // Molk the file(s).
+            else if (App.Args.Length > 0)
+            {
+                List<string> args = new List<string>();
+
+                // Two loops is used to get all the directories first then the files.
+                foreach (string arg in App.Args)
+                {
+                    if (Directory.Exists(arg))args.Add(arg);
+                }
+                foreach (string arg in App.Args)
+                {
+                    if (File.Exists(arg)) args.Add(arg);
+                }
+
+                if (args.Count > 0)
+                {
+                    Frame_Page_Home.Content = new Molker(args.ToArray());
+                }
+            }
+           
         }
 
         private void Btn_Molk_Click(object sender, RoutedEventArgs e)
