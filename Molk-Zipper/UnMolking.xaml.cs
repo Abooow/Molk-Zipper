@@ -25,12 +25,16 @@ namespace Molk_Zipper
         private float totalFilesToUnZip;
         private float currentUnZippedFiles;
         private string saveToPath;
+        private string filePath;
         private StreamWriter errorFile;
+        private bool done;
         private bool error;
+        private bool bigError;
 
         public UnMolking(Grid grid_UnMolkerPage, string saveToPath, int totalFilesToUnZip, string filePath, params string[] excludeFiles)
         {
             this.saveToPath = saveToPath;
+            this.filePath = filePath;
             this.grid_UnMolkerPage = grid_UnMolkerPage;
             this.totalFilesToUnZip = totalFilesToUnZip;
             InitializeComponent();
@@ -46,47 +50,57 @@ namespace Molk_Zipper
         {
             if (!error)
             {
-                errorFile = new StreamWriter(new FileStream(saveToPath + "_ErrorLog.txt", FileMode.CreateNew));
-                errorFile.WriteLine(DateTime.Now);
+                error = true;
+                errorFile = new StreamWriter(new FileStream(saveToPath + "_ErrorLog.txt", FileMode.Create));
+                errorFile.WriteLine($"An error occurred when trying to UnMolk \"{string.Join("\", \"", filePath)}\" to \"{saveToPath}\" at {DateTime.Now}");
+                errorFile.WriteLine();
             }
 
             errorFile.WriteLine(data);
-            this.Dispatcher.Invoke(() =>
+
+            if (!data.StartsWith("\t") && !data.Equals("zip warning: Permission denied") && data.Length > 0)
             {
-                OnError();
-            });
+                this.Dispatcher.Invoke(() =>
+                {
+                    OnError();
+                });
+            }
         }
 
         private void OutputDataReceived(string data)
         {
+            if (bigError) return;
+
             currentUnZippedFiles++;
             this.Dispatcher.Invoke(() =>
             {
                 ProgressBar.EndAngle = Helpers.PercentToDeg((currentUnZippedFiles / totalFilesToUnZip) * 100f);
                 txtBlock_Progress.Text = $"{Helpers.DegToPercent((float)ProgressBar.EndAngle):.0}%";
-                if (ProgressBar.EndAngle == 360) OnDone();
+                if (ProgressBar.EndAngle == 360 && !done) OnDone();
             });
         }
 
         private async void OnDone()
         {
+            done = true;
             await Task.Delay(1300);
             Helpers.ChangeVisibility(grid_UnMolkingPage);
             Helpers.ChangeVisibility(grid_UnMolkerPage);
+            errorFile?.Close();
         }
 
         private async void OnError()
         {
-            if (!error)
+            if (!bigError)
             {
-                error = true;
+                bigError = true;
                 ProgressBar.Fill = Brushes.Red;
                 ProgressBar.EndAngle = 360;
                 txtBlock_Progress.Text = "0%";
                 await Task.Delay(2000);
                 Helpers.ChangeVisibility(grid_UnMolkingPage);
                 Helpers.ChangeVisibility(grid_UnMolkerPage);
-                errorFile.Close();
+                errorFile?.Close();
             }
         }
     }
