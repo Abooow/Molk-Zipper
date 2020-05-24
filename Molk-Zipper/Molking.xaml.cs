@@ -49,6 +49,7 @@ namespace Molk_Zipper
                 errorFile.WriteLine();
             }
 
+            txtBlock_MolkingFiles.Text += $"ERROR:    {data}\n";
             errorFile.WriteLine(data);
 
             if (!data.StartsWith("\t") && !data.Equals("zip warning: Permission denied") && data.Length > 0)
@@ -67,6 +68,7 @@ namespace Molk_Zipper
             currentZippedFiles++;
             this.Dispatcher.Invoke(() =>
             {
+                txtBlock_MolkingFiles.Text += data + "\n";
                 ProgressBar.EndAngle = Helpers.PercentToDeg((currentZippedFiles / totalFilesToZip) * 100f);
                 txtBlock_Progress.Text = $"{Helpers.DegToPercent((float)ProgressBar.EndAngle):.0}%";
                 if (ProgressBar.EndAngle == 360 && !done) OnDone();
@@ -76,6 +78,7 @@ namespace Molk_Zipper
         private async void OnDone()
         {
             done = true;
+            txtBlock_MolkingFiles.Text += "Done!\n";
             await Task.Delay(1300);
             Helpers.ChangeVisibility(grid_MolkingPage);
             Helpers.ChangeVisibility(grid_MolkerPage);
@@ -95,6 +98,29 @@ namespace Molk_Zipper
                 Helpers.ChangeVisibility(grid_MolkerPage);
                 errorFile?.Close();
             }
+        }
+
+        private void Btn_Molking_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+        }
+               
+        private void Btn_Molking_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+        }
+
+        private void Btn_Show_Files_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (Helpers.ChangeVisibility(txtBlock_MolkingFiles))
+                Btn_Show_Files.Content = "Hide Details";
+            else
+                Btn_Show_Files.Content = "Show Details";
+        }
+
+        private void TxtBlock_MolkingFiles_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtBlock_MolkingFiles.ScrollToEnd();
         }
     }
 }

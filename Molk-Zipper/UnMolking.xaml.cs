@@ -103,5 +103,20 @@ namespace Molk_Zipper
                 errorFile?.Close();
             }
         }
+
+        private void Btn_Show_Files_Click(object sender, RoutedEventArgs e)
+        {
+            Helpers.ChangeVisibility(txtBlock_UnMolking_Files);
+        }
+
+        private void Btn_UnMolking_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+        }
+
+        private void Btn_UnMolking_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+        }
     }
 }
