@@ -32,11 +32,14 @@ namespace Molk_Zipper
             {
                 totalFilesToZip += Helpers.GetAmountOfFiles(path);
             }
-            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\molk.exe", ErrorDataReceived, OutputDataReceived);
+            Task.Run(() =>
+            {
+                ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\molk.exe", ErrorDataReceived, OutputDataReceived);
 
-            string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
-            string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
-            dos.Start($@"-r -S ""{saveToPath}"" {filePath} -x {exFileString}");
+                string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
+                string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
+                dos.Start($@"-r -S ""{saveToPath}"" {filePath} -x {exFileString}");
+            });
         }
 
         private void ErrorDataReceived(string data)
