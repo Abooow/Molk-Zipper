@@ -39,11 +39,11 @@ namespace Molk_Zipper
             this.totalFilesToUnZip = totalFilesToUnZip;
             InitializeComponent();
 
-            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", ErrorDataReceived, OutputDataReceived);
-
             string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
-            //string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
+            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", ErrorDataReceived, OutputDataReceived);
             dos.Start($@"""{filePath}"" -d ""{saveToPath}""");
+
+            txtBlock_Completed.Text = $"0/{totalFilesToUnZip}";
         }
 
         private void ErrorDataReceived(string data)
@@ -57,6 +57,8 @@ namespace Molk_Zipper
             }
 
             errorFile.WriteLine(data);
+            txtBlock_MolkingFiles.Text += $"ERROR:    {data}\n";
+            scroll.ScrollToVerticalOffset(scroll.ActualHeight);
 
             if (!data.StartsWith("\t") && !data.Equals("zip warning: Permission denied") && data.Length > 0)
             {
@@ -74,6 +76,10 @@ namespace Molk_Zipper
             currentUnZippedFiles++;
             this.Dispatcher.Invoke(() =>
             {
+                txtBlock_MolkingFiles.Text += data + "\n";
+                scroll.ScrollToVerticalOffset(-scroll.ActualHeight);
+                txtBlock_Completed.Text = $"{currentUnZippedFiles}/{totalFilesToUnZip}";
+
                 ProgressBar.EndAngle = Helpers.PercentToDeg((currentUnZippedFiles / totalFilesToUnZip) * 100f);
                 txtBlock_Progress.Text = $"{Helpers.DegToPercent((float)ProgressBar.EndAngle):.0}%";
                 if (ProgressBar.EndAngle == 360 && !done) OnDone();
@@ -82,6 +88,9 @@ namespace Molk_Zipper
 
         private async void OnDone()
         {
+            txtBlock_MolkingFiles.Text += "___________________________\n";
+            txtBlock_MolkingFiles.Text += "Done!\n";
+
             done = true;
             await Task.Delay(1300);
             Helpers.ChangeVisibility(grid_UnMolkingPage);
@@ -104,11 +113,6 @@ namespace Molk_Zipper
             }
         }
 
-        private void Btn_Show_Files_Click(object sender, RoutedEventArgs e)
-        {
-            Helpers.ChangeVisibility(txtBlock_UnMolking_Files);
-        }
-
         private void Btn_UnMolking_MouseEnter(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
@@ -117,6 +121,14 @@ namespace Molk_Zipper
         private void Btn_UnMolking_MouseLeave(object sender, MouseEventArgs e)
         {
             Button button = (Button)sender;
+        }
+
+        private void Btn_Show_Files_Click(object sender, RoutedEventArgs e)
+        {
+            if (Helpers.ChangeVisibility(scroll))
+                Btn_Show_Files.Content = "Hide Details";
+            else
+                Btn_Show_Files.Content = "Show Details";
         }
     }
 }

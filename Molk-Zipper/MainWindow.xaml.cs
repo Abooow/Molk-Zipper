@@ -16,32 +16,34 @@ namespace Molk_Zipper
         {
             InitializeComponent();
 
+            List<string> args = new List<string>(System.Environment.GetCommandLineArgs());
+            args.RemoveAt(0);
+
             // Unmolk the file.
-            if (App.Args.Length == 1 && App.Args[0].ToLower().EndsWith(".molk") && File.Exists(App.Args[0]))
+            if (args.Count == 1 && args[0].ToLower().EndsWith(".molk") && File.Exists(args[0]))
             {
-                Frame_Page_Home.Content = new UnMolker(App.Args[0]);
+                Frame_Page_Home.Content = new UnMolker(args[0]);
             }
             // Molk the file(s).
-            else if (App.Args.Length > 0)
+            else if (args.Count > 0)
             {
-                List<string> args = new List<string>();
+                List<string> args_ = new List<string>();
 
                 // Two loops is used to get all the directories first then the files.
-                foreach (string arg in App.Args)
+                foreach (string arg in args_)
                 {
-                    if (Directory.Exists(arg))args.Add(arg);
+                    if (Directory.Exists(arg)) args_.Add(arg);
                 }
-                foreach (string arg in App.Args)
+                foreach (string arg in args)
                 {
-                    if (File.Exists(arg)) args.Add(arg);
+                    if (File.Exists(arg)) args_.Add(arg);
                 }
 
-                if (args.Count > 0)
+                if (args_.Count > 0)
                 {
-                    Frame_Page_Home.Content = new Molker(args.ToArray());
+                    Frame_Page_Home.Content = new Molker(args_.ToArray());
                 }
             }
-           
         }
 
         private void Btn_Molk_Click(object sender, RoutedEventArgs e)
