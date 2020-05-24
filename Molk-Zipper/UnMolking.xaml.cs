@@ -40,7 +40,7 @@ namespace Molk_Zipper
             InitializeComponent();
 
             string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
-            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", ErrorDataReceived, OutputDataReceived);
+            ProcessLauncher dos = new ProcessLauncher(@"unmolk.exe", ErrorDataReceived, OutputDataReceived);
             dos.Start($@"""{filePath}"" -d ""{saveToPath}""");
 
             txtBlock_Completed.Text = $"0/{totalFilesToUnZip}";

@@ -19,13 +19,13 @@ namespace Molk_Zipper
             if (path == null)
                 return null;
 
-            string name = Helpers.GetFileOrFolderName(path);
+            string name = path;
 
             string image = "Assets/Icons/file.png";
 
             if (string.IsNullOrEmpty(name))
                 image = "Assets/Icons/file.png";
-            else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
+            else if ((path.EndsWith("/") || path.EndsWith("\\")) || Directory.Exists(path))
                 image = "Assets/Icons/folder.png";
 
             return new BitmapImage(new Uri($"pack://application:,,,/{image}"));

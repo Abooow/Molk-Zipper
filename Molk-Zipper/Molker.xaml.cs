@@ -36,6 +36,12 @@ namespace Molk_Zipper
             {
                 AddTreeViewItem(path);
             }
+
+            //TreeViewItem[] items = selectedItems.Keys.ToArray();
+            //for (int i = selectedItems.Keys.Count - 1; i >= 0; i--)
+            //{
+            //    selectedItems.Keys[]
+            //}
         }
 
         bool CtrlPressed

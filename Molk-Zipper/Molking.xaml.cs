@@ -35,7 +35,7 @@ namespace Molk_Zipper
 
             string exFileString = "\"" + string.Join("\" \"", excludeFiles) + "\"";
             string filePath = "\"" + string.Join("\" \"", filePaths) + "\"";
-            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\molk.exe", ErrorDataReceived, OutputDataReceived);
+            ProcessLauncher dos = new ProcessLauncher(@"molk.exe", ErrorDataReceived, OutputDataReceived);
             dos.Start($@"-r -S ""{saveToPath}"" {filePath} -x {exFileString}");
 
             txtBlock_Completed.Text = $"0/{totalFilesToZip}";

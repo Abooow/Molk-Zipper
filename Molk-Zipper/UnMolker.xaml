@@ -189,9 +189,8 @@
                 </Grid.RowDefinitions>
 
                 <!--<StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">-->
-                <!--Kolla vilken utav dessa som ska behållas-->
                 <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0, 35, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <Border Background="#171717">
+                    <Border Background="#171717" Visibility="Hidden">
                         <StackPanel>
                             <CheckBox Margin="10,10" Content="Exi done" Foreground="White">
                                 <CheckBox.ToolTip>
@@ -209,7 +208,7 @@
                             </CheckBox>
                         </StackPanel>
                     </Border>
-                    <Border Background="#171717" Margin="0,20,0,0">
+                    <Border Background="#171717" Margin="0,20,0,0" Visibility="Hidden">
                         <StackPanel>
                             <CheckBox Margin="10,10" Content="Exit when done" Foreground="White">
                                 <CheckBox.ToolTip>

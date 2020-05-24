@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -21,9 +22,11 @@ namespace Molk_Zipper
         private BitmapImage backToHomeWhite;
         private BitmapImage backToHomeOrange;
         private int totalFilesToUnZip;
+        private Regex pathRegex;
 
         public UnMolker(string startingFile = "")
         {
+            pathRegex = new Regex(@" (([a-zA-Z]*:?)[^<>:""\|? *\n\t]*[/\\]([^<>:""\|?*\n\t])*)$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
             try
             {
                 InitializeComponent();
@@ -110,22 +113,40 @@ namespace Molk_Zipper
         private void AddMolkedFile(string path)
         {
             FolderView.Items.Clear();
-            totalFilesToUnZip = -6;
 
             TreeViewItem item = new TreeViewItem()
             {
                 Header = Helpers.GetFileOrFolderName(path),
                 Tag = path
             };
-            
+
+            item.IsExpanded = true;
             FolderView.Items.Add(item);
             this.btn_Remove.IsEnabled = true;
 
-            ProcessLauncher dos = new ProcessLauncher(@"..\..\Programs\unmolk.exe", (data) => Console.WriteLine(data), (data) =>
+            ProcessLauncher dos = new ProcessLauncher(@"unmolk.exe", (data) => Console.WriteLine(data), (data) =>
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    totalFilesToUnZip++;
+                    if (totalFilesToUnZip == 0)
+                    {
+                        totalFilesToUnZip++;
+                        return;
+                    }
+                    MatchCollection matches = pathRegex.Matches(data);
+                    if (matches.Count > 0)
+                    {
+                        string filePath = matches[0].Value.Trim();
+
+                        TreeViewItem subItem = new TreeViewItem()
+                        {
+                            Header = filePath,
+                            Tag = filePath
+                        };
+
+                        item.Items.Add(subItem);
+                        totalFilesToUnZip++;
+                    }
                 });
             });
             dos.Start($@"-l ""{path}""");
@@ -200,7 +221,7 @@ namespace Molk_Zipper
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
-                Filter = "Molk file|*.molk",
+                Filter = "Molk File|*.molk",
                 Multiselect = false,
                 CheckFileExists = true,
             };
