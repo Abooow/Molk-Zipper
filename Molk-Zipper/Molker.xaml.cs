@@ -21,16 +21,21 @@ namespace Molk_Zipper
 
         private Dictionary<TreeViewItem, string> selectedItems = new Dictionary<TreeViewItem, string>();
 
-        public Molker()
+        public Molker(params string[] startingFiles)
         {
             InitializeComponent();
-            backToHomeWhite  = Helpers.CreateBitmap(@"Assets\Logo\Home.png");
+            backToHomeWhite = Helpers.CreateBitmap(@"Assets\Logo\Home.png");
             backToHomeOrange = Helpers.CreateBitmap(@"Assets\Logo\Home_orange.png");
 
             FolderView.SelectedItemChanged +=
                 new RoutedPropertyChangedEventHandler<object>(MyTreeView_SelectedItemChanged);
 
             FolderView.Focusable = true;
+
+            foreach (string path in startingFiles)
+            {
+                AddTreeViewItem(path);
+            }
         }
 
         bool CtrlPressed
@@ -114,6 +119,8 @@ namespace Molk_Zipper
 
         private void AddTreeViewItem(string path)
         {
+            if (TreeViewContains(path)) return;
+
             TreeViewItem item = new TreeViewItem()
             {
                 Header = Helpers.GetFileOrFolderName(path),
@@ -208,8 +215,7 @@ namespace Molk_Zipper
             {
                 foreach (string file in openFileDialog.FileNames)
                 {
-                    if (!TreeViewContains(file))
-                        AddTreeViewItem(file);
+                    AddTreeViewItem(file);
                 }
             }
         }
@@ -221,8 +227,7 @@ namespace Molk_Zipper
                 dialog.ShowNewFolderButton = true;
                 if (dialog.ShowDialog() == Forms.DialogResult.OK)
                 {
-                    if (!TreeViewContains(dialog.SelectedPath))
-                        AddTreeViewItem(dialog.SelectedPath);
+                    AddTreeViewItem(dialog.SelectedPath);
                 }
             }
         }
@@ -261,7 +266,7 @@ namespace Molk_Zipper
 
             SaveFileDialog saveFile = new SaveFileDialog()
             {
-                Filter = "Molk file|*.molk",
+                Filter = "Molk File|*.molk|All Files|*.*",
                 FileName = System.IO.Path.GetFileNameWithoutExtension((string)((TreeViewItem)FolderView.Items[0]).Tag) + ".molk",
             };
             if (saveFile.ShowDialog() == true)
@@ -292,8 +297,7 @@ namespace Molk_Zipper
             string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (string path in fileList)
             {
-                if (!TreeViewContains(path))
-                    AddTreeViewItem(path);
+                AddTreeViewItem(path);
             }
         }
 
