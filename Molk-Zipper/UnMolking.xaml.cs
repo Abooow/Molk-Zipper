@@ -57,7 +57,7 @@ namespace Molk_Zipper
             }
 
             errorFile.WriteLine(data);
-            txtBlock_MolkingFiles.Text += $"ERROR:    {data}\n";
+            txtBlock_UnMolkingFiles.Text += $"ERROR:    {data}\n";
             scroll.ScrollToVerticalOffset(scroll.ActualHeight);
 
             if (!data.StartsWith("\t") && !data.Equals("zip warning: Permission denied") && data.Length > 0)
@@ -76,7 +76,7 @@ namespace Molk_Zipper
             currentUnZippedFiles++;
             this.Dispatcher.Invoke(() =>
             {
-                txtBlock_MolkingFiles.Text += data + "\n";
+                txtBlock_UnMolkingFiles.Text += data + "\n";
                 scroll.ScrollToVerticalOffset(-scroll.ActualHeight);
                 txtBlock_Completed.Text = $"{currentUnZippedFiles}/{totalFilesToUnZip}";
 
@@ -88,8 +88,8 @@ namespace Molk_Zipper
 
         private async void OnDone()
         {
-            txtBlock_MolkingFiles.Text += "___________________________\n";
-            txtBlock_MolkingFiles.Text += "Done!\n";
+            txtBlock_UnMolkingFiles.Text += "___________________________\n";
+            txtBlock_UnMolkingFiles.Text += "Done!\n";
 
             done = true;
             await Task.Delay(1300);
