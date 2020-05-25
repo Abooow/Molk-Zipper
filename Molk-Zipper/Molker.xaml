@@ -127,7 +127,7 @@
         </Style>
         <Storyboard x:Key="MenuItems_MouseEnter">
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" >
-                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="DeepSkyBlue"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#D2571B"/>
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MenuItems_MouseLeave">
@@ -163,27 +163,26 @@
 
         <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0" x:Name="Menu_Molk">
             <MenuItem Background="#171717" Foreground="White" Header="_File">
-                <MenuItem Header="_New" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
-                <MenuItem Header="_Open" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
-                <MenuItem Header="_Save" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
-                <MenuItem Header="_Save As" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="Add F_ile" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="Add _Directory" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="_Select All" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
                 <Separator />
                 <MenuItem Header="_Exit"  Foreground="White" Click="Exit_Click" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
             <MenuItem Background="#171717" Header="_Edit">
-                <MenuItem Header="Cut"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
-                <MenuItem Header="Copy"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
-                <MenuItem Header="Paste"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="R_emove"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="_Undo"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="_Redo"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
             <MenuItem Background="#171717" Header="_Format">
-                <MenuItem Header="Font" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="Fo_nt" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
             <MenuItem Background="#171717" Header="_View">
-                <MenuItem Header="Zoom"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="_Zoom"  Foreground="White" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
 
-            <MenuItem Background="#171717" Header="Help">
-                <MenuItem Header="About" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+            <MenuItem Background="#171717" Header="_Help">
+                <MenuItem Header="_About" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
             </MenuItem>
         </Menu>
 
