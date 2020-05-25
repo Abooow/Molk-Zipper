@@ -318,5 +318,10 @@ namespace Molk_Zipper
         {
 
         }
+
+        private void MenuItem_AddFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFiles();
+        }
     }
 }

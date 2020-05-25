@@ -131,8 +131,7 @@
 
         <Menu x:Name="Menu_UnMolk" Grid.Row="0" Grid.ColumnSpan="2" Background="#101010" Foreground="white" BorderBrush="White" BorderThickness="0">
             <MenuItem Background="#171717" Foreground="White" Header="_File">
-                <MenuItem Header="Add F_ile" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
-                <MenuItem Header="Add _Directory" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="Add F_ile" Foreground="White" Style="{StaticResource MenuItems_Style}" Click="MenuItem_AddFile_Click"/>
                 <MenuItem Header="_Select All" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
                 <Separator />
                 <MenuItem Header="_Exit"  Foreground="White" Click="Exit_Click" Style="{StaticResource MenuItems_Style}"/>
