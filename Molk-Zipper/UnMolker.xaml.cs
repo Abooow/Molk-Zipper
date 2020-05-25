@@ -129,7 +129,7 @@ namespace Molk_Zipper
 
             item.IsExpanded = true;
             FolderView.Items.Add(item);
-            this.btn_Remove.IsEnabled = true;
+            this.Img_Remove.IsEnabled = true;
             this.btn_UnMolkIt.IsEnabled = true;
 
             if (Img_Remove.IsEnabled == true)
@@ -164,6 +164,7 @@ namespace Molk_Zipper
                 });
             });
             dos.Start($@"-l ""{path}""");
+        }
         
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
@@ -228,7 +229,6 @@ namespace Molk_Zipper
             });
         }
         
-
         private void OpenFiles()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
@@ -309,12 +309,12 @@ namespace Molk_Zipper
             }
         }
 
-        private void Img_AddFolder_Click(object sender, MouseButtonEventArgs e)
+        private void Img_AddFile_Click(object sender, MouseButtonEventArgs e)
         {
             OpenFiles();
         }
 
-        private void Img_AddFolder_MouseEnter(object sender, MouseEventArgs e)
+        private void Img_AddFile_MouseEnter(object sender, MouseEventArgs e)
         {
 
         }

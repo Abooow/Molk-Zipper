@@ -148,7 +148,7 @@
                 </Button.Resources>
             </Button>
             <ScrollViewer x:Name="scroll" Grid.Row="1" Grid.Column="1" Margin="0,0,10,0" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Hidden">
-                <TextBlock Background="#0d0d0d" x:Name="txtBlock_MolkingFiles" FontSize="10" VerticalAlignment="Stretch" Foreground="White" HorizontalAlignment="Stretch" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap"/>
+                <TextBlock Background="#0d0d0d" x:Name="txtBlock_UnMolkingFiles" FontSize="10" VerticalAlignment="Stretch" Foreground="White" HorizontalAlignment="Stretch" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap"/>
             </ScrollViewer>
             <TextBlock x:Name="txtBlock_Completed" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="0/0" FontSize="10" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Center"/>
         </Grid>
