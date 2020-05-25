@@ -65,9 +65,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="aboutWindow.xaml.cs">
+      <DependentUpon>aboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UnMolking.xaml.cs">
       <DependentUpon>UnMolking.xaml</DependentUpon>
     </Compile>
+    <Page Include="aboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

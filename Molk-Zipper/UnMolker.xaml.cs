@@ -323,5 +323,11 @@ namespace Molk_Zipper
         {
             OpenFiles();
         }
+
+        private void MenuItem_About_Click(object sender, RoutedEventArgs e)
+        {
+            aboutWindow about = new aboutWindow();
+            about.Show();
+        }
     }
 }

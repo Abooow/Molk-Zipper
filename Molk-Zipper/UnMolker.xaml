@@ -149,7 +149,7 @@
             </MenuItem>
 
             <MenuItem Background="#171717" Header="_Help">
-                <MenuItem Header="_About" Foreground="White" Style="{StaticResource MenuItems_Style}"/>
+                <MenuItem Header="_About" Foreground="White" Style="{StaticResource MenuItems_Style}" Click="MenuItem_About_Click"/>
             </MenuItem>
         </Menu>
 
